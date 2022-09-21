@@ -31,8 +31,9 @@ body {
   justify-content: center;
   font-family: "Baloo Chettan";
   color: #600d2d;
-  font-size: small;
+  font-size: x-small;
   text-align: center;
+  word-spacing: 0.5em;
 }
 .buttons-container {
   display: flex;
@@ -44,7 +45,7 @@ body {
 .buttons-container p {
   font-family: "Baloo Chettan";
   color: #600d2d;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 2vh;
   margin-left: 1vh;
 }
@@ -159,9 +160,10 @@ body {
   margin-bottom: 3vh;
 }
 
-.modal-main-content > div {
+.modal-main-content div {
   margin-bottom: 3vh;
 }
+
 .modal-main-content p {
   font-size: 2rem;
   font-weight: bold;
