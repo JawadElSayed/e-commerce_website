@@ -13,6 +13,8 @@ $add = $mysqli->prepare($favorite_sql);
 $add->bind_param("ss",$client_id, $product_id);
 if ($add->execute() === TRUE) {
     $response["status"] = "favorite";
+    echo json_encode($response);
+    exit();
 } 
 else {
     $unfavorite_sql = "DELETE FROM favorite WHERE client_id = ? and product_id = ?";
@@ -20,6 +22,8 @@ else {
     $remove->bind_param("ss",$client_id, $product_id);
     if ($remove->execute() === TRUE) {
         $response["status"] = "unfavorite";
+        echo json_encode($response);
+        exit();
     } 
     else {
         $response["success"] = "Error : " . mysqli_error($mysqli);
