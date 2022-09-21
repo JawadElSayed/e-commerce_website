@@ -14,8 +14,9 @@ header{
     width:29%;
     height:100%;
     background-color: #0E2E61;
-   
+    position:fixed;
 }
+
 html {
     font-size: 10px;
     font-family:  'Poppins', sans-serif;
@@ -73,6 +74,36 @@ hr{
 main{
     width:71%;
     height:100%;
-    ;
+    margin-left:29%;
   
+}
+.seller-header{
+    height:20vh;
+    background-color: #BDBDBD;
+}
+
+
+.search{
+	display: flex;
+	align-items: center;
+	padding: 20px;
+
+}
+
+.search > span {
+	font-size: 20px;
+	color: white;
+    position:relative;
+    left:30px;
+}
+
+.search > input{
+	height: 5vh;
+	border: none;
+	outline: none;
+	font-size: 18px;
+	padding-left: 10px;
+    width: 400px;
+	background-color:#0E2E61;
+	border-radius: 30px;
 }
