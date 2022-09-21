@@ -5,3 +5,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+img{height: 100%;}
+/*  css reset */
+header{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:29%;
+    height:100%;
+    background-color: #0E2E61;
+    position:fixed;
+}
+
+html {
+   
+    font-family:  'Poppins', sans-serif;
+}
