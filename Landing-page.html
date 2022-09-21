@@ -23,9 +23,45 @@
           <div class="buttons-container">
             <div class="log-in">
               <p>Already a member?</p>
-              <button id="outer-login" class="outer-button">Login</button>
+              <button id="outer-login" class="outer-button">Sign In</button>
             </div>
+ <!-- Modal -->
 
+          <!-- Sign in modal section -->
+
+          <div id="myModal-signin" class="cont-modal-signin">
+            <!--Sign up Modal content -->
+            <div class="modal-content">
+              <div class="header">
+                <span id="signin-close" class="close">&times;</span>
+                <img class="img" src="/Assets/Logo-variants/Logo.svg" />
+              </div>
+
+              <div class="modal-main-content ">
+                <div>
+                  <input type="text" id="p1-username" placeholder="Username" />
+                </div>
+        
+                <div>
+                  <input
+                    type="password"
+                    id="p1-password"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+
+              <div class="cont-sign">
+                <button id="sign-in-btn">
+                  Log In
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- End of sign up modal section -->
+
+          <!-- Modal End -->
             <div class="sign-up">
               <p>New to BurnShop?</p>
               <button id="outer-signup" class="outer-button">Sign Up</button>
@@ -36,7 +72,7 @@
 
           <!-- Sign up modal section -->
 
-          <div id="myModal-signup" class="cont-modal">
+          <div id="myModal-signup" class="cont-modal-singup">
             <!--Sign up Modal content -->
             <div class="modal-content">
               <div class="header">
@@ -47,28 +83,28 @@
               <div class="modal-main-content ">
                 <p>Create an Account</p>
                 <div>
-                  <input type="text" id="p1-name" placeholder="full name" />
+                  <input type="text" id="p2-name" placeholder="Full Name" />
                 </div>
                 <div>
-                  <input type="text" id="p1-username" placeholder="username" />
+                  <input type="text" id="p2-username" placeholder="Username" />
                 </div>
                 <div>
-                  <input type="text" id="p1-email" placeholder="email" />
+                  <input type="text" id="p2-email" placeholder="Email" />
                 </div>
                 <div>
-                  <input type="date" id="p1-dob" onfocus="this.showPicker()" />
+                  <input type="date" id="p2-dob" onfocus="this.showPicker()" />
                 </div>
 
                 <div>
                   <input
                     type="password"
-                    id="p1-password"
+                    id="p2-password"
                     placeholder="Password"
                   />
                 </div>
               </div>
 
-              <div class="cont-signup">
+              <div class="cont-sign">
                 <button id="sign-up-btn" class="btn-signup-modal">
                   Sign Up
                 </button>
