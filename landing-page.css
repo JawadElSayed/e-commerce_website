@@ -167,6 +167,7 @@ body {
   font-weight: bold;
   margin-bottom: 4vh;
   color: #600d2d;
+  text-align: center;
 }
 
 .modal-main-content input {
@@ -249,12 +250,26 @@ body {
   }
 }
 
-@media only screen and (max-width: 905px) {
+@media only screen and (max-width: 950px) {
   .signing-form {
     background-color: #f0f0f0;
     height: 65vh;
     width: 60%;
     border-radius: 20px;
+  }
+  .modal-content {
+    position: relative;
+    background-color: white;
+    margin: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    font-family: "Baloo Chettan";
   }
 }
 
@@ -287,5 +302,13 @@ body {
     animation-name: animatetop;
     animation-duration: 0.4s;
     font-family: "Baloo Chettan";
+  }
+  .modal-main-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2vh;
+    margin-bottom: 27vh;
+    margin-bottom: 3vh;
   }
 }
