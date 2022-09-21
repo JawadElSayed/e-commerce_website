@@ -3,7 +3,7 @@
 var signup_modal = document.querySelector("#myModal-signup");
 
 // Get the button that opens the modal
-var signup_btn = document.querySelector("#sign-up");
+var signup_btn = document.querySelector("#outer-signup");
 
 // Get the <span> element that closes the modal
 var signup_close = document.querySelector("#signup-close");
