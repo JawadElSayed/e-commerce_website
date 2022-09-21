@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*  css reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{height: 100%;}
+/*  css reset */
+header{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:29%;
+    height:100%;
+    background-color: #0E2E61;
+}
+html {
+    font-size: 10px;
+    font-family:  'Poppins', sans-serif;
+}
+.seller-profile{
+    margin :50px 100px 20px 70px;
+    text-align: center;
+}
+.profile-img{
+    
+    background-color:red;
+    text-align: center;
+    height: 100px;
+    width:100px;
+    border-radius:50%;
+    
+}
+.user-type{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height:50%;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top:20vh;
+
+}
+
+.user-type div{
+    display:flex;
+    font-size: 20px;
+    color:white;
+    padding-bottom: 30px;
+}
+.user-type div span {
+    padding-right:10px;
+}
+hr{
+    margin:0  20px;
+    height:2px;  
+}
+.seller-bottom-profile{
+    margin-top:26vh;
+}
+
