@@ -6,7 +6,7 @@ include("connection.php");
 $name = $_POST["name"];
 $email = $_POST["email"];
 $username = $_POST["username"];
-$profile = "";
+$profile = "images/profile/default.png";
 $user_type = $_POST["user_type"];
 $response = [];
 
