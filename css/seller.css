@@ -77,12 +77,21 @@ main{
     margin-left:29%;
   
 }
+h1{
+    font-size: 40px;
+    line-height: 45px;
+    padding-left:3vw;
+    padding-top:2vh;
+}
 .seller-header{
-    height:20vh;
+    height:22vh;
     background-color: #BDBDBD;
 }
-
-
+.seller{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .search{
 	display: flex;
 	align-items: center;
@@ -107,3 +116,18 @@ main{
 	background-color:#0E2E61;
 	border-radius: 30px;
 }
+
+.seller button{
+    padding: 14px 10px;
+    border: none;
+    border-radius: 20px;
+    height: 5vh;
+    width:11vw;
+    text-align:center;
+    padding: 0;
+    vertical-align:middle;
+    background-color: #0E2E61;
+    color:white;
+    margin-right:4vw;
+  }
+
