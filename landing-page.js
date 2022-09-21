@@ -22,13 +22,13 @@ signup_close.onclick = function () {
 
 // Get the Sign-up Modal
 ///////////////////////////////////////////////////////////////////
-var signin_modal = document.querySelector("#myModal-signin");
+const signin_modal = document.querySelector("#myModal-signin");
 
 // Get the button that opens the modal
-var signin_btn = document.querySelector("#outer-login");
+const signin_btn = document.querySelector("#outer-login");
 
 // Get the <span> element that closes the modal
-var signin_close = document.querySelector("#signin-close");
+const signin_close = document.querySelector("#signin-close");
 
 // When the user clicks the button, open the modal
 signin_btn.onclick = function () {
@@ -55,3 +55,8 @@ window.onclick = function (event) {
 ////////////////////////////////////////////////////////////////////
 
 // Go from sign up to sign in
+const btn_signup_modal = document.querySelector("#sign-up-btn");
+btn_signup_modal.addEventListener("click", () => {
+  signin_modal.style.display = "block";
+  signup_modal.style.display = "none";
+});
