@@ -2,17 +2,17 @@
 
 include("connection.php");
 
-$response = array();
+$response = [];
 
 // getting categories 
-$sql = "SELECT id, category_name
+$sql = "SELECT category_name
         FROM `categories`";
 $query = $mysqli->prepare($sql);
 $query->execute();
 $array = $query->get_result();
 
-while($res = mysqli_fetch_array($array)) {
-    $response[$res["id"]] = $res["category_name"];
+while($a = $array->fetch_assoc()){
+    $response[] .= $a["category_name"];
 }
 
 echo json_encode($response);
