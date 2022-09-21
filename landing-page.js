@@ -43,23 +43,23 @@ signin_close.onclick = function () {
 ////////////////////////////////////////////////////////////////////
 
 // Get the password Modal
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 const pass_modal = document.querySelector("#myModal-password");
 
 // Get the button that opens the modal
-const change_pass = document.querySelector("#change_pass");
+const change_pass = document.querySelector("#forgot-pass");
 
 // Get the <span> element that closes the modal
 const pass_close = document.querySelector("#pass-close");
 
 // When the user clicks the button, open the modal
 change_pass.onclick = function () {
-  modal.style.display = "block";
+  pass_modal.style.display = "block";
 };
 
 // When the user clicks on <span> (x), close the modal
-pass_closee.onclick = function () {
-  modal.style.display = "none";
+pass_close.onclick = function () {
+  pass_modal.style.display = "none";
 };
 
 ////////////////////////////////////////////////////////////////////
@@ -87,7 +87,7 @@ btn_signup_modal.addEventListener("click", () => {
 
 // Forget password
 const forget_pass = document.querySelector("#forget-pass");
-btn_signup_modal.addEventListener("click", () => {
+forget_pass.addEventListener("click", () => {
   signin_modal.style.display = "block";
   signup_modal.style.display = "none";
 });
