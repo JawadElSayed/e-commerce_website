@@ -45,7 +45,7 @@ signin_close.onclick = function () {
 
 // When the user clicks anywhere outside of any modal, close it
 window.onclick = function (event) {
-  if (event.target == signinmodal) {
+  if (event.target == signin_modal) {
     signin_modal.style.display = "none";
   }
   if (event.target == signup_modal) {
