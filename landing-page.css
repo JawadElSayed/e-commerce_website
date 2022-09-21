@@ -70,12 +70,36 @@ body {
   cursor: pointer;
 }
 
+/* Utilities */
+@font-face {
+  font-family: "Baloo Chettan";
+  src: url(/Assets/Fonts/BalooChettan-Regular.ttf);
+}
+
+.main-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signing-form {
+  background-color: #f0f0f0;
+  height: 60vh;
+  width: 30%;
+  border-radius: 20px;
+}
+
+/* Modals */
+
+/* Sign up Modal */
+
 /* The Modal (background) */
 .cont-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 40px; /* Location of the box */
+  padding-top: 10px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -89,19 +113,109 @@ body {
 /* Modal Content */
 .modal-content {
   position: relative;
-  background-color: #000;
+  background-color: white;
   margin: auto;
   padding: 0.5rem 1rem;
   border-radius: 15px;
-  border: 1px solid #888;
   width: 40%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s;
+  font-family: "Baloo Chettan";
 }
 
+.header {
+  display: flex;
+  width: 53%;
+  justify-content: space-between;
+  margin-bottom: 5vh;
+}
+
+/* The Close Button */
+.close {
+  color: #600d2d;
+  float: left;
+  font-size: 28px;
+  font-weight: lighter;
+}
+
+.close:hover,
+.close:focus {
+  color: #0e2e61;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* end close button */
+
+.modal-main-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 7vh;
+  margin-bottom: 27vh;
+  margin-bottom: 3vh;
+}
+
+.modal-main-content > div {
+  margin-bottom: 3vh;
+}
+.modal-main-content p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 4vh;
+  color: #600d2d;
+}
+
+.modal-main-content input {
+  display: block;
+  width: 100%;
+  background-color: #0e2e61;
+  border-style: solid;
+
+  border-width: 1px;
+  height: 8vh;
+  border-radius: 5px;
+  padding-left: 1.4vh;
+  color: white;
+}
+.modal-main-content input::placeholder {
+  color: white;
+}
+
+.modal-main-content input:hover {
+  background-color: #600d2d;
+}
+
+.cont-signup {
+  padding: 0 7vh;
+  margin-bottom: 3vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cont-signup button {
+  margin-bottom: 3vh;
+  border-radius: 30px;
+  height: 8vh;
+}
+
+#sign-up-btn {
+  background-color: #0e2e61;
+  border: none;
+  font-family: "Baloo Chettan";
+  color: white;
+  font-size: x-large;
+}
+
+#sign-up-btn:hover,
+#sign-up-btm:focus {
+  background-color: #600d2d;
+  text-decoration: none;
+  cursor: pointer;
+}
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {
@@ -123,26 +237,6 @@ body {
     top: 0;
     opacity: 1;
   }
-}
-
-/* Utilities */
-@font-face {
-  font-family: "Baloo Chettan";
-  src: url(/Assets/Fonts/BalooChettan-Regular.ttf);
-}
-
-.main-container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.signing-form {
-  background-color: #f0f0f0;
-  height: 60vh;
-  width: 30%;
-  border-radius: 20px;
 }
 
 /* Media Queries */
@@ -179,5 +273,19 @@ body {
     height: 70%;
     flex-direction: column;
     justify-content: center;
+  }
+  .modal-content {
+    position: relative;
+    background-color: white;
+    margin: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    font-family: "Baloo Chettan";
   }
 }
