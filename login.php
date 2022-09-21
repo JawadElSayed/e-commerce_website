@@ -37,6 +37,21 @@ if($password != $check_possword) {
     exit($json = json_encode($response));
 }
 
+// ban case
+$check_ban_sql = "SELECT client_id
+                FROM `ban`
+                INNER JOIN users ON client_id = users.id
+                WHERE users.username = ?";
+$select = $mysqli->prepare($check_ban_sql);
+$select->bind_param("s", $username);
+$select->execute();
+$check_ban = $select->get_result();
+
+if(mysqli_num_rows($check_ban)) {
+    $response["status"] = "banned";
+    exit($json = json_encode($response));
+}
+
 // logging in
 $response["status"] = "correct";
 
