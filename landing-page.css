@@ -7,22 +7,11 @@
 }
 
 body {
-  background-image: url(/Images/items-background.jpg);
+  background-image: url(/Assets/Landing-page/items-background.jpg);
   background-position: center;
   background-repeat: no-repeat;
 }
-.main-container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.signing-form {
-  background-color: white;
-  height: 70vh;
-  width: 30%;
-  border-radius: 20px;
-}
+
 .site-logo {
   display: flex;
   justify-content: center;
@@ -36,20 +25,6 @@ body {
   height: 7vh;
 }
 
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 4vh;
-}
-
-.buttons-container p {
-  font-family: "Baloo Chettan";
-  color: #600d2d;
-  font-size: 2rem;
-  margin-bottom: 2vh;
-}
 .moto {
   display: flex;
   justify-content: center;
@@ -58,21 +33,87 @@ body {
   font-size: small;
 }
 
+.buttons-container {
+  display: flex;
+  /* height: 35vh; */
+  padding: 0 2vh 0 2vh;
+  flex-direction: column;
+  margin-top: 4vh;
+}
+
+.buttons-container p {
+  font-family: "Baloo Chettan";
+  color: #600d2d;
+  font-size: 1.5rem;
+  margin-bottom: 2vh;
+  margin-left: 1vh;
+}
+
 .log-in {
-  margin-bottom: 3vh;
+  margin-bottom: 4vh;
+  height: 12h;
 }
 .outer-button {
   width: 100%;
-  color: #600d2d;
+  color: white;
   height: 7vh;
   font-size: x-large;
   font-family: "Baloo Chettan";
   border-radius: 20px;
   border-color: #0e2e61;
+  background-color: #0e2e61;
+  margin-top: -1.5vh;
+}
+
+.outer-button:hover {
+  background-color: #600d2d;
+  cursor: pointer;
 }
 
 /* Utilities */
 @font-face {
   font-family: "Baloo Chettan";
-  src: url(/Fonts/BalooChettan-Regular.ttf);
+  src: url(/Assets/Fonts/BalooChettan-Regular.ttf);
+}
+
+.main-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signing-form {
+  background-color: #f0f0f0;
+  height: 60vh;
+  width: 30%;
+  border-radius: 20px;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 1500px) {
+  .signing-form {
+    background-color: #f0f0f0;
+    height: 60vh;
+    width: 60%;
+    border-radius: 20px;
+  }
+}
+
+/* @media only screen and (max-width: 1400px) {
+  .signing-form {
+    background-color: #f0f0f0;
+    height: 60vh;
+    width: 50%;
+    border-radius: 20px;
+  }
+} */
+
+@media only screen and (max-width: 905px) {
+  .signing-form {
+    background-color: #f0f0f0;
+    height: 65vh;
+    width: 60%;
+    border-radius: 20px;
+  }
 }
