@@ -6,3 +6,43 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: url(/Images/items-background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.main-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signing-form {
+  background-color: white;
+  height: 70vh;
+  width: 30%;
+  border-radius: 20px;
+}
+.site-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+.logo-svg {
+  height: 7vh;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.moto{
+    font-family: Baloo Chettan;
+}
+.log-in {
+}
