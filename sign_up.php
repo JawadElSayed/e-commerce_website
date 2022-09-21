@@ -53,7 +53,7 @@ $password = hash("sha256", $password);
 
 // insert data
 $add = $mysqli->prepare("INSERT INTO users(name, email, username, password, profile, user_type) VALUE (?, ?, ?, ?, ?, ?)");
-$add->bind_param("ssssss", $name, $name, $email, $password, $password, $user_type);
+$add->bind_param("ssssss", $name, $email, $username, $password, $profile, $user_type);
 $add->execute();
 
 $response["status"] = "Done";
