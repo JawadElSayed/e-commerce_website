@@ -131,3 +131,26 @@ h1{
     margin-right:4vw;
   }
 
+.card-container{
+    margin:5vh;
+  }
+.card{
+    width:25%;
+    border-radius: 7%;
+    background-color: #D9D9D9;
+  }
+  .card-img{
+    text-align: center; 
+  }
+  .card p{
+    text-align:center;
+  }
+ .seller-img{
+    height:60px;
+    width:60px;
+ }
+ .seller-adjust{
+    display:flex;
+    justify-content: space-evenly;
+ }
+  /* D9D9D9 */
