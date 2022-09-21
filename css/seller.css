@@ -18,7 +18,7 @@ header{
 }
 
 html {
-    font-size: 10px;
+   
     font-family:  'Poppins', sans-serif;
 }
 .seller-profile{
@@ -75,7 +75,7 @@ main{
     width:71%;
     height:100%;
     margin-left:29%;
-  
+    position:relative;
 }
 h1{
     font-size: 40px;
@@ -84,14 +84,21 @@ h1{
     padding-top:2vh;
 }
 .seller-header{
+    width:100%;
+    
+    overflow: hidden;
+    position:fixed;
+    top:0;
+    z-index:2;
     height:22vh;
     background-color: #BDBDBD;
 }
 .seller{
-    display:flex;
-    justify-content: space-between;
+    width:70%;
+     display:flex;
+    justify-content:space-between;
     align-items: center;
-}
+} 
 .search{
 	display: flex;
 	align-items: center;
@@ -102,7 +109,7 @@ h1{
 .search > span {
 	font-size: 20px;
 	color: white;
-    position:relative;
+    position: relative;
     left:30px;
 }
 
@@ -115,6 +122,9 @@ h1{
     width: 400px;
 	background-color:#0E2E61;
 	border-radius: 30px;
+}
+main{
+    position:relative;
 }
 
 .seller button{
@@ -132,9 +142,10 @@ h1{
   }
 
 .card-container{
-    margin:5vh;
+    margin:30vh 5vh 0vh 5vh;
     display: flex;
     flex-wrap:wrap;
+    position:absolute;
   }
 .card{
     width:30%;
