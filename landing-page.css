@@ -28,10 +28,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 10vh;
+  margin-bottom: 4vh;
 }
 
 .logo-svg {
+  margin-top: 2vh;
   height: 7vh;
+  /* margin-bottom: 4vh; */
 }
 
 .buttons-container {
@@ -39,10 +42,38 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 4vh;
 }
 
-.moto{
-    font-family: Baloo Chettan;
+.buttons-container p {
+  font-family: "Baloo Chettan";
+  color: #600d2d;
+  font-size: 2rem;
+  margin-bottom: 2vh;
 }
+.moto {
+  display: flex;
+  justify-content: center;
+  font-family: "Baloo Chettan";
+  color: #600d2d;
+  font-size: small;
+}
+
 .log-in {
+  margin-bottom: 3vh;
+}
+.outer-button {
+  width: 100%;
+  color: #600d2d;
+  height: 7vh;
+  font-size: x-large;
+  font-family: "Baloo Chettan";
+  border-radius: 20px;
+  border-color: #0e2e61;
+}
+
+/* Utilities */
+@font-face {
+  font-family: "Baloo Chettan";
+  src: url(/Fonts/BalooChettan-Regular.ttf);
 }
