@@ -144,15 +144,15 @@ h1{
 
 /*start Ads container section */
 .card-container{
-    margin:30vh 5vh 0vh 5vh;
+    margin:25vh 5vh 0vh 5vh;
     display: flex;
     flex-wrap:wrap;
     position:absolute;
    
   }
   .card{
-    width:50vw;
-    height: 30vh;;
+    width:60vw;
+    height: 40vh;;
     border-radius: 20px;
     background-color: #D9D9D9;
     margin:10px;
@@ -163,13 +163,14 @@ h1{
     
   }
   .Ads-img{
- 
     border-radius: 20px;
-    height:14vh;
-
-
-  }
-  .Ads-img{
-
+    height:20vh;
     width:100%;
- }
+  }
+  .card p{
+    padding:20vh;
+    text-align: center;
+    font-size: 16px;
+    color:balck;
+    font-weight: 500;
+  }
