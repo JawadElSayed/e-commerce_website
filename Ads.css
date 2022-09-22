@@ -143,3 +143,9 @@ h1{
 /*End start Ads main section */
 
 /*start Ads container section */
+.card-container{
+    margin:30vh 5vh 0vh 5vh;
+    display: flex;
+    flex-wrap:wrap;
+    position:absolute;
+  }
