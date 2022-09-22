@@ -104,77 +104,54 @@ axios(options).then((response) => {
 // sign up getting data from server
 php_signup = "some link";
 const sign_up_btn = document.querySelector("#sign-up-btn");
+const signup_name = document.querySelector("#p2-name");
+const signup_username = document.querySelector("#p2-username");
+const signup_password = document.querySelector("#p2-password");
+const email = document.querySelector("#p2-email");
 sign_up_btn.addEventListener("click", () => {
-  const options = {
+  const signup_options = {
     url: "http://localhost:3000/api/home",
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json;charset=UTF-8",
     },
-    // data: {
-    //   name:
-    //   email:"";
-    //   username:"";
-    //   user_type:
-    // },
+    data: {
+      full_name: signup_name.value,
+      user_name: signup_username.value,
+      email: email.value,
+      user_password: signup_password.value,
+    },
   };
   axios(options)
     .then((x) => x.json())
-    .then((y) => {
-      if (!y.ispresent) {
-        fetch(php_signup, {
-          method: "POST",
-          body: new URLSearchParams({
-            full_name: signup_name.value,
-            user_name: signup_username.value,
-            email: email.value,
-            dob: dob.value,
-            user_password: signup_password.value,
-          }),
-        });
-        signup_modal.style.display = "none";
-        signinmodal.style.display = "block";
-      } else {
-        const signup_username_label = signup_username.insertAdjacentElement(
-          "afterend",
-          label
-        );
-        signup_username_label.textContent = "Username exists";
-      }
-    });
+    .then((y) => {});
 });
 
 // This is the logIn section, checking if the data is in the server
-
+php_signin = "some link";
 const logIn = document.querySelector("#log-in");
 const user = document.querySelector("#p2-username");
 const password = document.querySelector("#p2-password");
 
 logIn.addEventListener("click", function () {
-  fetch(php_login, {
+  const signin_options = {
+    url: php_signin,
     method: "POST",
-    body: new URLSearchParams({
-      user_name: user.value,
-      user_password: password.value,
-    }),
-  })
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+    data: {
+      full_name: signup_name.value,
+      user_name: signup_username.value,
+      email: email.value,
+      user_password: signup_password.value,
+    },
+  };
+  axios(options)
     .then((x) => x.json())
-    .then((y) => {
-      if (!y.ispresent) {
-        username_label = user.insertAdjacentElement("afterend", label);
-        username_label.textContent = "Username doesn't exist";
-      } else {
-        password_label = password.insertAdjacentElement("afterend", label);
-        if (!y.pass_valid) {
-          password_label.textContent = "Password is invalid";
-        } else {
-          window.location.href = "/Frontend/home-page/homepage.html";
-          password_label.textContent = "WELCOME";
-          localStorage.setItem("active-user", JSON.stringify(user.value));
-        }
-      }
-    });
+    .then((y) => {});
 });
 
 // Changing passwords actually
