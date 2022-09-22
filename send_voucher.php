@@ -2,7 +2,7 @@
 
 include("connection.php");
 
-// inputs
+// variables
 $sender_id = $_POST["sender_id"];
 $resever_username = $_POST["resever_username"];
 $voucher_amount = $_POST["voucher_amount"];
