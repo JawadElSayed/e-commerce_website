@@ -29,6 +29,12 @@ foreach ($result as $value){
     $add->execute();
 }
 
+// delete from cart
+$delete_sql = "DELETE FROM cart WHERE client_id = ?";
+$delete = $mysqli->prepare($delete_sql);
+$delete->bind_param("s", $client_id);
+$delete->execute();
+
 $response["status"] = "Done";
 echo json_encode($response);
 
