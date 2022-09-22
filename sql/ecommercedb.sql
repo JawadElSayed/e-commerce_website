@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2022 at 05:45 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Sep 22, 2022 at 10:11 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -39,7 +40,8 @@ CREATE TABLE `ads` (
 --
 
 INSERT INTO `ads` (`id`, `image`, `seller_id`, `title`) VALUES
-(1, 'images/ads/632b73e78a87d.jpeg', 1, '123');
+(1, 'images/ads/632b73e78a87d.jpeg', 1, '123'),
+(2, 'images/ads/632b73e78a87e.jpeg', 1, 'nothing');
 
 -- --------------------------------------------------------
 
@@ -81,7 +83,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`) VALUES
-(14, 'test from postman3');
+(14, 'c1'),
+(15, 'c2'),
+(16, 'c3'),
+(17, 'c4');
 
 -- --------------------------------------------------------
 
@@ -92,7 +97,7 @@ INSERT INTO `categories` (`id`, `category_name`) VALUES
 CREATE TABLE `chat` (
   `client_id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
-  `massage` text DEFAULT NULL,
+  `massage` text,
   `created_at` timestamp NULL DEFAULT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -104,11 +109,29 @@ CREATE TABLE `chat` (
 --
 
 CREATE TABLE `checkouts` (
+  `id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `checkouts`
+--
+
+INSERT INTO `checkouts` (`id`, `client_id`, `product_id`, `quantity`, `created_at`) VALUES
+(1, 1, 3, 24, '2022-09-20 21:00:00'),
+(2, 2, 1, 1, '2022-09-21 21:00:00'),
+(3, 2, 2, 2, '2022-09-20 21:00:00'),
+(4, 2, 3, 22, '2022-09-20 21:00:00'),
+(5, 4, 2, 4, '2022-09-19 21:00:00'),
+(6, 4, 5, 1, '2022-09-08 21:00:00'),
+(7, 5, 5, 2, '2022-09-07 21:00:00'),
+(8, 1, 6, 2, '2022-09-09 21:00:00'),
+(9, 2, 7, 2, '2022-07-06 21:00:00'),
+(10, 2, 7, 2, '2022-07-05 21:00:00'),
+(11, 2, 6, 2, '2022-07-08 21:00:00');
 
 -- --------------------------------------------------------
 
@@ -119,12 +142,20 @@ CREATE TABLE `checkouts` (
 CREATE TABLE `discount_codes` (
   `id` int(11) NOT NULL,
   `discount_code` varchar(255) DEFAULT NULL,
-  `discount_amount` varchar(45) DEFAULT NULL,
+  `discount_percentage` varchar(45) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `end_at` datetime DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
+  `seller_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `discount_codes`
+--
+
+INSERT INTO `discount_codes` (`id`, `discount_code`, `discount_percentage`, `created_at`, `end_at`, `seller_id`, `product_id`) VALUES
+(1, 'cod1', '1%', '2022-09-13 21:00:00', '2022-09-23 00:00:00', 1, 1),
+(2, 'cod2', '2%', '2022-09-01 21:00:00', '2022-09-01 00:00:00', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -148,6 +179,18 @@ CREATE TABLE `images` (
   `image` varchar(255) DEFAULT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`id`, `image`, `product_id`) VALUES
+(3, 'images/products_images/632c3d4332e00.jpeg', 2),
+(4, 'images/products_images/632c3d43338c4.jpeg', 2),
+(5, 'images/products_images/632c3d440b5a5.jpeg', 3),
+(6, 'images/products_images/632c3d440bf6d.jpeg', 3),
+(7, 'images/products_images/632c3d4499ca9.jpeg', 4),
+(8, 'images/products_images/632c3d449a796.jpeg', 4);
 
 -- --------------------------------------------------------
 
@@ -173,13 +216,27 @@ CREATE TABLE `lottery` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `product_name` varchar(45) DEFAULT NULL,
-  `about` text DEFAULT NULL,
+  `about` text,
   `created_at` timestamp NULL DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
-  `old_price` int(11) DEFAULT NULL,
   `category_id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `product_name`, `about`, `created_at`, `price`, `category_id`, `seller_id`) VALUES
+(1, 'p1', 'a1', '2022-09-22 09:09:13', 123, 14, 1),
+(2, 'p2', 'a2', '2022-09-22 09:09:31', 123, 15, 1),
+(3, 'p3', 'a3', '2022-09-22 09:09:32', 123, 2, 2),
+(4, 'p4', 'a4', '2022-09-22 09:09:32', 123, 17, 1),
+(5, 'p5', 'a5', '2022-09-07 21:00:00', 5, 1, 1),
+(6, 'p6', 'a6', '2022-09-01 21:00:00', 6, 2, 1),
+(7, 'p7', 'a7', '2022-09-01 21:00:00', 7, 1, 1),
+(8, 'p8', 'a8', '2022-09-13 21:00:00', 8, 1, 1),
+(9, 'p9', 'a9', '2022-09-05 21:00:00', 9, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -210,8 +267,10 @@ CREATE TABLE `sellers_categories` (
 --
 
 INSERT INTO `sellers_categories` (`category_id`, `seller_id`) VALUES
-(14, 3),
-(14, 4);
+(14, 1),
+(15, 1),
+(17, 1),
+(16, 4);
 
 -- --------------------------------------------------------
 
@@ -228,6 +287,13 @@ CREATE TABLE `users` (
   `user_type` int(11) NOT NULL,
   `profile` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `name`, `username`, `user_type`, `profile`) VALUES
+(1, 'houssein@gmail.com', '123321', 'houssein', 'houssein123', 1, 'images/profile/632c3d4332e00.jpeg');
 
 -- --------------------------------------------------------
 
@@ -250,6 +316,74 @@ CREATE TABLE `views` (
   `product_id` int(11) NOT NULL,
   `viewer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `views`
+--
+
+INSERT INTO `views` (`product_id`, `viewer_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
+(2, 5),
+(2, 6),
+(2, 7),
+(2, 8),
+(2, 9),
+(3, 1),
+(3, 2),
+(3, 3),
+(3, 4),
+(3, 5),
+(3, 6),
+(4, 1),
+(4, 2),
+(4, 3),
+(4, 4),
+(4, 5),
+(4, 6),
+(4, 7),
+(4, 8),
+(5, 1),
+(5, 2),
+(5, 3),
+(5, 4),
+(5, 5),
+(6, 1),
+(6, 2),
+(6, 3),
+(6, 4),
+(6, 5),
+(7, 1),
+(7, 2),
+(8, 1),
+(9, 1),
+(9, 2),
+(9, 3),
+(9, 4),
+(9, 5),
+(9, 6),
+(9, 7),
+(9, 8),
+(9, 9),
+(9, 10),
+(9, 11),
+(9, 12),
+(9, 13),
+(9, 14),
+(9, 15),
+(9, 16);
 
 -- --------------------------------------------------------
 
@@ -315,13 +449,13 @@ ALTER TABLE `chat`
 -- Indexes for table `checkouts`
 --
 ALTER TABLE `checkouts`
-  ADD PRIMARY KEY (`client_id`,`product_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `discount_codes`
 --
 ALTER TABLE `discount_codes`
-  ADD PRIMARY KEY (`id`,`user_id`,`product_id`);
+  ADD PRIMARY KEY (`id`,`seller_id`,`product_id`);
 
 --
 -- Indexes for table `favorite`
@@ -397,31 +531,37 @@ ALTER TABLE `wish_list`
 -- AUTO_INCREMENT for table `ads`
 --
 ALTER TABLE `ads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `checkouts`
+--
+ALTER TABLE `checkouts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `discount_codes`
 --
 ALTER TABLE `discount_codes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `reset_password`
@@ -433,7 +573,7 @@ ALTER TABLE `reset_password`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_type`
