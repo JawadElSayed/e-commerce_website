@@ -13,6 +13,7 @@ include("connection.php");
     $whole_response['categories']=getCategories($id);
     $whole_response['discounts']=getDiscounts($id);
     $whole_response['products']=getProducts($id);
+    $whole_response['views']=getViews($id);
     echo json_encode($whole_response,JSON_UNESCAPED_SLASHES);
 // }
 
@@ -102,9 +103,8 @@ function getProducts($id){
         $get_images->execute();
         $array_get_images=$get_images->get_result();
         $return_get_images=[];
-        $response_get_images=[];
         while($b = $array_get_images->fetch_assoc()){
-            $return_get_images[]=$b;
+            $return_get_images[]=$b['image'];
         }
         $return_get_products['images']=$return_get_images;
         $response_get_products[]=$return_get_products;
@@ -112,5 +112,22 @@ function getProducts($id){
     return $response_get_products;
 }
 
-
+function getViews($id){
+    include("connection.php");
+    $get_views=$mysqli->prepare("SELECT COUNT(views.product_id) as num,views.product_id
+    FROM views,products
+    WHERE products.seller_id=? AND views.product_id=products.id
+    GROUP BY views.product_id ASC LIMIT 5");
+    $get_views->bind_param('s',$id);
+    $get_views->execute();
+    $array_get_views=$get_views->get_result();
+    $return_get_views=[];
+    $response_get_products=[];
+    while($a = $array_get_views->fetch_assoc()){
+        $return_get_views['num']=$a['num'];
+        $return_get_views['id']=$a['product_id'];
+        $response_get_products[]=$return_get_views;
+    }
+    return $response_get_products;
+}
 ?>
