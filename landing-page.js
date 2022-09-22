@@ -79,11 +79,11 @@ window.onclick = function (event) {
 ////////////////////////////////////////////////////////////////////
 
 // Go from sign up to sign in
-const btn_signup_modal = document.querySelector("#sign-up-btn");
-btn_signup_modal.addEventListener("click", () => {
-  signin_modal.style.display = "block";
-  signup_modal.style.display = "none";
-});
+// const btn_signup_modal = document.querySelector("#sign-up-btn");
+// btn_signup_modal.addEventListener("click", () => {
+//   signin_modal.style.display = "block";
+//   signup_modal.style.display = "none";
+// });
 
 // Forget password Modal
 const forget_pass = document.querySelector("#forget-pass");
@@ -143,10 +143,8 @@ logIn.addEventListener("click", function () {
       "Content-Type": "application/json;charset=UTF-8",
     },
     data: {
-      full_name: signup_name.value,
-      user_name: signup_username.value,
-      email: email.value,
-      user_password: signup_password.value,
+      user_name: user.value,
+      password: password.value,
     },
   };
   axios(options)
