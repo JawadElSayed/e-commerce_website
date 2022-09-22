@@ -7,11 +7,11 @@ include("connection.php");
 if(isset($_POST['id'])){
     $id=$_POST['id'];
     $image=$_POST['image'];
-    $text=$_POST['text'];
+    $title=$_POST['title'];
 
     // Insert image details to ads table
-    $add_image=$mysqli->prepare("INSERT INTO ads(text,seller_id) VALUES(?,?)");
-    $add_image->bind_param("ss",$text,$id);
+    $add_image=$mysqli->prepare("INSERT INTO ads(`title`,`seller_id`) VALUES(?,?)");
+    $add_image->bind_param("ss",$title,$id);
     $response=[];
     // Now, if the above query has been executed, we have to get last inserted id and save the advertisment image. 
     if($add_image->execute()){
