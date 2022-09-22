@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/landing-page.css" />
+    <title>Burn Shop</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="signing-form">
+        <div class="site-logo">
+          <img class="logo-svg" src="Assets/Logo-variants/logo with text.svg" />
+        </div>
+        <div class="flex-grow">
+          <hr />
+          <div class="moto">
+            <h1>Where products are burnt to memory</h1>
+          </div>
+          <hr />
+
+          <div class="buttons-container">
+            <div class="log-in">
+              <p>Already a member?</p>
+              <button id="outer-login" class="outer-button">Sign In</button>
+              <div>
+              <text id="forgot-pass">Forgot Password?</text>
+              </div>
+          </div>
+            
+            <!-- Modal -->
+
+            <!-- Sign in modal section -->
+
+            <div id="myModal-signin" class="cont-modal-signin">
+              <!--Sign up Modal content -->
+              <div class="modal-content">
+                <div class="header">
+                  <span id="signin-close" class="close">&times;</span>
+                  <img class="img" src="/Assets/Logo-variants/Logo.svg" />
+                </div>
+
+                <div class="modal-main-content">
+                  <div>
+                    <input
+                      type="text"
+                      id="p1-username"
+                      placeholder="Username"
+                    />
+                  </div>
+
+                  <div>
+                    <input
+                      type="password"
+                      id="p1-password"
+                      placeholder="Password"
+                    />
+                  </div>
+                </div>
+
+                <div class="cont-sign">
+                  <button id="sign-in-btn">Log In</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- End of sign up modal section -->
+
+            <!-- Modal End -->
+            <div class="sign-up">
+              <p>New to BurnShop?</p>
+              <button id="outer-signup" class="outer-button">Sign Up</button>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
+        <!-- Sign up modal section -->
+
+        <div id="myModal-signup" class="cont-modal-singup">
+          <!--Sign up Modal content -->
+          <div class="modal-content">
+            <div class="header">
+              <span id="signup-close" class="close">&times;</span>
+              <img class="img" src="/Assets/Logo-variants/Logo.svg" />
+            </div>
+
+            <div class="modal-main-content">
+              <p>Create an Account</p>
+        
+              <div>
+                <input type="text" id="p2-name" placeholder="Full Name" />
+              </div>
+              <div>
+                <input type="text" id="p2-username" placeholder="Username" />
+              </div>
+              <div>
+                <input type="text" id="p2-email" placeholder="Email" />
+              </div>
+              <div>
+                <input type="date" id="p2-dob" onfocus="this.showPicker()" />
+              </div>
+
+              <div>
+                <input
+                  type="password"
+                  id="p2-password"
+                  placeholder="Password"
+                />
+              </div>
+            </div>
+  
+              <div class="cont-sign">
+                <button
+                  type="submit"
+                  id="sign-up-btn"
+                  class="btn-signup-modal"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- End of sign up modal section -->
+
+          <!-- Modal End -->
+
+           <!-- Modal -->
+
+            <!-- change password modal section -->
+
+            <div id="myModal-password" class="cont-modal-pass">
+              <!--change password Modal content -->
+              <div class="modal-content">
+                <div class="header">
+                  <span id="pass-close" class="close">&times;</span>
+                  <img class="img" src="/Assets/Logo-variants/Logo.svg" />
+                </div>
+
+                <div class="modal-main-content-pass">
+
+                  <div id="get-email" class="display-message">
+                    <p>
+                      Enter your email
+                    </p>
+                    <div class="pass-first-line">
+
+                    
+                      <input
+                        type="text"
+                        id="p3-email"
+                        placeholder="email"
+                      />
+                    
+                    <button id="Send_email" type="text">
+                      Send email
+                   </button>
+                  </div>
+                  </div>
+                  
+                  <div id="get-code" class="display-message">
+                      <p>
+                        Please write the Code sent to your email
+                      </p>
+                      <div class="pass-first-line">
+                          <input
+                            type="text"
+                            id="p3-validate"
+                            placeholder="Code"
+                          />
+                        
+                        <button id="Validate-code" type="text">
+                          Validate
+                        </button>
+                     </div>
+                  </div>
+                  
+                  <div id="get-new_pass" class="display-message">
+                    <p>
+                      Input Your new password
+                    </p>
+                    <div class="pass-first-line">
+                    <input
+                      type="text"
+                      id="p3-change-password"
+                      placeholder="New Password"
+                    />
+                  
+                  <button id="change-pass-btn"type="text">
+                    Change Password
+                  </button>
+                </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- End of password modal section -->
+
+            <!-- Modal End -->
+
+
+        </div>
+      </div>
+    </div>
+    <script src="/landing-page.js"></script>
+  </body>
+</html>
