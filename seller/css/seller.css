@@ -7,8 +7,6 @@
 }
 img{height: 100%;}
 /*  css reset */
-
-/*start Ads pannel header section */
 header{
     display:flex;
     flex-direction: column;
@@ -42,6 +40,7 @@ html {
     justify-content: space-evenly;
     align-items: center;
     padding-top:15vh;
+
 }
 
 .user-type div{
@@ -72,9 +71,6 @@ hr{
     height:70px;
     width:70px;
 }
-/*end Ads pannel header section */
-
-/*start Ads main section */
 main{
     width:71%;
     height:100%;
@@ -127,6 +123,8 @@ h1{
 	background-color:#0E2E61;
 	border-radius: 30px;
 }
+
+
 .seller button{
     padding: 14px 10px;
     border: none;
@@ -140,12 +138,39 @@ h1{
     color:white;
     margin-right:4vw;
   }
-/*End start Ads main section */
 
-/*start Ads container section */
 .card-container{
     margin:30vh 5vh 0vh 5vh;
     display: flex;
     flex-wrap:wrap;
     position:absolute;
   }
+.card{
+    width:30%;
+    border-radius: 10%;
+    background-color: #D9D9D9;
+    margin:10px;
+  }
+  .card-img{
+    padding-top:4vh;
+    text-align: center; 
+  }
+  .seller-img{
+    height:60px;
+    width:60px;
+ }
+  .card p{
+    text-align:center;
+    font-size:16px;
+    color:black;
+    padding-bottom:3vh;
+    padding-top:2vh;
+  }
+ 
+ .seller-adjust{
+    display:flex;
+    justify-content: space-evenly;
+    padding-bottom:2vh;
+
+ }
+  /* D9D9D9 */

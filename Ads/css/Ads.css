@@ -47,6 +47,8 @@ hr{
     padding-top:15vh;
 }
 
+
+
 .user-type div{
     display:flex;
     justify-content:space-between;
@@ -69,7 +71,7 @@ hr{
     color:white;
 }
 .seller-bottom-profile div{
-    padding-right:10px;
+    padding-right:17px;
 }
 .seller-bottom-profile img{
     height:70px;
