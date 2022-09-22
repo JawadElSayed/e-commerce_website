@@ -11,6 +11,7 @@ include("connection.php");
     $whole_response['profile']= getProfile($id);
     $whole_response['ads']= getAds($id);
     $whole_response['categories']=getCategories($id);
+    $whole_response['discounts']=getDiscounts($id);
     echo json_encode($whole_response,JSON_UNESCAPED_SLASHES);
 // }
 
@@ -55,5 +56,25 @@ function getCategories($id){
         $response_get_categories[]=$return_get_categories;
     }
     return $response_get_categories;
+}
+
+function getDiscounts($id){
+    include("connection.php");
+    date_default_timezone_set('Asia/Beirut');
+    $current_time = date ("Y-m-d");
+    $get_discounts=$mysqli->prepare("SELECT * FROM discount_codes WHERE discount_codes.seller_id=? AND discount_codes.end_at>=?");
+    $get_discounts->bind_param('ss',$id,$current_time);
+    $get_discounts->execute();
+    $array_get_discounts=$get_discounts->get_result();
+    $return_get_discounts=[];
+    $response_get_discounts=[];
+    while($a = $array_get_discounts->fetch_assoc()){
+        $return_get_discounts['id']=$a['id'];
+        $return_get_discounts['discount_code']=$a['discount_code'];
+        $return_get_discounts['discount_percentage']=$a['discount_percentage'];
+        $return_get_discounts['product_id']=$a['product_id'];
+        $response_get_discounts[]=$return_get_discounts;
+    }
+    return $response_get_discounts;
 }
 ?>
