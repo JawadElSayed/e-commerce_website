@@ -77,3 +77,73 @@ hr{
 /*end Ads pannel header section */
 
 /*start Ads main section */
+main{
+    width:71%;
+    height:100%;
+    margin-left:29%;
+    position:relative;
+    
+}
+h1{
+    font-size: 40px;
+    line-height: 45px;
+    padding-left:3vw;
+    padding-top:2vh;
+}
+.seller-header{
+    width:100%;
+   
+    position:fixed;
+    top:0;
+    z-index:2;
+    height:22vh;
+    background-color: #BDBDBD;
+}
+.seller{
+    width:70%;
+     display:flex;
+    justify-content:space-between;
+    align-items: center;
+} 
+.search{
+	display: flex;
+	align-items: center;
+	padding: 20px;
+
+}
+
+.search > span {
+	font-size: 20px;
+	color: white;
+    position: relative;
+    left:30px;
+}
+
+.search > input{
+	height: 5vh;
+	border: none;
+	outline: none;
+	font-size: 18px;
+	padding-left: 10px;
+    width: 400px;
+	background-color:#0E2E61;
+	border-radius: 30px;
+    font-size:10px;
+}
+.seller button{
+    padding: 14px 10px;
+    border: none;
+    border-radius: 20px;
+    height: 5vh;
+    width:11vw;
+    text-align:center;
+    padding: 0;
+    vertical-align:middle;
+    background-color: #0E2E61;
+    color:white;
+    margin-right:4vw;
+    
+  }
+/*End start Ads main section */
+
+/*start Ads container section */
