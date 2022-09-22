@@ -12,6 +12,7 @@ include("connection.php");
     $whole_response['ads']= getAds($id);
     $whole_response['categories']=getCategories($id);
     $whole_response['discounts']=getDiscounts($id);
+    $whole_response['products']=getProducts($id);
     echo json_encode($whole_response,JSON_UNESCAPED_SLASHES);
 // }
 
@@ -77,4 +78,39 @@ function getDiscounts($id){
     }
     return $response_get_discounts;
 }
+
+function getProducts($id){
+    include("connection.php");
+    $get_products=$mysqli->prepare("SELECT DISTINCT products.id,products.product_name,products.about,products.price,categories.category_name
+    FROM products,categories,sellers_categories
+    WHERE products.seller_id=? AND products.category_id=categories.id");
+    $get_products->bind_param('s',$id);
+    $get_products->execute();
+    $array_get_products=$get_products->get_result();
+    $return_get_products=[];
+    $response_get_products=[];
+    while($a = $array_get_products->fetch_assoc()){
+        $return_get_products['id']=$a['id'];
+        $return_get_products['product_name']=$a['product_name'];
+        $return_get_products['about']=$a['about'];
+        $return_get_products['price']=$a['price'];
+        $return_get_products['category_name']=$a['category_name'];
+
+
+        $get_images = $mysqli->prepare("SELECT image FROM images WHERE product_id=?");
+        $get_images->bind_param('s',$a['id']);
+        $get_images->execute();
+        $array_get_images=$get_images->get_result();
+        $return_get_images=[];
+        $response_get_images=[];
+        while($b = $array_get_images->fetch_assoc()){
+            $return_get_images[]=$b;
+        }
+        $return_get_products['images']=$return_get_images;
+        $response_get_products[]=$return_get_products;
+    }
+    return $response_get_products;
+}
+
+
 ?>
