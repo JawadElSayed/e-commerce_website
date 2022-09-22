@@ -22,7 +22,7 @@ if(isset($_POST['product_name'])){
         // Get last inserted id in order to be filled into product_id in table images.
         $product_id= mysqli_insert_id($mysqli);
         // Path of all images at server side.
-        $path="images/product_images/";
+        $path="images/products_images/";
         // Loop over all the images enocoded 
         foreach($array as $arr){
             // Get the final path from saveImage fuction of each image
@@ -40,6 +40,7 @@ if(isset($_POST['product_name'])){
     }else{
         $response['status']='error';
     }
+    echo json_encode($response);
 }
 // Decode image, put it into the required path and return final url of it.
 function saveImage($base64, $path){
