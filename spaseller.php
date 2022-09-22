@@ -14,6 +14,7 @@ include("connection.php");
     $whole_response['discounts']=getDiscounts($id);
     $whole_response['products']=getProducts($id);
     $whole_response['views']=getViews($id);
+    $whole_response['revenue']=getRevenue($id);
     echo json_encode($whole_response,JSON_UNESCAPED_SLASHES);
 // }
 
@@ -130,4 +131,38 @@ function getViews($id){
     }
     return $response_get_products;
 }
+
+function getRevenue($id){
+    include("connection.php");
+    $response_revenue=[];
+    $get_weekly_revenue=$mysqli->prepare("SELECT SUM(checkouts.quantity*products.price) as weekly_revernue
+    FROM checkouts,products 
+    WHERE checkouts.product_id=products.id AND products.seller_id=? AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=7");
+    $get_weekly_revenue->bind_param('s',$id);
+    $get_weekly_revenue->execute();
+    $return_weekly_revenue=$get_weekly_revenue->get_result()->fetch_assoc();
+    $response_revenue['weekly']=$return_weekly_revenue['weekly_revernue'];
+
+    $get_monthly_revenue=$mysqli->prepare("SELECT SUM(checkouts.quantity*products.price) as monthly_revernue
+    FROM checkouts,products 
+    WHERE checkouts.product_id=products.id AND products.seller_id=? AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=30");
+    $get_monthly_revenue->bind_param('s',$id);
+    $get_monthly_revenue->execute();
+    $return_monthly_revenue=$get_monthly_revenue->get_result()->fetch_assoc();
+    $response_revenue['monthly']=$return_monthly_revenue['monthly_revernue'];
+
+    $get_yearly_revenue=$mysqli->prepare("SELECT SUM(checkouts.quantity*products.price) as yearly_revernue
+    FROM checkouts,products 
+    WHERE checkouts.product_id=products.id AND products.seller_id=? AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=365");
+    $get_yearly_revenue->bind_param('s',$id);
+    $get_yearly_revenue->execute();
+    $return_yearly_revenue=$get_yearly_revenue->get_result()->fetch_assoc();
+    $response_revenue['yearly']=$return_yearly_revenue['yearly_revernue'];
+
+    return $response_revenue;
+}
+// SELECT SUM(checkouts.quantity*products.price) as weekly_revernue
+// FROM checkouts,products 
+// WHERE checkouts.product_id=products.id AND products.seller_id=1 AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=7
+// SELECT DATEDIFF(year, '2017/08/25', '2011/08/25') AS DateDiff;
 ?>
