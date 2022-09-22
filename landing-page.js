@@ -1,3 +1,5 @@
+// Needed initializations
+
 // Get the Sign-up Modal
 ///////////////////////////////////////////////////////////////////
 var signup_modal = document.querySelector("#myModal-signup");
@@ -78,31 +80,11 @@ window.onclick = function (event) {
 };
 ////////////////////////////////////////////////////////////////////
 
-// Go from sign up to sign in
-// const btn_signup_modal = document.querySelector("#sign-up-btn");
-// btn_signup_modal.addEventListener("click", () => {
-//   signin_modal.style.display = "block";
-//   signup_modal.style.display = "none";
-// });
-
-// Forget password Modal
-const forget_pass = document.querySelector("#forget-pass");
-forget_pass.addEventListener("click", () => {
-  signin_modal.style.display = "block";
-  signup_modal.style.display = "none";
-});
-
 ///////////////////////////////////////////////////////////////////////////////
-
-// axios POST request
-
-axios(options).then((response) => {
-  console.log(response.status);
-});
 
 //  Copied this from my previous twitter project
 // sign up getting data from server
-php_signup = "some link";
+php_signup = "http://localhost/Backend/E-commerce-BurnStore/sign_up.php";
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const signup_name = document.querySelector("#p2-name");
 const signup_username = document.querySelector("#p2-username");
@@ -110,22 +92,21 @@ const signup_password = document.querySelector("#p2-password");
 const email = document.querySelector("#p2-email");
 sign_up_btn.addEventListener("click", () => {
   const signup_options = {
-    url: "http://localhost:3000/api/home",
+    url: php_signup,
     method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8",
-    },
+    // headers: {
+    //   Accept: "application/json",
+    //   "Content-Type": "application/json;charset=UTF-8",
+    // },
     data: {
-      full_name: signup_name.value,
-      user_name: signup_username.value,
+      name: signup_name.value,
       email: email.value,
-      user_password: signup_password.value,
+      username: signup_username.value,
+      user_type: 3,
+      password: signup_password.value,
     },
   };
-  axios(options)
-    .then((x) => x.json())
-    .then((y) => {});
+  axios(signup_options).then((x) => console.log(x.data));
 });
 
 // This is the logIn section, checking if the data is in the server
@@ -138,18 +119,16 @@ logIn.addEventListener("click", function () {
   const signin_options = {
     url: php_signin,
     method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8",
-    },
+    // headers: {
+    //   Accept: "application/json",
+    //   "Content-Type": "application/json;charset=UTF-8",
+    // },
     data: {
       user_name: user.value,
       password: password.value,
     },
   };
-  axios(options)
-    .then((x) => x.json())
-    .then((y) => {});
+  axios(signin_options).then((x) => console.log(x));
 });
 
 // Changing passwords actually
