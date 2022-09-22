@@ -6,7 +6,7 @@ include("connection.php");
 $client_id = $_POST["client_id"];
 $product_id = $_POST["product_id"];
 
-// add to cart
+// delete to cart
 $remove_sql = "DELETE FROM cart 
                 WHERE client_id = ? AND product_id = ? ";
 $add = $mysqli->prepare($remove_sql);

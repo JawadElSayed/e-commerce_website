@@ -6,7 +6,7 @@ include("connection.php");
 $search = '%' . $_GET["search"] . '%';
 $response = [];
 
-// add to cart
+// search
 $search_sql = "SELECT id
                 FROM `products`
                 WHERE product_name LIKE ? OR about LIKE ?";

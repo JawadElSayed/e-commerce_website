@@ -6,7 +6,7 @@ include("connection.php");
 $client_id = $_POST["client_id"];
 $product_id = $_POST["product_id"];
 
-// add to cart
+// add to wishlist
 $add_sql = "INSERT INTO wish_list(client_id, product_id) VALUE (?, ?)";
 $add = $mysqli->prepare($add_sql);
 $add->bind_param("ss", $client_id, $product_id);
