@@ -7,6 +7,8 @@
 }
 img{height: 100%;}
 /*  css reset */
+
+/*start Ads pannel header section */
 header{
     display:flex;
     flex-direction: column;
@@ -71,6 +73,9 @@ hr{
     height:70px;
     width:70px;
 }
+/*end Ads pannel header section */
+
+/*start Ads main section */
 main{
     width:71%;
     height:100%;
@@ -123,3 +128,19 @@ h1{
 	background-color:#0E2E61;
 	border-radius: 30px;
 }
+.seller button{
+    padding: 14px 10px;
+    border: none;
+    border-radius: 20px;
+    height: 5vh;
+    width:11vw;
+    text-align:center;
+    padding: 0;
+    vertical-align:middle;
+    background-color: #0E2E61;
+    color:white;
+    margin-right:4vw;
+  }
+/*End start Ads main section */
+
+/*start Ads container section */
