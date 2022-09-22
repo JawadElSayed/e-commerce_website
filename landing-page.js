@@ -92,9 +92,92 @@ forget_pass.addEventListener("click", () => {
   signup_modal.style.display = "none";
 });
 
+///////////////////////////////////////////////////////////////////////////////
+
+// axios POST request
+
+axios(options).then((response) => {
+  console.log(response.status);
+});
+
+//  Copied this from my previous twitter project
+// sign up getting data from server
+php_signup = "some link";
+const sign_up_btn = document.querySelector("#sign-up-btn");
+sign_up_btn.addEventListener("click", () => {
+  const options = {
+    url: "http://localhost:3000/api/home",
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+    // data: {
+    //   name:
+    //   email:"";
+    //   username:"";
+    //   user_type:
+    // },
+  };
+  axios(options)
+    .then((x) => x.json())
+    .then((y) => {
+      if (!y.ispresent) {
+        fetch(php_signup, {
+          method: "POST",
+          body: new URLSearchParams({
+            full_name: signup_name.value,
+            user_name: signup_username.value,
+            email: email.value,
+            dob: dob.value,
+            user_password: signup_password.value,
+          }),
+        });
+        signup_modal.style.display = "none";
+        signinmodal.style.display = "block";
+      } else {
+        const signup_username_label = signup_username.insertAdjacentElement(
+          "afterend",
+          label
+        );
+        signup_username_label.textContent = "Username exists";
+      }
+    });
+});
+
+// This is the logIn section, checking if the data is in the server
+
+const logIn = document.querySelector("#log-in");
+const user = document.querySelector("#p2-username");
+const password = document.querySelector("#p2-password");
+
+logIn.addEventListener("click", function () {
+  fetch(php_login, {
+    method: "POST",
+    body: new URLSearchParams({
+      user_name: user.value,
+      user_password: password.value,
+    }),
+  })
+    .then((x) => x.json())
+    .then((y) => {
+      if (!y.ispresent) {
+        username_label = user.insertAdjacentElement("afterend", label);
+        username_label.textContent = "Username doesn't exist";
+      } else {
+        password_label = password.insertAdjacentElement("afterend", label);
+        if (!y.pass_valid) {
+          password_label.textContent = "Password is invalid";
+        } else {
+          window.location.href = "/Frontend/home-page/homepage.html";
+          password_label.textContent = "WELCOME";
+          localStorage.setItem("active-user", JSON.stringify(user.value));
+        }
+      }
+    });
+});
+
 // Changing passwords actually
 const Send_email = document.querySelector("#Send_email");
 const Validate_code = document.querySelector("Validate-code");
 const Change_pass_btn = document.querySelector("change-pass-btn");
-
-
