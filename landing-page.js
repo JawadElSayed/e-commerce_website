@@ -85,11 +85,16 @@ btn_signup_modal.addEventListener("click", () => {
   signup_modal.style.display = "none";
 });
 
-// Forget password
+// Forget password Modal
 const forget_pass = document.querySelector("#forget-pass");
 forget_pass.addEventListener("click", () => {
   signin_modal.style.display = "block";
   signup_modal.style.display = "none";
 });
 
-//    
+// Changing passwords actually
+const Send_email = document.querySelector("#Send_email");
+const Validate_code = document.querySelector("Validate-code");
+const Change_pass_btn = document.querySelector("change-pass-btn");
+
+

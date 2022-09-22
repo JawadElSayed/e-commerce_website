@@ -297,7 +297,7 @@ body {
   font-weight: bold;
   margin-bottom: 4vh;
   color: #600d2d;
-  text-align: center;
+  text-align: left;
 }
 
 .modal-main-content-pass input {
@@ -331,6 +331,26 @@ body {
 .pass-first-line button {
   flex-basis: 20%;
   border-radius: 5px;
+  background-color: #0e2e61;
+  color: white;
+  border: none;
+}
+
+.pass-first-line button:hover {
+  background-color: #600d2d;
+  cursor: pointer;
+}
+
+.display-message > p {
+  font-size: medium;
+}
+
+#get-code {
+  display: none;
+}
+
+#get-new_pass {
+  display: none;
 }
 /* Add Animation */
 @-webkit-keyframes animatetop {
