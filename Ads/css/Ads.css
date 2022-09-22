@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*  css reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*  css reset */
+
+/*start Ads pannel header section */
+header{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:29%;
+    height:100%;
+    background-color: #0E2E61;
+    position:fixed;
+}
+
+html {
+   
+    font-family:  'Poppins', sans-serif;
+}
+.seller-profile{
+    margin :50px 100px 20px 70px;
+    text-align: center;
+}
+.profile-img{
+    text-align: center;
+    height: 100px;
+    width:100px;
+    border-radius:50%;
+    
+}
+.user-type{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height:50%;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top:15vh;
+}
+
+.user-type div{
+    display:flex;
+    font-size: 20px;
+    color:white;
+    padding-bottom: 30px;
+}
+.user-type div span {
+    padding-right:10px;
+}
+hr{
+    margin:0  20px;
+    height:2px;  
+}
+.seller-bottom-profile{
+    margin-top:17vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color:white;
+}
+.seller-bottom-profile div{
+    padding-right:10px;
+}
+.seller-bottom-profile img{
+    height:70px;
+    width:70px;
+}
+/*end Ads pannel header section */
+
+/*start Ads main section */
+main{
+    width:71%;
+    height:100%;
+    margin-left:29%;
+    position:relative;
+    
+}
+h1{
+    font-size: 40px;
+    line-height: 45px;
+    padding-left:3vw;
+    padding-top:2vh;
+}
+.seller-header{
+    width:100%;
+   
+    position:fixed;
+    top:0;
+    z-index:2;
+    height:22vh;
+    background-color: #BDBDBD;
+}
+.seller{
+    width:70%;
+     display:flex;
+    justify-content:space-between;
+    align-items: center;
+} 
+.search{
+	display: flex;
+	align-items: center;
+	padding: 20px;
+
+}
+
+.search > span {
+	font-size: 20px;
+	color: white;
+    position: relative;
+    left:30px;
+}
+
+.search > input{
+	height: 5vh;
+	border: none;
+	outline: none;
+	font-size: 18px;
+	padding-left: 10px;
+    width: 400px;
+	background-color:#0E2E61;
+	border-radius: 30px;
+}
+.seller button{
+    padding: 14px 10px;
+    border: none;
+    border-radius: 20px;
+    height: 5vh;
+    width:11vw;
+    text-align:center;
+    padding: 0;
+    vertical-align:middle;
+    background-color: #0E2E61;
+    color:white;
+    margin-right:4vw;
+  }
+/*End start Ads main section */
+
+/*start Ads container section */
+.card-container{
+    margin:30vh 5vh 0vh 5vh;
+    display: flex;
+    flex-wrap:wrap;
+    position:absolute;
+   
+  }
+  .card{
+    width:50vw;
+    height: 30vh;;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    margin:10px;
+  }
+  .card > div{
+    padding:30px;
+    height: 10vh;
+    
+  }
+  .Ads-img{
+ 
+    border-radius: 20px;
+    height:14vh;
+
+
+  }
+  .Ads-img{
+
+    width:100%;
+ }
