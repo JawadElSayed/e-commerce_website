@@ -16,6 +16,7 @@ function getProfile($id){
     $response_get_profile['name']=$array_get_profile['name'];
     return $response_get_profile;
 }
+
 // The below function will return all the ads and their images and titles.
 function getAds($id){
     include("connection.php");
@@ -29,6 +30,7 @@ function getAds($id){
     }
     return $response_get_ads;
 }
+
 // The below function will return all the categories names and ids.
 function getCategories($id){
     include("connection.php");
@@ -47,6 +49,7 @@ function getCategories($id){
     }
     return $response_get_categories;
 }
+
 // The below function will return all the ads and the discounts ids, codes, percentages and ids of a seller.
 function getDiscounts($id){
     include("connection.php");
@@ -67,6 +70,7 @@ function getDiscounts($id){
     }
     return $response_get_discounts;
 }
+
 // The below function will return all the products and their ids, names, prices, descriptions (about),
 // and all image for every product of a seller.
 function getProducts($id){
@@ -101,6 +105,7 @@ function getProducts($id){
     }
     return $response_get_products;
 }
+
 // The below function will return all the top 5 viewed products and the number of views of a seller.
 function getViews($id){
     include("connection.php");
@@ -120,6 +125,7 @@ function getViews($id){
     }
     return $response_get_products;
 }
+
 // The below function will return all the revenue of a certain period
 function getRevenue($id){
     include("connection.php");
@@ -168,6 +174,7 @@ function getRevenue($id){
         $response_revenue['yearly']="0";
     return $response_revenue;
 }
+
 if(isset($_POST['id'])){
     // Get id using POST method
     $id=$_POST['id'];
@@ -180,8 +187,5 @@ if(isset($_POST['id'])){
     $whole_response['views']=getViews($id);
     $whole_response['revenue']=getRevenue($id);
     echo json_encode($whole_response,JSON_UNESCAPED_SLASHES);
-
-
-
 }
 ?>

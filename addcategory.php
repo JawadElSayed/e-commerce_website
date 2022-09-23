@@ -42,5 +42,4 @@ if(isset($_POST['category_name'])){
         $response['status']="category_is_created";
     }
     echo json_encode($response);
-    
 }
