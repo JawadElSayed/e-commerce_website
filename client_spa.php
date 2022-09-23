@@ -32,8 +32,20 @@ function get_ads ($mysqli){
     return $ads_response;
 }
 
+// getting available categories
+function categories($mysqli){
+    $categories_response = [];
+    $categories_sql = "SELECT * FROM categories";
+    $select = $mysqli->prepare($categories_sql);
+    $select->execute();
+    $array = $select->get_result();
+    while($a = $array->fetch_assoc()){
+        $categories_response[] = $a;
+    }
+    return $categories_response;
+}
 
-echo json_encode(get_ads($mysqli), JSON_UNESCAPED_SLASHES);
+echo json_encode(categories($mysqli), JSON_UNESCAPED_SLASHES);
 
 
 ?>
