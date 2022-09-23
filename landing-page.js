@@ -87,26 +87,22 @@ window.onclick = function (event) {
 php_signup = "http://localhost/Backend/E-commerce-BurnStore/sign_up.php";
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const signup_name = document.querySelector("#p2-name");
+
 const signup_username = document.querySelector("#p2-username");
 const signup_password = document.querySelector("#p2-password");
 const email = document.querySelector("#p2-email");
 sign_up_btn.addEventListener("click", () => {
-  const signup_options = {
+  let params = new URLSearchParams();
+  params.append("name", signup_name.value);
+  params.append("email", email.value);
+  params.append("username", signup_username.value);
+  params.append("user_type", 3);
+  params.append("password", signup_password.value);
+  axios({
+    method: "post",
     url: php_signup,
-    method: "POST",
-    // headers: {
-    //   Accept: "application/json",
-    //   "Content-Type": "application/json;charset=UTF-8",
-    // },
-    data: {
-      name: signup_name.value,
-      email: email.value,
-      username: signup_username.value,
-      user_type: 3,
-      password: signup_password.value,
-    },
-  };
-  axios(signup_options).then((x) => console.log(x.data));
+    data: params,
+  }).then((x) => console.log(x.data.status));
 });
 
 // This is the logIn section, checking if the data is in the server
@@ -119,10 +115,11 @@ logIn.addEventListener("click", function () {
   const signin_options = {
     url: php_signin,
     method: "POST",
-    // headers: {
-    //   Accept: "application/json",
-    //   "Content-Type": "application/json;charset=UTF-8",
-    // },
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+    },
     data: {
       user_name: user.value,
       password: password.value,
