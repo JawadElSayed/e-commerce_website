@@ -125,7 +125,7 @@ h1{
 	font-size: 18px;
 	padding-left: 10px;
     width: 400px;
-	background-color:#0E2E61;
+    background-color: #600D2D;
 	border-radius: 30px;
     font-size:10px;
 }
@@ -138,7 +138,7 @@ h1{
     text-align:center;
     padding: 0;
     vertical-align:middle;
-    background-color: #0E2E61;
+    background-color: #600D2D;
     color:white;
     margin-right:4vw;
     
@@ -157,11 +157,13 @@ h1{
     display:flex;
     justify-content: center;
     align-items: center;
-    color:black;
-    background-color: red;
-    margin-left:1vw;
+    color:white;
+    background-color: #600D2D;
+    margin:1.5vw;
     border-radius:9px;
     height:7vh;
+    font-size:17px;
+
   }
   .card{
     width:60vw;
@@ -180,11 +182,11 @@ h1{
     height:20vh;
     width:100%;
   }
-  .card p{
+  .card > p{
     padding:20vh;
     text-align: center;
     font-size: 19px;
-    
     font-weight: 700;
+    color:red;
   }
 
