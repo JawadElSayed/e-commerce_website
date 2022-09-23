@@ -153,7 +153,7 @@ h1{
     position:absolute;
   }
   .title{
-    width:90%;
+    width:61vw;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -166,27 +166,37 @@ h1{
 
   }
   .card{
-    width:60vw;
-    height: 40vh;;
-    border-radius: 20px;
-    background-color: #D9D9D9;
+    width:20vw;
+    height:30vh;
+    border-radius: 25px;
+    background-color: #0E2E61;
     margin:10px;
-  }
-  .card > div{
-    padding:30px;
-    height: 10vh;
-    
-  }
-  .Ads-img{
     border-radius: 20px;
-    height:20vh;
-    width:100%;
   }
-  .card > p{
-    padding:20vh;
-    text-align: center;
-    font-size: 19px;
-    font-weight: 700;
-    color:red;
-  }
+.analytics-adjust{
+    font-size:30px;
+    color:white;
+    font-weight: 800;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    padding-top:8vh;
 
+}
+.card-img{
+    text-align: center;
+    padding: 25px 0 10px 0;
+}
+.seller-img{
+    height:60px;
+    width:60px;
+ }
+ .product-rank{
+    text-align:center;
+    color:white;
+ }
+ h4{
+    font-size:20px;
+    padding-top:10px;
+ }
