@@ -173,7 +173,13 @@ h1{
     background-color: #0E2E61;
     margin:10px;
     border-radius: 20px;
+    box-shadow: 10px 5px 25px rgba(1 1 1/ 15%);
+    border-radius:13px;
+    transition : 0.8s ease;
   }
+  .card:hover{
+    transform: scale(1.1);
+}
 .analytics-adjust{
     font-size:30px;
     color:white;
