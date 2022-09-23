@@ -85,6 +85,7 @@ window.onclick = function (event) {
 //  Copied this from my previous twitter project
 // sign up getting data from server
 php_signup = "http://localhost/Backend/E-commerce-BurnStore/sign_up.php";
+label = document.createElement("label");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const signup_name = document.querySelector("#p2-name");
 
@@ -92,17 +93,28 @@ const signup_username = document.querySelector("#p2-username");
 const signup_password = document.querySelector("#p2-password");
 const email = document.querySelector("#p2-email");
 sign_up_btn.addEventListener("click", () => {
-  let params = new URLSearchParams();
-  params.append("name", signup_name.value);
-  params.append("email", email.value);
-  params.append("username", signup_username.value);
-  params.append("user_type", 3);
-  params.append("password", signup_password.value);
+  let singup_params = new URLSearchParams();
+  singup_params.append("name", signup_name.value);
+  singup_params.append("email", email.value);
+  singup_params.append("username", signup_username.value);
+  singup_params.append("user_type", 3);
+  singup_params.append("password", signup_password.value);
   axios({
     method: "post",
     url: php_signup,
-    data: params,
-  }).then((x) => console.log(x.data.status));
+    data: singup_params,
+  }).then((object) => {
+    if (object.data.status == "used username") {
+      signup_username.insertAdjacentElement("afterEnd", label);
+      label.textContent = "Username exists";
+    } else if (object.data.status == "used email") {
+      email.insertAdjacentElement("afterEnd", label);
+      label.textContent = "Email already used";
+    } else {
+      signup_modal.style.display = "none";
+      signin_modal.style.display = "block";
+    }
+  });
 });
 
 // This is the logIn section, checking if the data is in the server
@@ -112,20 +124,28 @@ const user = document.querySelector("#p2-username");
 const password = document.querySelector("#p2-password");
 
 logIn.addEventListener("click", function () {
-  const signin_options = {
+  let signin_params = new URLSearchParams();
+  signin_params.append("username", user.value);
+  signin_params.append("password", password.value);
+  axios({
+    method: "post",
     url: php_signin,
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
-    },
-    data: {
-      user_name: user.value,
-      password: password.value,
-    },
-  };
-  axios(signin_options).then((x) => console.log(x));
+    data: signin_params,
+  }).then((object) => {
+    if (object.data.status == "wrong username") {
+      user.insertAdjacentElement("afterEnd", label);
+      label.textContent = "Username doesn't exist";
+    } else if (object.data.status == "wrong password") {
+      password.insertAdjacentElement("afterEnd", label);
+      label.textContent = "Password is invalid";
+    } else if (object.data.status == "banned") {
+      user.insertAdjacentElement("afterEnd", label);
+      label.textContent = "You are banned! Get Out of here NIGGA";
+    } else {
+      localStorage.setItem("id", object.data.user_id);
+      console.log(localStorage.getItem("id"));
+    }
+  });
 });
 
 // Changing passwords actually
