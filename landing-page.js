@@ -144,6 +144,8 @@ logIn.addEventListener("click", () => {
       user.insertAdjacentElement("afterEnd", label);
       label.textContent = "You are banned! Get Out of here";
     } else {
+      //-------------------------- EDITS-----------------------------
+      // According to the id you go to the page
       localStorage.setItem("id", object.data.user_id);
       console.log(localStorage.getItem("id"));
     }
@@ -151,6 +153,8 @@ logIn.addEventListener("click", () => {
 });
 
 // Changing passwords actually
+//-------------------------- EDITS---------------------------------
+// To get the change password api
 const Send_email = document.querySelector("#Send_email");
 const Validate_code = document.querySelector("Validate-code");
 const Change_pass_btn = document.querySelector("change-pass-btn");
