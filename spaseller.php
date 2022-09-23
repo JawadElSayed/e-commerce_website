@@ -3,10 +3,9 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
 include("connection.php");
-// if(isset($_POST['id'])){
-    // // Get all parameters using POST method
-    // $id=$_POST['id'];
-    $id=1;
+if(isset($_POST['id'])){
+    // Get id using POST method
+    $id=$_POST['id'];
     $whole_response=[];
     $whole_response['profile']= getProfile($id);
     $whole_response['ads']= getAds($id);
@@ -16,7 +15,7 @@ include("connection.php");
     $whole_response['views']=getViews($id);
     $whole_response['revenue']=getRevenue($id);
     echo json_encode($whole_response,JSON_UNESCAPED_SLASHES);
-// }
+
 
 function getProfile($id){
     include("connection.php");
@@ -141,28 +140,32 @@ function getRevenue($id){
     $get_weekly_revenue->bind_param('s',$id);
     $get_weekly_revenue->execute();
     $return_weekly_revenue=$get_weekly_revenue->get_result()->fetch_assoc();
-    $response_revenue['weekly']=$return_weekly_revenue['weekly_revernue'];
-
+    if($return_weekly_revenue['weekly_revernue']!=NULL)
+        $response_revenue['weekly']=$return_weekly_revenue['weekly_revernue'];
+    else{
+        $response_revenue['weekly']="0";
+    }
     $get_monthly_revenue=$mysqli->prepare("SELECT SUM(checkouts.quantity*products.price) as monthly_revernue
     FROM checkouts,products 
     WHERE checkouts.product_id=products.id AND products.seller_id=? AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=30");
     $get_monthly_revenue->bind_param('s',$id);
     $get_monthly_revenue->execute();
     $return_monthly_revenue=$get_monthly_revenue->get_result()->fetch_assoc();
-    $response_revenue['monthly']=$return_monthly_revenue['monthly_revernue'];
-
+    if($return_monthly_revenue['monthly_revernue']!=NULL)
+        $response_revenue['monthly']=$return_monthly_revenue['monthly_revernue'];
+    else
+        $response_revenue['monthly']="0";
     $get_yearly_revenue=$mysqli->prepare("SELECT SUM(checkouts.quantity*products.price) as yearly_revernue
     FROM checkouts,products 
     WHERE checkouts.product_id=products.id AND products.seller_id=? AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=365");
     $get_yearly_revenue->bind_param('s',$id);
     $get_yearly_revenue->execute();
     $return_yearly_revenue=$get_yearly_revenue->get_result()->fetch_assoc();
-    $response_revenue['yearly']=$return_yearly_revenue['yearly_revernue'];
-
+    if($return_yearly_revenue['yearly_revernue']!=NULL)
+        $response_revenue['yearly']=$return_yearly_revenue['yearly_revernue'];
+    else
+        $response_revenue['yearly']="0";
     return $response_revenue;
 }
-// SELECT SUM(checkouts.quantity*products.price) as weekly_revernue
-// FROM checkouts,products 
-// WHERE checkouts.product_id=products.id AND products.seller_id=1 AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=7
-// SELECT DATEDIFF(year, '2017/08/25', '2011/08/25') AS DateDiff;
+}
 ?>
