@@ -99,6 +99,7 @@ sign_up_btn.addEventListener("click", () => {
   singup_params.append("username", signup_username.value);
   singup_params.append("user_type", 3);
   singup_params.append("password", signup_password.value);
+
   axios({
     method: "post",
     url: php_signup,
@@ -118,15 +119,16 @@ sign_up_btn.addEventListener("click", () => {
 });
 
 // This is the logIn section, checking if the data is in the server
-php_signin = "some link";
+php_signin = "http://localhost/Backend/E-commerce-BurnStore/login.php";
 const logIn = document.querySelector("#log-in");
-const user = document.querySelector("#p2-username");
-const password = document.querySelector("#p2-password");
+const user = document.querySelector("#p1-username");
+const password = document.querySelector("#p1-password");
 
-logIn.addEventListener("click", function () {
+logIn.addEventListener("click", () => {
   let signin_params = new URLSearchParams();
   signin_params.append("username", user.value);
   signin_params.append("password", password.value);
+
   axios({
     method: "post",
     url: php_signin,
@@ -140,7 +142,7 @@ logIn.addEventListener("click", function () {
       label.textContent = "Password is invalid";
     } else if (object.data.status == "banned") {
       user.insertAdjacentElement("afterEnd", label);
-      label.textContent = "You are banned! Get Out of here NIGGA";
+      label.textContent = "You are banned! Get Out of here";
     } else {
       localStorage.setItem("id", object.data.user_id);
       console.log(localStorage.getItem("id"));
