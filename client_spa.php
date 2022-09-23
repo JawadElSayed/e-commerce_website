@@ -19,8 +19,21 @@ function profile($mysqli, $id){
     return $profile_response;
 }
 
+// getting ads
+function get_ads ($mysqli){
+    $ads_response = [];
+    $ads_sql = "SELECT title, image FROM ads";
+    $select = $mysqli->prepare($ads_sql);
+    $select->execute();
+    $array = $select->get_result();
+    while ($a = $array->fetch_assoc()){
+        $ads_response[] = $a;
+    }
+    return $ads_response;
+}
 
-echo json_encode(profile($mysqli, $client_id), JSON_UNESCAPED_SLASHES);
+
+echo json_encode(get_ads($mysqli), JSON_UNESCAPED_SLASHES);
 
 
 ?>
