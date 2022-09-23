@@ -162,7 +162,8 @@ h1{
     margin:1.5vw;
     border-radius:9px;
     height:7vh;
-    font-size:17px;
+    font-size:19px;
+    font-weight: 700;
 
   }
   .card{
