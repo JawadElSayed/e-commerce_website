@@ -85,15 +85,18 @@ function getProducts($id){
         $return_get_products['about']=$a['about'];
         $return_get_products['price']=$a['price'];
         $return_get_products['category_name']=$a['category_name'];
-        $get_images = $mysqli->prepare("SELECT image FROM images WHERE product_id=?");
+        $get_images = $mysqli->prepare("SELECT id,image FROM images WHERE product_id=?");
         $get_images->bind_param('s',$a['id']);
         $get_images->execute();
         $array_get_images=$get_images->get_result();
         $return_get_images=[];
+        $r=[];
         while($b = $array_get_images->fetch_assoc()){
-            $return_get_images[]=$b['image'];
+            $return_get_images['id']=$b['id'];
+            $return_get_images['image']=$b['image'];
+            $r[]=$return_get_images;
         }
-        $return_get_products['images']=$return_get_images;
+        $return_get_products['images']=$r;
         $response_get_products[]=$return_get_products;
     }
     return $response_get_products;

@@ -3,6 +3,19 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
 include("connection.php");
+// Decode image, put it into the required path and return final url of it.
+function saveImage($base64, $path){
+    $base64 = explode( ',', $base64 );
+    $ext = explode( '/', $base64[0] );
+    $ext = explode( ';', $ext[1] );
+    $ext = $ext[0];
+    $image = $base64[1];
+    $data = base64_decode($image);
+    $file = $path . uniqid() . '.' . $ext;
+    $success = file_put_contents($file, $data);
+    return $file;
+}
+
 // Get all parameters using POST method
 if(isset($_POST['id'])){
     $id=$_POST['id'];
@@ -35,17 +48,4 @@ if(isset($_POST['id'])){
         $response['status']="error";
     }
     echo json_encode($response);
-}
-
-// Decode image, put it into the required path and return final url of it.
-function saveImage($base64, $path){
-    $base64 = explode( ',', $base64 );
-    $ext = explode( '/', $base64[0] );
-    $ext = explode( ';', $ext[1] );
-    $ext = $ext[0];
-    $image = $base64[1];
-    $data = base64_decode($image);
-    $file = $path . uniqid() . '.' . $ext;
-    $success = file_put_contents($file, $data);
-    return $file;
 }
