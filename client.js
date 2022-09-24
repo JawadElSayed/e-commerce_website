@@ -33,6 +33,18 @@ function Home() {
     dots[slideIndex - 1].className += " active";
     setTimeout(showSlides, 3000); // Change image every 3 seconds
   }
+
+  //Adding ad images
+  ad_list = "";
+  ad = `<div class="mySlides fade">
+<img
+  src="${ad_img_url}"
+  class="ad-image"
+/>
+</div>`;
+  brk = `<br />`;
+  dot_list = "";
+  dot = `<span class="dot"></span>`;
 }
 
 function Favorites() {}
