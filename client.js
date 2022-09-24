@@ -3,47 +3,15 @@ const favoriteS = document.querySelector("#Favorites-txt");
 const wishlist = document.querySelector("#Wishlist-txt");
 const inbox = document.querySelector("#Inbox-txt");
 const cart = document.querySelector("#cart-im");
+const client_ID = localStorage.getItem("id")
+  ? JSON.parse(localStorage.getItem("id"))
+  : "";
 Home();
 home.addEventListener("click", Home);
 favoriteS.addEventListener("click", Favorites);
 wishlist.addEventListener("click", Wishlist);
 inbox.addEventListener("click", Inbox);
 cart.addEventListener("click", Cart);
-
-let singup_params = new URLSearchParams();
-//   singup_params.append("name", signup_name.value);
-
-axios({
-  method: "post",
-  url: php_signup,
-  data: singup_params,
-}).then((object) => {});
-
-// sign_up_btn.addEventListener("click", () => {
-//     let singup_params = new URLSearchParams();
-//     singup_params.append("name", signup_name.value);
-//     singup_params.append("email", email.value);
-//     singup_params.append("username", signup_username.value);
-//     singup_params.append("user_type", 3);
-//     singup_params.append("password", signup_password.value);
-
-//     axios({
-//       method: "post",
-//       url: php_signup,
-//       data: singup_params,
-//     }).then((object) => {
-//       if (object.data.status == "used username") {
-//         signup_username.insertAdjacentElement("afterEnd", label);
-//         label.textContent = "Username exists";
-//       } else if (object.data.status == "used email") {
-//         email.insertAdjacentElement("afterEnd", label);
-//         label.textContent = "Email already used";
-//       } else {
-//         signup_modal.style.display = "none";
-//         signin_modal.style.display = "block";
-//       }
-//     });
-//   });
 
 function Home() {
   ad_list = "";
@@ -109,3 +77,13 @@ function Favorites() {}
 function Wishlist() {}
 function Inbox() {}
 function Cart() {}
+function callAxios() {
+  let params = new URLSearchParams();
+  params.append("client_id");
+
+  axios({
+    method: "post",
+    url: php_signup,
+    data: params,
+  }).then((object) => {});
+}
