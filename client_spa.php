@@ -45,7 +45,46 @@ function categories($mysqli){
     return $categories_response;
 }
 
-echo json_encode(categories($mysqli), JSON_UNESCAPED_SLASHES);
+// getting products
+function products($mysqli){
+    $final_response = [];
+    $products_response = [];
+    // product info
+    $products_sql = "SELECT products.id, product_name, about, price, users.name, users.email
+                    FROM `products`
+                    INNER JOIN users ON products.seller_id = users.id";
+    $select_product = $mysqli->prepare($products_sql);
+    $select_product->execute();
+    $profile_array = $select_product->get_result();
+    while($a = $profile_array->fetch_assoc()){
+
+        $products_response["id"]=$a["id"];
+        $products_response["product_name"]=$a["product_name"];
+        $products_response["about"]=$a["about"];
+        $products_response["price"]=$a["price"];
+        $products_response["name"]=$a["name"];
+        $products_response["email"]=$a["email"];
+
+        // product images
+        $images_sql = "SELECT id , image
+                        FROM `images`
+                        WHERE product_id = ?";
+        $select_images = $mysqli->prepare($images_sql);
+        $select_images->bind_param("s", $a["id"]);
+        $select_images->execute();
+        $images_array = $select_images->get_result();
+        $images_response = [];
+        while ($b = $images_array->fetch_assoc()){
+            $images_response[] = $b;
+        }
+        $products_response["images"] = $images_response;
+        $final_response[] = $products_response;
+    }
+    return $final_response;
+}
+
+
+echo json_encode(products($mysqli), JSON_UNESCAPED_SLASHES);
 
 
 ?>
