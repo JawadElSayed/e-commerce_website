@@ -211,29 +211,28 @@ function getViews(){
 }
 function getChart(){
     include("connection.php");
-    $get_top_seller=$mysqli->prepare("SELECT users.username,COUNT(products.seller_id) as total
+    $get_top_sellers=$mysqli->prepare("SELECT users.username,COUNT(products.seller_id) as total
     FROM products,users
     WHERE products.seller_id=users.id
     GROUP BY products.seller_id ASC LIMIT 5");
-    $get_top_seller->execute();
-    $array_get_top_seller=$get_top_seller->get_result();
-    $return_get_top_seller=[];
-    $response_get_top_seller=[];
-    $total_products=0;
-    while($b = $array_get_top_seller->fetch_assoc()){
-        $total_products+=$b['total'];
-       
-
-    }
-    while($a = $array_get_top_seller1->fetch_assoc()){
-        $return_get_top_seller['username']=$a['username'];
-        
+    $get_top_sellers->execute();
+    $array_get_top_sellers=$get_top_sellers->get_result();
+    $return_get_top_sellers=[];
+    $response_get_top_sellers=[];
+    $total_products=array_values(numbers())[0];
+    $total_percentage=0;
+    while($a = $array_get_top_sellers->fetch_assoc()){
         $percentage=($a['total']*100)/$total_products;
-        $return_get_top_seller['percentage']=$percentage;
-
-        $response_get_top_seller[]=$return_get_top_seller;
+        $percentage=number_format((float)$percentage, 2, '.', '');
+        $total_percentage+=$percentage;
+        $return_get_top_sellers['username']=$a['username'];
+        $return_get_top_sellers['percentage']=$percentage;
+        $response_get_top_sellers[]=$return_get_top_sellers;
     }
-    return $response_get_top_seller;
+    $return_get_top_sellers['username']="others";
+    $return_get_top_sellers['percentage']=number_format((float)(100-$total_percentage), 2, '.', '');;
+    $response_get_top_sellers[]=$return_get_top_sellers;
+    return $response_get_top_sellers;
 
 }
 
@@ -249,5 +248,6 @@ function getChart(){
     $response['view']=getViews();
     $response['chart']=getChart();
     echo json_encode($response,JSON_UNESCAPED_SLASHES);
+    
 // }
 ?>
