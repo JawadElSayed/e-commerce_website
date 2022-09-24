@@ -13,9 +13,9 @@ body {
 
 .nav-container {
   display: flex;
-  padding: 3vh 0vh;
-  margin: 0 10vh;
+  padding: 3vh 10vh;
   justify-content: space-between;
+  background-color: white;
 }
 
 .main-menu {
@@ -168,7 +168,7 @@ body {
 }
 .ad-image {
   width: 100%;
-  height: 60vh;
+  height: 70vh;
 }
 /* Ads */
 
