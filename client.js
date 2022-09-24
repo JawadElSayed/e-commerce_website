@@ -10,29 +10,6 @@ wishlist.addEventListener("click", Wishlist);
 inbox.addEventListener("click", Inbox);
 cart.addEventListener("click", Cart);
 
-// window.onload = () => {
-//   const cards = document.querySelector("#news");
-//   allcomponent = "";
-//   $.ajax({
-//     url: "http://localhost/Backend/news/news.php",
-//     success: function (data) {
-//       data = JSON.parse(data);
-//       for (let i = 0; i < data.length; i++) {
-//         title = data[i].title;
-//         text = data[i].text;
-//         component = `<div class="card" style="width: 18rem;">
-//               <div class="card-body">
-//                 <h5 class="card-title">${title}</h5>
-//                 <p class="card-text">${text}</p>
-//               </div>
-//             </div>`;
-//         allcomponent += component;
-//       }
-//       cards.innerHTML += allcomponent;
-//     },
-//   });
-// };
-
 // sign_up_btn.addEventListener("click", () => {
 //     let singup_params = new URLSearchParams();
 //     singup_params.append("name", signup_name.value);
@@ -60,6 +37,27 @@ cart.addEventListener("click", Cart);
 //   });
 
 function Home() {
+  ad_list = "";
+  dot_list = "";
+  const DOTS = document.querySelector(".align-dots");
+  const ADS = document.querySelector(".ads");
+  brk = `<br />`;
+  for (let i = 0; i < 3; i++) {
+    ad_img_url = "/Assets/Clients/Client-1.jpg";
+
+    ad = `<div class="mySlides fade">
+    <img
+      src="${ad_img_url}"
+      class="ad-image"
+    />
+    </div>`;
+    ad_list += ad;
+
+    dot_list += `<span class="dot"></span>`;
+  }
+  total = ad_list + brk + dot_list;
+  DOTS.innerHTML += total;
+
   // Animation of the ads
   let slideIndex = 0;
   showSlides();
@@ -83,27 +81,6 @@ function Home() {
     setTimeout(showSlides, 4000); // Change image every 3 seconds
   }
 
-  //Adding ad images
-  ad_list = "";
-  ad = `<div class="mySlides fade">
-<img
-  src="${ad_img_url}"
-  class="ad-image"
-/>
-</div>`;
-  brk = `<br />`;
-  dot_list = "";
-  dot = `<span class="dot"></span>`;
-
-  let singup_params = new URLSearchParams();
-  //   singup_params.append("name", signup_name.value);
-
-  axios({
-    method: "post",
-    url: php_signup,
-    data: singup_params,
-  }).then((object) => {});
-
   product = `<div class="products-header">
   <h1>Products</h1>
 </div>
@@ -119,7 +96,7 @@ function Home() {
 </div>`;
 }
 
-function Favorites() {}
-function Wishlist() {}
-function Inbox() {}
-function Cart() {}
+// function Favorites() {}
+// function Wishlist() {}
+// function Inbox() {}
+// function Cart() {}
