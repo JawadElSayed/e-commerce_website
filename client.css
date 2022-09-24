@@ -6,6 +6,9 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #eaeded;
+}
 /* Navigation bar  */
 
 .nav-container {
@@ -204,4 +207,9 @@
   to {
     opacity: 1;
   }
+}
+
+/* products */
+.products {
+  display: flex;
 }
