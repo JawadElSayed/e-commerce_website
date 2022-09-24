@@ -8,7 +8,7 @@ $result = [];
 $response = [];
 
 // select cart
-$select_sql = "SELECT product_id, quantity 
+$select_sql = "SELECT product_id, quantity, total_price
             FROM `cart` 
             WHERE client_id = ?";
 $select = $mysqli->prepare($select_sql);
@@ -21,11 +21,11 @@ while($a = $array->fetch_assoc()){
 }
 
 // add to checkout table
-$add_sql = "INSERT INTO checkouts(client_id, product_id, quantity) VALUE (?, ?, ?)";
+$add_sql = "INSERT INTO checkouts(client_id, product_id, quantity, total_price) VALUE (?, ?, ?, ?)";
 $add = $mysqli->prepare($add_sql);
 
 foreach ($result as $value){
-    $add->bind_param("sss", $client_id, $value["product_id"], $value["quantity"]);
+    $add->bind_param("ssss", $client_id, $value["product_id"], $value["quantity"], $value["total_price"]);
     $add->execute();
 }
 
