@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2022 at 10:11 PM
+-- Generation Time: Sep 24, 2022 at 09:03 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -64,6 +64,7 @@ CREATE TABLE `cart` (
   `client_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) DEFAULT NULL,
+  `total_price` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -95,12 +96,26 @@ INSERT INTO `categories` (`id`, `category_name`) VALUES
 --
 
 CREATE TABLE `chat` (
-  `client_id` int(11) NOT NULL,
-  `seller_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `sender` int(11) NOT NULL,
+  `receiver` int(11) NOT NULL,
   `massage` text,
   `created_at` timestamp NULL DEFAULT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`id`, `sender`, `receiver`, `massage`, `created_at`, `product_id`) VALUES
+(1, 3, 2, 'from houssein to houssam', '2022-09-14 21:00:00', 1),
+(2, 3, 2, 'hi houssam ', '2022-09-20 21:00:00', 1),
+(3, 2, 3, 'hi dear', '2022-09-21 21:00:00', 1),
+(4, 2, 4, 'hi 4', '2022-09-24 21:00:00', 2),
+(5, 4, 2, 'hello 2', '2022-09-26 21:00:00', 2),
+(6, 1, 3, 'from 1 to 3', '2022-09-29 21:00:00', 2),
+(7, 5, 2, 'from jawad to houssam', '2022-09-29 21:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -113,6 +128,7 @@ CREATE TABLE `checkouts` (
   `client_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) DEFAULT NULL,
+  `total_price` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -120,18 +136,18 @@ CREATE TABLE `checkouts` (
 -- Dumping data for table `checkouts`
 --
 
-INSERT INTO `checkouts` (`id`, `client_id`, `product_id`, `quantity`, `created_at`) VALUES
-(1, 1, 3, 24, '2022-09-20 21:00:00'),
-(2, 2, 1, 1, '2022-09-21 21:00:00'),
-(3, 2, 2, 2, '2022-09-20 21:00:00'),
-(4, 2, 3, 22, '2022-09-20 21:00:00'),
-(5, 4, 2, 4, '2022-09-19 21:00:00'),
-(6, 4, 5, 1, '2022-09-08 21:00:00'),
-(7, 5, 5, 2, '2022-09-07 21:00:00'),
-(8, 1, 6, 2, '2022-09-09 21:00:00'),
-(9, 2, 7, 2, '2022-07-06 21:00:00'),
-(10, 2, 7, 2, '2022-07-05 21:00:00'),
-(11, 2, 6, 2, '2022-07-08 21:00:00');
+INSERT INTO `checkouts` (`id`, `client_id`, `product_id`, `quantity`, `total_price`, `created_at`) VALUES
+(1, 1, 3, 24, 2952, '2022-09-20 21:00:00'),
+(2, 2, 1, 1, 0, '2022-09-21 21:00:00'),
+(3, 2, 2, 2, 0, '2022-09-20 21:00:00'),
+(4, 2, 3, 22, 2706, '2022-09-20 21:00:00'),
+(5, 4, 2, 4, 0, '2022-09-19 21:00:00'),
+(6, 4, 5, 1, 0, '2022-09-08 21:00:00'),
+(7, 5, 5, 2, 0, '2022-09-07 21:00:00'),
+(8, 1, 6, 5, 0, '2022-09-09 21:00:00'),
+(9, 2, 7, 2, 0, '2022-07-06 21:00:00'),
+(10, 2, 6, 12, 0, '2022-06-20 21:00:00'),
+(11, 2, 6, 20, 0, '2022-07-08 21:00:00');
 
 -- --------------------------------------------------------
 
@@ -185,12 +201,32 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `image`, `product_id`) VALUES
-(3, 'images/products_images/632c3d4332e00.jpeg', 2),
-(4, 'images/products_images/632c3d43338c4.jpeg', 2),
 (5, 'images/products_images/632c3d440b5a5.jpeg', 3),
 (6, 'images/products_images/632c3d440bf6d.jpeg', 3),
 (7, 'images/products_images/632c3d4499ca9.jpeg', 4),
-(8, 'images/products_images/632c3d449a796.jpeg', 4);
+(8, 'images/products_images/632c3d449a796.jpeg', 4),
+(9, 'images/products_images/632d4deedd453.png', 1),
+(10, 'images/products_images/632d4deeddc61.png', 1),
+(13, 'images/products_images/632d505e99dc5.png', 2),
+(14, 'images/products_images/632d505e9a635.png', 2),
+(15, 'images/products_images/632d507365e65.png', 2),
+(16, 'images/products_images/632d50736688b.png', 2),
+(19, 'images/products_images/632d50a96dac1.png', 2),
+(20, 'images/products_images/632d50a96e33d.png', 2),
+(23, 'images/products_images/632d51e6d41bc.png', 2),
+(24, 'images/products_images/632d51e6d5365.png', 2),
+(27, 'images/products_images/632d525ab35d9.png', 2),
+(28, 'images/products_images/632d525ab434b.png', 2),
+(29, 'images/products_images/632d52b294f3e.png', 2),
+(30, 'images/products_images/632d52b295c13.png', 2),
+(31, 'images/products_images/632d52dd7b669.png', 2),
+(32, 'images/products_images/632d52dd7c6f8.png', 2),
+(33, 'images/products_images/632d52fb04475.png', 2),
+(34, 'images/products_images/632d52fb05555.png', 2),
+(35, 'images/products_images/632d52ff503ca.png', 2),
+(36, 'images/products_images/632d52ff51019.png', 2),
+(39, 'images/products_images/632d54cf2290a.png', 2),
+(40, 'images/products_images/632d54cf23637.png', 2);
 
 -- --------------------------------------------------------
 
@@ -228,15 +264,17 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_name`, `about`, `created_at`, `price`, `category_id`, `seller_id`) VALUES
-(1, 'p1', 'a1', '2022-09-22 09:09:13', 123, 14, 1),
-(2, 'p2', 'a2', '2022-09-22 09:09:31', 123, 15, 1),
+(1, 'ep1', 'ea1', '2022-09-22 09:09:13', 911, 15, 2),
+(2, 'ep22', 'ea22', '2022-09-22 09:09:31', 9222, 17, 2),
 (3, 'p3', 'a3', '2022-09-22 09:09:32', 123, 2, 2),
-(4, 'p4', 'a4', '2022-09-22 09:09:32', 123, 17, 1),
-(5, 'p5', 'a5', '2022-09-07 21:00:00', 5, 1, 1),
-(6, 'p6', 'a6', '2022-09-01 21:00:00', 6, 2, 1),
-(7, 'p7', 'a7', '2022-09-01 21:00:00', 7, 1, 1),
-(8, 'p8', 'a8', '2022-09-13 21:00:00', 8, 1, 1),
-(9, 'p9', 'a9', '2022-09-05 21:00:00', 9, 1, 3);
+(4, 'p4', 'a4', '2022-09-22 09:09:32', 123, 17, 5),
+(5, 'p5', 'a5', '2022-09-07 21:00:00', 5, 1, 6),
+(6, 'p6', 'a6', '2022-09-01 21:00:00', 6, 2, 5),
+(7, 'p7', 'a7', '2022-09-01 21:00:00', 7, 1, 6),
+(8, 'p8', 'a8', '2022-09-13 21:00:00', 8, 1, 7),
+(9, 'p9', 'a9', '2022-09-05 21:00:00', 9, 1, 8),
+(10, 'p9', 'a9', '2022-09-23 21:00:00', 10, 1, 9),
+(11, 'p10', 'a10', '2022-09-23 21:00:00', 9, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -246,7 +284,7 @@ INSERT INTO `products` (`id`, `product_name`, `about`, `created_at`, `price`, `c
 
 CREATE TABLE `reset_password` (
   `id` int(11) NOT NULL,
-  `reset_password` varchar(255) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -293,7 +331,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `name`, `username`, `user_type`, `profile`) VALUES
-(1, 'houssein@gmail.com', '123321', 'houssein', 'houssein123', 1, 'images/profile/632c3d4332e00.jpeg');
+(1, 'housseinalialdroubi@gmail.com', '123321', 'houssein', 'houssein123', 1, 'images/profile/632c3d4332e00.jpeg'),
+(2, 'houssam@gmail.com', '123321', 'houssam', 'houssam', 2, 'images/profile/default.png'),
+(3, 'houssein@gmail.com', '123321', 'houssein1', 'houssein', 3, 'images/profile/default.png'),
+(4, 'alone@gmail.com', '123321', 'alone', 'alone', 1, 'images/profile/632c3d4332e00.jpeg'),
+(5, 'jawad@gmail.com', '123321', 'jawad', 'jawad', 2, 'images/profile/632c3d4332e00.jpeg\r\n'),
+(6, 'mohamad@gmail.com', '123321', 'mohamad', 'mohamad', 2, 'images/profile/632c3d4332e00.jpeg\r\n'),
+(7, 'mahdi@gmail.com', '123321', 'mahdi', 'mahdi', 2, 'images/profile/632c3d4332e00.jpeg\r\n'),
+(8, 'abbass@gmail.com', '123321', 'abbass', 'abbass', 2, 'images/profile/632c3d4332e00.jpeg\r\n'),
+(9, 'ali@gmail.com', '123321', 'ali', 'ali', 2, 'Iimages/profile/632c3d4332e00.jpeg'),
+(10, 'sayf@gmail.com', '123321', 'sayf', 'sayf', 2, 'images/profile/632c3d4332e00.jpeg\r\n');
 
 -- --------------------------------------------------------
 
@@ -306,6 +353,15 @@ CREATE TABLE `user_type` (
   `type` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `user_type`
+--
+
+INSERT INTO `user_type` (`id`, `type`) VALUES
+(1, 'admin'),
+(2, 'seller'),
+(3, 'client');
+
 -- --------------------------------------------------------
 
 --
@@ -314,76 +370,77 @@ CREATE TABLE `user_type` (
 
 CREATE TABLE `views` (
   `product_id` int(11) NOT NULL,
-  `viewer_id` int(11) NOT NULL
+  `viewer_id` int(11) NOT NULL,
+  `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `views`
 --
 
-INSERT INTO `views` (`product_id`, `viewer_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(1, 5),
-(1, 6),
-(1, 7),
-(1, 8),
-(1, 9),
-(1, 10),
-(2, 1),
-(2, 2),
-(2, 3),
-(2, 4),
-(2, 5),
-(2, 6),
-(2, 7),
-(2, 8),
-(2, 9),
-(3, 1),
-(3, 2),
-(3, 3),
-(3, 4),
-(3, 5),
-(3, 6),
-(4, 1),
-(4, 2),
-(4, 3),
-(4, 4),
-(4, 5),
-(4, 6),
-(4, 7),
-(4, 8),
-(5, 1),
-(5, 2),
-(5, 3),
-(5, 4),
-(5, 5),
-(6, 1),
-(6, 2),
-(6, 3),
-(6, 4),
-(6, 5),
-(7, 1),
-(7, 2),
-(8, 1),
-(9, 1),
-(9, 2),
-(9, 3),
-(9, 4),
-(9, 5),
-(9, 6),
-(9, 7),
-(9, 8),
-(9, 9),
-(9, 10),
-(9, 11),
-(9, 12),
-(9, 13),
-(9, 14),
-(9, 15),
-(9, 16);
+INSERT INTO `views` (`product_id`, `viewer_id`, `created_at`) VALUES
+(1, 1, '2022-09-01'),
+(1, 2, '2022-09-02'),
+(1, 3, '2022-09-03'),
+(1, 4, '2022-09-04'),
+(1, 5, '2022-09-05'),
+(1, 6, '2022-09-06'),
+(1, 7, '2022-09-06'),
+(1, 8, '2022-09-07'),
+(1, 9, '2022-09-08'),
+(1, 10, '2022-09-09'),
+(2, 1, '2022-09-09'),
+(2, 2, '2022-09-09'),
+(2, 3, '2022-09-09'),
+(2, 4, '2022-09-09'),
+(2, 5, '2022-09-10'),
+(2, 6, '2022-09-10'),
+(2, 7, '2022-09-11'),
+(2, 8, '2022-09-12'),
+(2, 9, '2022-09-13'),
+(3, 1, '2022-09-14'),
+(3, 2, '2022-09-15'),
+(3, 3, '2022-09-16'),
+(3, 4, '2022-09-16'),
+(3, 5, '2022-09-17'),
+(3, 6, '2022-09-18'),
+(4, 1, '2022-09-19'),
+(4, 2, '2022-09-19'),
+(4, 3, '2022-09-20'),
+(4, 4, '2022-09-27'),
+(4, 5, '2022-09-30'),
+(4, 6, '0000-00-00'),
+(4, 7, '0000-00-00'),
+(4, 8, '0000-00-00'),
+(5, 1, '0000-00-00'),
+(5, 2, '0000-00-00'),
+(5, 3, '0000-00-00'),
+(5, 4, '0000-00-00'),
+(5, 5, '0000-00-00'),
+(6, 1, '0000-00-00'),
+(6, 2, '0000-00-00'),
+(6, 3, '0000-00-00'),
+(6, 4, '0000-00-00'),
+(6, 5, '0000-00-00'),
+(7, 1, '0000-00-00'),
+(7, 2, '0000-00-00'),
+(8, 1, '0000-00-00'),
+(9, 1, '0000-00-00'),
+(9, 2, '0000-00-00'),
+(9, 3, '0000-00-00'),
+(9, 4, '0000-00-00'),
+(9, 5, '0000-00-00'),
+(9, 6, '0000-00-00'),
+(9, 7, '0000-00-00'),
+(9, 8, '0000-00-00'),
+(9, 9, '0000-00-00'),
+(9, 10, '0000-00-00'),
+(9, 11, '0000-00-00'),
+(9, 12, '0000-00-00'),
+(9, 13, '0000-00-00'),
+(9, 14, '0000-00-00'),
+(9, 15, '0000-00-00'),
+(9, 16, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -408,6 +465,7 @@ CREATE TABLE `vouchers` (
 CREATE TABLE `wish_list` (
   `client_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
+  `total_price` int(11) NOT NULL,
   `created_ad` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -443,7 +501,7 @@ ALTER TABLE `categories`
 -- Indexes for table `chat`
 --
 ALTER TABLE `chat`
-  ADD PRIMARY KEY (`client_id`,`seller_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `checkouts`
@@ -540,6 +598,12 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `checkouts`
 --
 ALTER TABLE `checkouts`
@@ -555,31 +619,31 @@ ALTER TABLE `discount_codes`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `reset_password`
 --
 ALTER TABLE `reset_password`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user_type`
 --
 ALTER TABLE `user_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
