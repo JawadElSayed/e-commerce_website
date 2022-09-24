@@ -3,8 +3,10 @@
 include("connection.php");
 
 // variables
+$client_id = $_POST["client_id"];
 $product_id = $_POST["product_id"];
 $discount_code = $_POST["discount_code"];
+$page = $_POST["page"];
 $response = [];
 
 // checking discount
@@ -22,14 +24,23 @@ if(!(mysqli_num_rows($code_check))) {
     exit(json_encode($response));
 }
 
-// apply discound
+// check time
+$time_sql = "SELECT end_at from discount_codes where discount_code = ?";
+$select_end_time = $mysqli->prepare($time_sql);
+$select_end_time->bind_param("s", $discount_code);
+$select_end_time->execute();
+$end_time = $select_end_time->get_result()->fetch_object()->end_at;
+date_default_timezone_set("Asia/Beirut");
 
+if (date("Y-m-d h:i:s") > $end_time){
+    $response["status"] = "expired code";
+    exit(json_encode($response));
+}
+
+// apply discound
 while($a = $code_check->fetch_assoc()){
     $new_price = $a["price"] - $a["price"] * $a["discount_amount"] / 100 ;
 }
-
-$response["status"] = "correct";
-$response["new_price"] = $new_price;
 
 echo json_encode($response);
 
