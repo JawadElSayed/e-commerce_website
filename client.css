@@ -1,0 +1,31 @@
+/* CSS Reset */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Navigation bar  */
+
+.nav-container {
+  display: flex;
+}
+
+.main-menu {
+  display: flex;
+}
+
+.search-profile {
+  display: flex;
+}
+
+/* drop down menu */
+.dropbtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
