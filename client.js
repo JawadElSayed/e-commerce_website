@@ -8,17 +8,17 @@ window.onload = () => {
     ? JSON.parse(localStorage.getItem("id"))
     : "";
 
-  callAxios(client_ID);
-  Home();
+  home.addEventListener("click", function () {
+    Home();
+  });
+  favoriteS.addEventListener("click", Favorites);
+  wishlist.addEventListener("click", Wishlist);
+  inbox.addEventListener("click", Inbox);
+  cart.addEventListener("click", Cart);
+  Home(callAxios(client_ID));
 };
 
-// home.addEventListener("click", Home);
-// favoriteS.addEventListener("click", Favorites);
-// wishlist.addEventListener("click", Wishlist);
-// inbox.addEventListener("click", Inbox);
-// cart.addEventListener("click", Cart);
-
-function Home() {
+function Home(data) {
   ad_list = "";
   dot_list = "";
   const DOTS = document.querySelector(".align-dots");
@@ -91,7 +91,6 @@ function callAxios(client_ID) {
     method: "post",
     url: allapi,
     data: params,
-  }).then((object) => {
-    console.log(object.data);
-  });
+  }).then((object) => {});
+  
 }
