@@ -10,17 +10,6 @@ $profile = "images/profile/default.png";
 $user_type = $_POST["user_type"];
 $response = [];
 
-// checking email if used
-$check_email_sql = "SELECT email FROM users WHERE email =? ";
-$select = $mysqli->prepare($check_email_sql);
-$select->bind_param("s", $email);
-$select->execute();
-$email_check = $select->get_result();
-
-if(mysqli_num_rows($email_check)) {
-    $response["status"] = "used email";
-    exit($json = json_encode($response));
-}
 
 // checking username if used
 $check_username_sql = "SELECT username FROM users WHERE username =? ";
@@ -33,6 +22,19 @@ if(mysqli_num_rows($username_check)) {
     $response["status"] = "used username";
     exit($json = json_encode($response));
 }
+
+// checking email if used
+$check_email_sql = "SELECT email FROM users WHERE email =? ";
+$select = $mysqli->prepare($check_email_sql);
+$select->bind_param("s", $email);
+$select->execute();
+$email_check = $select->get_result();
+
+if(mysqli_num_rows($email_check)) {
+    $response["status"] = "used email";
+    exit($json = json_encode($response));
+}
+
 
 // password according to user type
 if ($user_type == 3){
