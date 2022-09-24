@@ -12,9 +12,9 @@ function getProfile($id){
     $response_get_profile['name']=$array_get_profile['name'];
     return $response_get_profile;
 }
-function getUsers(){
+function getSellers(){
     include("connection.php");
-    $get_users=$mysqli->prepare("SELECT * FROM users WHERE users.user_type!=1");
+    $get_users=$mysqli->prepare("SELECT * FROM users WHERE users.user_type=2");
     $get_users->execute();
     $array_get_users=$get_users->get_result();
     $response_get_users=[];
@@ -24,7 +24,24 @@ function getUsers(){
         $return_get_users['email']=$a['email'];
         $return_get_users['name']=$a['name'];
         $return_get_users['username']=$a['username'];
-        $return_get_users['user_type']=$a['user_type'];
+        $return_get_users['profile']=$a['profile'];
+        $response_get_users[]=$return_get_users;
+    }
+    return $response_get_users;
+}
+
+function getClients(){
+    include("connection.php");
+    $get_users=$mysqli->prepare("SELECT * FROM users WHERE users.user_type=3");
+    $get_users->execute();
+    $array_get_users=$get_users->get_result();
+    $response_get_users=[];
+    $return_get_users=[];
+    while($a = $array_get_users->fetch_assoc()){
+        $return_get_users['id']=$a['id'];
+        $return_get_users['email']=$a['email'];
+        $return_get_users['name']=$a['name'];
+        $return_get_users['username']=$a['username'];
         $return_get_users['profile']=$a['profile'];
         $response_get_users[]=$return_get_users;
     }
@@ -140,31 +157,70 @@ function getBestClient(){
     return $response_get_best_clients;
 }
 
-function getProductsNumber(){
+function numbers(){
     include("connection.php");
     $response_number=[];
     $products_number=$mysqli->prepare("SELECT COUNT(id) as total FROM products");
     $products_number->execute();
-    $retun_products_number=$products_number->get_result()->fetch_assoc();
-    if($retun_products_number['total']!=NULL){
-        $response_number['products']=$retun_products_number['total'];
+    $return_products_number=$products_number->get_result()->fetch_assoc();
+    if($return_products_number['total']!=NULL){
+        $response_number['products']=$return_products_number['total'];
     }else{
         $response_number['products']="0";
     }
 
-}
+    $sellers_number=$mysqli->prepare("SELECT COUNT(id) as total FROM users WHERE user_type=2");
+    $sellers_number->execute();
+    $return_sellers_number=$sellers_number->get_result()->fetch_assoc();
+    if($return_sellers_number['total']!=NULL){
+        $response_number['sellers']=$return_sellers_number['total'];
+    }else{
+        $response_number['sellers']="0";
+    }
 
+    $clients_number=$mysqli->prepare("SELECT COUNT(id) as total FROM users WHERE user_type=3");
+    $clients_number->execute();
+    $return_clients_number=$clients_number->get_result()->fetch_assoc();
+    if($return_clients_number['total']!=NULL){
+        $response_number['clients']=$return_clients_number['total'];
+    }else{
+        $response_number['clients']="0";
+    }
+
+    return $response_number;
+}
+function getViews(){
+    include("connection.php");
+    $get_views=$mysqli->prepare("SELECT DAY(created_at) as day,COUNT(views.created_at) as views
+    FROM views 
+    WHERE ?<=views.created_at AND views.created_at<=? 
+    GROUP BY views.created_at ASC");
+    $first_date=date('Y-m-01');
+    $last_date=date('Y-m-31');
+    $get_views->bind_param("ss",$first_date,$last_date);
+    $get_views->execute();
+    $response_get_views=[];
+    $array_get_views=$get_views->get_result();
+    $return_get_view=[];
+    while ($a = $array_get_views->fetch_assoc()) {
+        $return_get_view['day']=$a['day'];
+        $return_get_view['views']=$a['views'];
+        $response_get_views[]=$return_get_view;
+    }
+    return $response_get_views;
+}
 
 
 // if(isset($_POST['id'])){
     $id=1;
     $response=[];
     $response['profile']=getProfile($id);
-    $response['users']=getUsers();
+    $response['sellers']=getSellers();
+    $response['clients']=getClients();
     $response['best_seller']=getBestSeller();
     $response['best_client']=getBestClient();
-    $response['products_number']=getProductsNumber();
-
+    $response['numbers']=numbers();
+    $response['view']=getViews();
     echo json_encode($response,JSON_UNESCAPED_SLASHES);
 // }
 ?>
