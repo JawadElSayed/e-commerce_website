@@ -165,7 +165,28 @@ function wishlist_products($mysqli, $id){
     return $final_response;
 }
 
-echo json_encode(wishlist_products($mysqli, $client_id), JSON_UNESCAPED_SLASHES);
+// getting cart products
+function cart_products($mysqli, $id){
+    $response = [];
+    // product info
+    $products_sql = "SELECT products.id, product_name, about, price, users.name, users.email, images.image
+                        FROM `products`
+                        INNER JOIN users ON products.seller_id = users.id
+                        INNER JOIN cart ON products.id = cart.product_id
+                        LEFT JOIN images ON products.id = images.product_id
+                        WHERE cart.client_id = ?
+                        GROUP BY products.id;";
+    $select_product = $mysqli->prepare($products_sql);
+    $select_product->bind_param("s", $id);
+    $select_product->execute();
+    $profile_array = $select_product->get_result();
+    while($a = $profile_array->fetch_assoc()){
+        $response[] = $a;
+    }
+    return $response;
+}
+
+echo json_encode(cart_products($mysqli, $client_id), JSON_UNESCAPED_SLASHES);
 
 
 ?>
