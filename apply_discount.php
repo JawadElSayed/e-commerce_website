@@ -42,6 +42,39 @@ while($a = $code_check->fetch_assoc()){
     $new_price = $a["price"] - $a["price"] * $a["discount_amount"] / 100 ;
 }
 
+// update price
+if ($page == "wishlist"){
+    $update_sql = "UPDATE wish_list
+                    SET total_price = ?
+                    WHERE product_id = ? AND client_id = ?";
+    $update_price = $mysqli->prepare($update_sql);
+    $update_price->bind_param("sss", $new_price, $product_id, $client_id);
+    $update_price->execute();
+    $response["status"] = "correct";
+    $response["new_price"] = $new_price;
+}
+else{
+    // getting quantity
+    $quantity_sql = "SELECT quantity 
+                        FROM cart 
+                        WHERE client_id = ? AND product_id = ? ";
+    $select_quantity = $mysqli->prepare($quantity_sql);
+    $select_quantity->bind_param("ss", $client_id, $product_id);
+    $select_quantity->execute();
+    $quantity = $select_quantity->get_result()->fetch_object()->quantity;
+
+    // update price
+    $total_new_price = $new_price * $quantity;
+    $update_sql = "UPDATE cart
+                    SET total_price = ?
+                    WHERE product_id = ? AND client_id = ?";
+    $update_price = $mysqli->prepare($update_sql);
+    $update_price->bind_param("sss", $total_new_price, $product_id, $client_id);
+    $update_price->execute();
+    $response["status"] = "correct";
+    $response["new_price"] = $total_new_price;
+}
+
 echo json_encode($response);
 
 ?>
