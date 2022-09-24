@@ -103,6 +103,20 @@ function Home() {
     url: php_signup,
     data: singup_params,
   }).then((object) => {});
+
+  product = `<div class="products-header">
+  <h1>Products</h1>
+</div>
+<div class="products">
+  <div class="product grow">
+    <div class="prod-ims">
+      <img class="prod-img" src="${prod_img}" />
+      <img class="prod-heart" src="/Assets/icons/emptyHeart.svg" />
+    </div>
+    <p id="prod-name">${prod_name}</p>
+    <p id="prod-price">${prod_price}</p>
+  </div>
+</div>`;
 }
 
 function Favorites() {}
