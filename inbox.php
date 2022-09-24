@@ -12,26 +12,9 @@ include("connection.php");
     $get_conversations->bind_param("ss",$id,$id);
     $get_conversations->execute();
     $array_get_conversations=$get_conversations->get_result();
-    $array=array();
-    $counter=0;
+
     while ($a = $array_get_conversations->fetch_assoc()){
-        $first = $a['sender'];
-        $second = $a['receiver'];
-        $product=$a['product_id'];
-        if($counter==0){
-            $new="";
-            if($id==$first){
-                $new=$new.$second;
-                echo $new;
-            }else{
-                $new=$new.$first;
-                echo $new;
-            }
-            $new=$new.$product;
-            echo $new;
-        }
-        $counter++;
-        echo '<br>';
+        
     }    
     echo $new;
     // echo json_encode($array);
