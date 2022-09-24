@@ -132,7 +132,7 @@ function getRevenue($id){
     $response_revenue=[];
     // The below function will return the  revenue of last week of a seller, wich is about the quantity
     // of each product sold out multuplied by the price and added to the total price.
-    $get_weekly_revenue=$mysqli->prepare("SELECT SUM(checkouts.quantity*products.price) as weekly_revernue
+    $get_weekly_revenue=$mysqli->prepare("SELECT SUM(total_price) as weekly_revernue
     FROM checkouts,products 
     WHERE checkouts.product_id=products.id AND products.seller_id=? AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=7");
     $get_weekly_revenue->bind_param('s',$id);
@@ -147,7 +147,7 @@ function getRevenue($id){
 
     // The below function will return the  revenue of last month of a seller, wich is about the quantity
     // of each product sold out multuplied by the price and added to the total price.    
-    $get_monthly_revenue=$mysqli->prepare("SELECT SUM(checkouts.quantity*products.price) as monthly_revernue
+    $get_monthly_revenue=$mysqli->prepare("SELECT SUM(total_price) as monthly_revernue
     FROM checkouts,products 
     WHERE checkouts.product_id=products.id AND products.seller_id=? AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=30");
     $get_monthly_revenue->bind_param('s',$id);
@@ -161,7 +161,7 @@ function getRevenue($id){
 
     // The below function will return the  revenue of last year of a seller, wich is about the quantity
     // of each product sold out multuplied by the price and added to the total price.
-    $get_yearly_revenue=$mysqli->prepare("SELECT SUM(checkouts.quantity*products.price) as yearly_revernue
+    $get_yearly_revenue=$mysqli->prepare("SELECT SUM(total_price) as yearly_revernue
     FROM checkouts,products 
     WHERE checkouts.product_id=products.id AND products.seller_id=? AND ABS(DATEDIFF(NOW(),checkouts.created_at))<=365");
     $get_yearly_revenue->bind_param('s',$id);
