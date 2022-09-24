@@ -186,7 +186,15 @@ function cart_products($mysqli, $id){
     return $response;
 }
 
-echo json_encode(cart_products($mysqli, $client_id), JSON_UNESCAPED_SLASHES);
+// return whole response
+$response['profile']= profile($mysqli, $client_id);
+$response['ads']= get_ads($mysqli);
+$response['categories']=Categories($mysqli);
+$response['products']=products($mysqli);
+$response['favorite']=favorite_products($mysqli, $client_id);
+$response['wishlist']=wishlist_products($mysqli, $client_id);
+$response['cart']=cart_products($mysqli, $client_id);
 
+echo json_encode($response,JSON_UNESCAPED_SLASHES);
 
 ?>
