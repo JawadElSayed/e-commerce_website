@@ -149,3 +149,17 @@
 .profile > p {
   margin-left: 1vh;
 }
+
+/* Main content */
+.main-content {
+  margin-bottom: 85vh;
+}
+/* footer */
+.footer {
+  background-color: #0e2e61;
+  height: 5vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
