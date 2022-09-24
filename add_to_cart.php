@@ -14,7 +14,6 @@ $select->bind_param("s", $product_id);
 $select->execute();
 $price = $select->get_result()->fetch_object()->price;
 $total_price = $price * $quantity;
-print_r($total_price);
 
 // add to cart
 $add_sql = "INSERT INTO cart(client_id, product_id, quantity, total_price) VALUE (?, ?, ?, ?)";
