@@ -147,7 +147,7 @@ logIn.addEventListener("click", () => {
       //-------------------------- EDITS-----------------------------
       // According to the id you go to the page
       localStorage.setItem("id", object.data.user_id);
-      console.log(localStorage.getItem("id"));
+      window.location.href = "/client.html";
     }
   });
 });
