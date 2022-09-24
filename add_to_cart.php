@@ -7,10 +7,19 @@ $client_id = $_POST["client_id"];
 $product_id = $_POST["product_id"];
 $quantity = $_POST["quantity"];
 
+// calculate price
+$price_sql = "SELECT price FROM products WHERE id = ?";
+$select = $mysqli->prepare($price_sql);
+$select->bind_param("s", $product_id);
+$select->execute();
+$price = $select->get_result()->fetch_object()->price;
+$total_price = $price * $quantity;
+print_r($total_price);
+
 // add to cart
-$add_sql = "INSERT INTO cart(client_id, product_id, quantity) VALUE (?, ?, ?)";
+$add_sql = "INSERT INTO cart(client_id, product_id, quantity, total_price) VALUE (?, ?, ?, ?)";
 $add = $mysqli->prepare($add_sql);
-$add->bind_param("sss", $client_id, $product_id, $quantity);
+$add->bind_param("ssss", $client_id, $product_id, $quantity, $total_price);
 $add->execute();
 
 $response["status"] = "Done";
