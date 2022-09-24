@@ -181,6 +181,9 @@
   transition: background-color 0.6s ease;
 }
 
+.align-dots {
+  text-align: center;
+}
 .active {
   background-color: #717171;
 }
