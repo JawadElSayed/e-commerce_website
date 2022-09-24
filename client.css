@@ -10,27 +10,40 @@
 
 .nav-container {
   display: flex;
-  padding: 3vh 7vh;
-  justify-content: space-around;
-  background-color: #3e8e41;
+  padding: 3vh 0vh;
+  margin: 0 10vh;
+  justify-content: space-between;
 }
 
 .main-menu {
   display: flex;
-  background-color: white;
   width: 40%;
   align-items: center;
   justify-content: space-between;
 }
 
+.main-menu > img {
+  height: 5vh;
+  width: 5vh;
+}
+
+.main-menu > img:hover {
+  cursor: pointer;
+}
 .main-menu > p {
   color: #0e2e61;
+  font-size: 1rem;
+}
+
+.main-menu > p:hover {
+  color: #600d2d;
+  cursor: pointer;
 }
 .search-profile {
   display: flex;
-  background-color: aquamarine;
-  width: 40%;
+  width: 35%;
   align-items: center;
+  justify-content: space-between;
 }
 
 /* main-menu */
@@ -39,10 +52,14 @@
 .dropbtn {
   background-color: white;
   color: #0e2e61;
-  padding: 16px;
-  font-size: 16px;
   border: none;
   cursor: pointer;
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.dropbtn:hover {
+  color: #600d2d;
 }
 
 .dropdown {
@@ -66,6 +83,7 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  /* text-align: center; */
 }
 
 /* Change color of dropdown links on hover */
@@ -80,7 +98,6 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
 }
 
 /* Search bar */
@@ -95,9 +112,9 @@
   display: flex;
   border-radius: 20px;
   height: 5vh;
-  margin-right: 2vh;
+  margin-right: 4vh;
   align-items: center;
-  width: 60%;
+  width: 70%;
 }
 
 #search-icon {
@@ -109,17 +126,26 @@
 
 .search > input {
   background-color: #0e2e61;
-  width: 80%;
+  width: 100%;
   border: none;
-  height: 4vh;
+  border-radius: 0px 20px 20px 0px;
+  height: 5vh;
+  color: white;
+}
+
+.search > input:focus,
+.search > input:valid {
+  outline: none;
 }
 
 /* profile */
 .profile {
   display: flex;
-  width: 30%;
+  width: auto;
   align-items: center;
+  margin-right: 1vh;
 }
+
 .profile > p {
   margin-left: 1vh;
 }
