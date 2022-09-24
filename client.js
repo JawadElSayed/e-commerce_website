@@ -10,6 +10,15 @@ wishlist.addEventListener("click", Wishlist);
 inbox.addEventListener("click", Inbox);
 cart.addEventListener("click", Cart);
 
+let singup_params = new URLSearchParams();
+//   singup_params.append("name", signup_name.value);
+
+axios({
+  method: "post",
+  url: php_signup,
+  data: singup_params,
+}).then((object) => {});
+
 // sign_up_btn.addEventListener("click", () => {
 //     let singup_params = new URLSearchParams();
 //     singup_params.append("name", signup_name.value);
@@ -96,7 +105,7 @@ function Home() {
 </div>`;
 }
 
-// function Favorites() {}
-// function Wishlist() {}
-// function Inbox() {}
-// function Cart() {}
+function Favorites() {}
+function Wishlist() {}
+function Inbox() {}
+function Cart() {}
