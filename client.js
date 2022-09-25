@@ -32,8 +32,8 @@ function Home(data, client_ID) {
       class="ad-image"
     />
     </div>`;
-    ad_list +=ad;
- 
+    ad_list += ad;
+
     dot_list += `<span class="dot"></span>`;
   }
   total = ad_list + brk + dot_list;
@@ -62,18 +62,17 @@ function Home(data, client_ID) {
     setTimeout(showSlides, 4000); // Change image every 3 seconds
   }
 
-  prod_list = "";
+  let prod_list = "";
   const prod_s = document.querySelector(".products-content");
   prod_header = `<div class="products-header">
   <h1>Products</h1>
   </div>`;
   for (let i = 0; i < data.products.length; i++) {
-    console.log(data.products[i].images[0].image);
     prod_img = data.products[i].images[0].image;
     prod_name = data.products[i].product_name;
     prod_price = data.products[i].price;
     product = `
-    <div class="product grow">
+    <div id="${data.products[i].id}" class="product grow">
       <div class="prod-ims">
         <img class="prod-img" src="${prod_img}" />
         <img class="prod-heart" src="/Assets/icons/emptyHeart.svg" />
@@ -90,6 +89,31 @@ function Home(data, client_ID) {
   total = prod_header + `<div class="products">` + prod_list + `</div`;
   console.log(total);
   prod_s.innerHTML += total;
+
+  // Get the product Modal
+  ///////////////////////////////////////////////////////////////////
+  var product_modal = document.querySelector("#myModal-product");
+
+  // Get the button that opens the modal
+  var product_elements = Array.from(document.getElementsByClassName("product"));
+  // Get the <span> element that closes the modal
+  var product_close = document.querySelector("#product-close");
+
+  console.log(product_elements);
+  // When the user clicks the button, open the modal
+  product_elements.forEach((element) => {
+    element.onclick = function () {
+      
+      product_modal.style.display = "block";
+    };
+  });
+
+  // When the user clicks on <span> (x), close the modal
+  product_close.onclick = function () {
+    product_modal.style.display = "none";
+  };
+
+  ////////////////////////////////////////////////////////////////////
 }
 
 function Favorites() {}
@@ -111,18 +135,3 @@ let callAxios = (client_ID) => {
   data = JSON.parse(localStorage.getItem("site_info"));
   return data;
 };
-
-// function callAxios(client_ID) {
-//   let params = new URLSearchParams();
-//   params.append("client_id", client_ID);
-//   const allapi = "http://localhost/Backend/E_commerce_BurnStore/client_spa.php";
-//   axios({
-//     method: "post",
-//     url: allapi,
-//     data: params,
-//   }).then((object) => {
-//     localStorage.setItem("site_info", JSON.stringify(object.data));
-//   });
-//   data = JSON.parse(localStorage.getItem("site_info"));
-//   return data;
-// }
