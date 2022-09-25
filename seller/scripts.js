@@ -2,12 +2,17 @@ const profile_image=document.getElementById("profile_image");
 const seller_name=document.getElementById("seller_name");
 const card_container=document.getElementById("card_container");
 const whole_content=document.getElementById("whole_content");
+// Elemets of view more popup
 const view_more_popup=document.getElementById("view_more_popup");
 const view_more_close=document.getElementById("view_more_close");
 const view_more_image=document.getElementById("view_more_image");
 const view_more_about=document.getElementById("view_more_about");
 const view_more_price=document.getElementById("view_more_price");
 const view_more_pcategory_name= document.getElementById("view_more_pcategory_name");
+// Elements of delete product
+const delete_product_popup=document.getElementById("delete_product_popup");
+const delete_product_btn_yes=document.getElementById("delete_product_btn_yes");
+const delete_product_btn_no=document.getElementById("delete_product_btn_no");
 
 window.onload = () => {
   localStorage.setItem("id","2");
@@ -25,6 +30,7 @@ window.onload = () => {
 <hr class="row-break">`;
 product_list='';
     let counter=0;
+    let counter1=0;
     for(i of array_products){
       let all_first_images=i.images[0];
       let first_image=all_first_images.image;
@@ -35,7 +41,7 @@ product_list='';
       <div><p>${i.category_name}</p></div>
       <div>
           <button class="row-product-btn">Edit</button>
-          <button class="row-product-btn">Delete</button>
+          <button id="${counter1}" class="delete-product row-product-btn">Delete</button>
           </div>
       </div>
       <hr class="row-break">
@@ -43,16 +49,16 @@ product_list='';
     
       product_list+=div;
       counter++;
+      counter1++;
     }
     total=header+product_list
     card_container.innerHTML=total;
   
     
-    const view_more_popup_contetns = Array.from(document.getElementsByClassName("img-view-more"));
-    console.log(view_more_popup_contetns);
-    view_more_popup_contetns.forEach(element => {
+    const view_more_popup_contents = Array.from(document.getElementsByClassName("img-view-more"));
+    view_more_popup_contents.forEach(element => {
       element.addEventListener("click",function(){
-          let clicked_picture=findElement(element.id,view_more_popup_contetns);
+          let clicked_picture=findElement(element.id,view_more_popup_contents);
           console.log(element.id);
           clicked_picture.addEventListener("click",function(){
             whole_content.style.display="flex";
@@ -65,11 +71,48 @@ product_list='';
         })  
     });
 
+    const delete_product_popup_contnents = Array.from(document.getElementsByClassName("delete-product"));
+    delete_product_popup_contnents.forEach(element => {
+      element.addEventListener("click",function(){
+          let clicked_button=findElement(element.id,delete_product_popup_contnents);
+          console.log(element.id);
+          clicked_button.addEventListener("click",function(){
+            whole_content.style.display="flex";
+            delete_product_popup.style.display="flex";
+            delete_product_btn_yes.addEventListener("click",function(){
+              
+              let params = new URLSearchParams();
+              params.append("id", element.id);
+              const url = "http://localhost/e-commerce_website/apis/deleteproduct.php";
+              axios({
+                method: "post",
+                url: url,
+                data: params,
+              }).then((object) => {
+                whole_content.style.display="none";
+                delete_product_popup.style.display="none";
+              });
+
+
+            })
+
+          })
+        })  
+    });
+    
+
+
     view_more_close.addEventListener("click",function(){
        whole_content.style.display="none";
        view_more_popup.style.display="none";
     })
-  }
+
+
+    delete_product_btn_no.addEventListener("click",function(){
+      whole_content.style.display="none";
+      delete_product_popup.style.display="none";
+  })
+}
 
   let callAxios=(seller_id)=> {
     let params = new URLSearchParams();
@@ -85,8 +128,8 @@ product_list='';
     data = JSON.parse(localStorage.getItem("site_info"));
     return data;
   }
-  let findElement=(id,view_more_popup_contetns) =>{
-    for (const x of view_more_popup_contetns) {
+  let findElement=(id,view_more_popup_contents) =>{
+    for (const x of view_more_popup_contents) {
       if (id == x.id) {
         return x;
       }
