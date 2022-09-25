@@ -55,13 +55,20 @@ if(mysqli_num_rows($check_ban)) {
 // logging in
 $response["status"] = "correct";
 
-$get_user_id_sql = "SELECT id FROM users WHERE username =? ";
+
+$get_user_id_sql = "SELECT id, user_type FROM users WHERE username =? ";
 $select = $mysqli->prepare($get_user_id_sql);
 $select->bind_param("s", $username);
 $select->execute();
-$id = $select->get_result()->fetch_object()->id;
+$array = $select->get_result();
+
+while ($a = $array->fetch_assoc()){
+    $id = $a["id"];
+    $user_type = $a["user_type"];
+}
 
 $response["user_id"] = $id;
+$response["user_type"] = $user_type;
 
 echo json_encode($response);
 
