@@ -1,6 +1,6 @@
 window.onload = () => {
   const home = document.querySelector("#Home-txt");
-  const favoriteS = document.querySelector("#Favorites-txt");
+  const favorites = document.querySelector("#Favorites-txt");
   const wishlist = document.querySelector("#Wishlist-txt");
   const inbox = document.querySelector("#Inbox-txt");
   const cart = document.querySelector("#cart-im");
@@ -8,25 +8,34 @@ window.onload = () => {
     ? JSON.parse(localStorage.getItem("id"))
     : "";
   data = callAxios(client_ID);
-
+  ADS = document.querySelector(".ads");
+  prod_s = document.querySelector(".products-content");
   home.addEventListener("click", function () {
+    prod_s.innerHTML = "";
     Home(data, client_ID);
   });
-  favoriteS.addEventListener("click", function () {
+
+  favorites.addEventListener("click", function () {
+    ADS.innerHTML = "";
     Favorites(data, client_ID);
   });
-  wishlist.addEventListener("click", Wishlist);
+
+  wishlist.addEventListener("click", function () {
+    ADS.innerHTML = "";
+    Wishlist(data, client_ID);
+  });
+
   inbox.addEventListener("click", Inbox);
   cart.addEventListener("click", Cart);
-  // Home(callAxios(client_ID), client_ID);
+  Home(callAxios(client_ID), client_ID);
 };
 
-function Home(data, client_ID) {
+function Home(data) {
   console.log(data);
   ad_list = "";
   dot_list = "";
   brk = `<br />`;
-  ADS = document.querySelector(".ads");
+
   for (let i = 0; i < data.ads.length; i++) {
     ad_img_url = data.ads[i].image;
     ad = `<div class="mySlides fade">
@@ -67,7 +76,6 @@ function Home(data, client_ID) {
   }
 
   let prod_list = "";
-  const prod_s = document.querySelector(".products-content");
   prod_header = `<div class="products-header">
   <h1>Products</h1>
   </div>`;
@@ -91,7 +99,6 @@ function Home(data, client_ID) {
   }
 
   total = prod_header + `<div class="products">` + prod_list + `</div`;
-
   prod_s.innerHTML += total;
   // Get the product Modal
   ///////////////////////////////////////////////////////////////////
@@ -177,12 +184,11 @@ function Home(data, client_ID) {
 
 ////////////////////////////////////////////////////////////////////
 
-function Favorites(data, client_ID) {
-  // console.log(data.favorite);
+function Favorites(data) {
   let prod_list = "";
   const prod_s = document.querySelector(".products-content");
   prod_header = `<div class="products-header">
-<h1>Products</h1>
+<h1>Items You Liked:</h1>
 </div>`;
   for (let i = 0; i < data.favorite.length; i++) {
     x = findElement(data.favorite[i].id);
@@ -206,7 +212,7 @@ function Favorites(data, client_ID) {
   }
 
   total = prod_header + `<div class="products">` + prod_list + `</div`;
-  prod_s.innerHTML
+  prod_s.innerHTML = "";
   prod_s.innerHTML += total;
 }
 function Wishlist(data, client_ID) {}
@@ -227,6 +233,40 @@ let callAxios = (client_ID) => {
   data = JSON.parse(localStorage.getItem("site_info"));
   return data;
 };
+
+function Wishlist(data) {
+  let prod_list = "";
+  const prod_s = document.querySelector(".products-content");
+  prod_header = `<div class="products-header">
+<h1>Items You Liked:</h1>
+</div>`;
+  for (let i = 0; i < data.favorite.length; i++) {
+    x = findElement(data.favorite[i].id);
+    console.log(x);
+    prod_img = x.images[0].image;
+    prod_name = x.product_name;
+    prod_price = x.price;
+    product = `
+<div id="${x.id}" class="product grow">
+  <div class="prod-ims">
+    <img class="prod-img" src="${prod_img}" />
+    <img class="prod-heart" src="/Assets/icons/emptyHeart.svg" />
+  </div >
+  <div class="prod-init-description">
+  <p id="prod-name">${prod_name}</p>
+  <p id="prod-price">${prod_price}$</p>
+  </div>
+</div>
+`;
+    prod_list += product;
+  }
+
+  total = prod_header + `<div class="products">` + prod_list + `</div`;
+  prod_s.innerHTML = "";
+  prod_s.innerHTML += total;
+}
+function Inbox() {}
+function Cart() {}
 
 function findElement(id) {
   for (const x of data.products) {
