@@ -11,7 +11,9 @@ window.onload = () => {
   ADS = document.querySelector(".ads");
   prod_s = document.querySelector(".products-content");
   home.addEventListener("click", function () {
-    prod_s.innerHTML = "";
+    // if (prod_s.innerHTML != "") {
+    //   prod_s.innerHTML = "";
+    // }
     Home(data, client_ID);
   });
 
