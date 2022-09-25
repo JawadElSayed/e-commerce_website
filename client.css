@@ -187,7 +187,8 @@ body {
   transition: background-color 0.6s ease;
 }
 
-.align-dots {
+
+.ads {
   text-align: center;
 }
 .active {
@@ -403,12 +404,11 @@ body {
   margin-bottom: 3vh;
 }
 
-.right-about>h2{
-
+.right-about > h2 {
   margin-bottom: 2vh;
 }
-.right-about>p{
-margin-top: 2vh;
+.right-about > p {
+  margin-top: 2vh;
   margin-bottom: 2vh;
 }
 .right-seller {
@@ -452,7 +452,7 @@ margin-top: 2vh;
   background-color: #1c50a2;
 }
 
-.right img{
+.right img {
   cursor: pointer;
 }
 .right-actions {
@@ -494,7 +494,6 @@ margin-top: 2vh;
   justify-content: space-between;
   align-items: center;
 }
-
 
 .counter > p {
   font-size: large;

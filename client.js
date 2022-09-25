@@ -7,24 +7,26 @@ window.onload = () => {
   const client_ID = localStorage.getItem("id")
     ? JSON.parse(localStorage.getItem("id"))
     : "";
+  data = callAxios(client_ID);
+
   home.addEventListener("click", function () {
-    Home(callAxios(client_ID), client_ID);
+    Home(data, client_ID);
   });
-  favoriteS.addEventListener("click", Favorites);
+  favoriteS.addEventListener("click", function () {
+    Favorites(data, client_ID);
+  });
   wishlist.addEventListener("click", Wishlist);
   inbox.addEventListener("click", Inbox);
   cart.addEventListener("click", Cart);
-  Home(callAxios(client_ID), client_ID);
+  // Home(callAxios(client_ID), client_ID);
 };
 
 function Home(data, client_ID) {
   console.log(data);
   ad_list = "";
   dot_list = "";
-  const DOTS = document.querySelector(".align-dots");
-  const ADS = document.querySelector(".ads");
   brk = `<br />`;
-
+  ADS = document.querySelector(".ads");
   for (let i = 0; i < data.ads.length; i++) {
     ad_img_url = data.ads[i].image;
     ad = `<div class="mySlides fade">
@@ -38,7 +40,8 @@ function Home(data, client_ID) {
     dot_list += `<span class="dot"></span>`;
   }
   total = ad_list + brk + dot_list;
-  DOTS.innerHTML += total;
+  ADS.innerHTML = "";
+  ADS.innerHTML += total;
 
   // Animation of the ads
   let slideIndex = 0;
@@ -88,8 +91,8 @@ function Home(data, client_ID) {
   }
 
   total = prod_header + `<div class="products">` + prod_list + `</div`;
-  prod_s.innerHTML += total;
 
+  prod_s.innerHTML += total;
   // Get the product Modal
   ///////////////////////////////////////////////////////////////////
   const product_modal = document.querySelector("#myModal-product");
@@ -113,7 +116,7 @@ function Home(data, client_ID) {
       left_content = `<p>${clicked_product.product_name}</p>
       <img src="${clicked_product.images[0].image}" />`;
       left.innerHTML = "";
-      left.innerHTML += left_content;
+      left.innerHTML = left_content;
       right_content = `<div class="right-about">
       <h2>About</h2>
       <hr />
@@ -164,16 +167,49 @@ function Home(data, client_ID) {
     };
   });
 
-  // When the user clicks on <span> (x), close the modal
-  product_close.onclick = function () {
-    product_modal.style.display = "none";
-  };
-
-  ////////////////////////////////////////////////////////////////////
+  if (product_close != null) {
+    // When the user clicks on <span> (x), close the modal
+    product_close.onclick = function () {
+      product_modal.style.display = "none";
+    };
+  }
 }
 
-function Favorites(data,client_ID) {}
-function Wishlist(data,client_ID) {}
+////////////////////////////////////////////////////////////////////
+
+function Favorites(data, client_ID) {
+  // console.log(data.favorite);
+  let prod_list = "";
+  const prod_s = document.querySelector(".products-content");
+  prod_header = `<div class="products-header">
+<h1>Products</h1>
+</div>`;
+  for (let i = 0; i < data.favorite.length; i++) {
+    x = findElement(data.favorite[i].id);
+    console.log(x);
+    prod_img = x.images[0].image;
+    prod_name = x.product_name;
+    prod_price = x.price;
+    product = `
+  <div id="${x.id}" class="product grow">
+    <div class="prod-ims">
+      <img class="prod-img" src="${prod_img}" />
+      <img class="prod-heart" src="/Assets/icons/emptyHeart.svg" />
+    </div >
+    <div class="prod-init-description">
+    <p id="prod-name">${prod_name}</p>
+    <p id="prod-price">${prod_price}$</p>
+    </div>
+  </div>
+`;
+    prod_list += product;
+  }
+
+  total = prod_header + `<div class="products">` + prod_list + `</div`;
+  prod_s.innerHTML
+  prod_s.innerHTML += total;
+}
+function Wishlist(data, client_ID) {}
 function Inbox() {}
 function Cart() {}
 
