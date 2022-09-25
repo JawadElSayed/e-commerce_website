@@ -2,20 +2,16 @@ window.onload = () =>{
 
 const data = callAxios(seller_id);
 profile(data);
-// clients(data);
-// clients_btn.addEventListener("click", function(){
-//     clients(data);
-// });
-// sellers_btn.addEventListener("click", function(){
-//     sellers(data);
-// });
-// statistics_btn.addEventListener("click", function(){
-//     stat(data);
-// });
-stat(data);
-console.log(data);
-
-
+clients(data);
+clients_btn.addEventListener("click", function(){
+    clients(data);
+});
+sellers_btn.addEventListener("click", function(){
+    sellers(data);
+});
+statistics_btn.addEventListener("click", function(){
+    stat(data);
+});
 }
 
 
