@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" /> -->
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header_content">
+                <h1 id = "page_title"></h1>
+                <div class="header_row">
+                    <div class="search">
+                        <img id="search-icon" src="../Assets/icons/search.svg" />
+                        <input type="text" class="search-bar" />
+                    </div>
+                    <div>
+                        <button class="add_button">add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="header_break">
+        <div class="sidenav">
+            <div class="logo">
+                <img src="../Assets/Logo-variants/Logo - switched.svg" class="logo">
+            </div>
+            <div class = "pages">
+                <div>
+                <button id="clients_btn">Clients</button></div>
+                <button id="sellers_btn">Sellers</button>
+                <button id="statistics_btn">Statistics</button>
+                <div class="admin_profile">
+                    <img id = "profile_img" src="">
+                    <h3 id = "profile_name"></h3>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="body_content">
+            <div id="titles"></div>
+                <div id = "row_container">
+                <!-- <div class="row">
+                    <img src="images/profile/default.png" class="profile_img">
+                    <p>name</p>
+                    <p>email</p>
+                    <p>username</p>
+                    <button class="ban_button">Ban</button>
+                </div>
+                <hr class="row-break"> -->
+                <div>
+                    <div id = "all_cards">
+                        <!-- <div class="card_row">
+                            <div class="stat_card">
+                                <h3>Best seller of the week</h3>
+                                <h3 class="result_name">name</h3>
+                            </div>
+                            <div class="stat_card">
+                                <h3>Best seller of the month</h3>
+                                <h3 class="result_name">name</h3>
+                            </div>
+                            <div class="stat_card">
+                                <h3>Best seller of the year</h3>
+                                <h3 class="result_name">name</h3>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

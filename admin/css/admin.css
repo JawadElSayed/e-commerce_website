@@ -1,0 +1,194 @@
+body{
+    margin: 0;
+}
+
+.header {
+    padding: 3vw 5vw 3vw 22vw; 
+    padding-bottom: 3vw;
+    padding-left: 22vw;
+    background-color: #ECECEC;
+}
+
+.header_content{
+    padding-left: 4vw;
+}
+.header_content >h1 {
+    margin: 0;
+    line-height: 40px;
+}
+.header_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2vw;
+}
+
+.add_button {
+    display: none;
+    padding: 10px 35px;
+    border-radius: 20px;
+    background-color: #600D2D;
+    color: #ffffff;
+    border: none;
+}
+
+.search {
+    background-color: #600D2D;
+    display: flex;
+    border-radius: 20px;
+    height: 5vh;
+    align-items: center;
+    width: 50%;
+}
+
+.search > input {
+    background-color: #600D2D;
+    width: 100%;
+    border: none;
+    border-radius: 0px 20px 20px 0px;
+    height: 4vh;
+    color: white;
+}
+
+.search > input:focus,
+.search > input:valid {
+    outline: none;
+}
+
+#search-icon {
+    height: 3vh;
+    width: 3vh;
+    margin-right: 2vh;
+    margin-left: 2vh;
+}
+
+.header_break {
+    margin: 0;
+}
+
+/* left bar */
+.sidenav {
+    height: 100%;
+    width: 22vw;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #0E2E61;
+    overflow-x: hidden;
+    padding-top: 50px;
+}
+
+.sidenav button {
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: 25px;
+    padding: 7px 15px;
+    margin-bottom: 2vw;
+    cursor: pointer;
+}
+
+.sidenav button:hover {
+    background-color: rgba(18, 60, 128, 0.494)
+}
+.logo {
+    width: 6vw;
+    height: 6vw;
+    margin: auto;
+    padding-bottom: 7vw;
+}
+
+.pages {
+    text-align: left;
+    padding-left: 5vw;
+}
+
+.admin_profile {
+    display: flex;
+    align-items: center;
+    width: 20%;
+    bottom: 25px;
+    position: fixed;
+    color: #ffffff;
+}
+
+.admin_profile img {
+    width: 25%;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.container {
+    padding-left: 22vw;
+}
+
+.body_content{
+    padding: 0 4vw;
+}
+
+.title_name_clients {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title_name_sellers {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 4vw;
+}
+
+.titles > h2 {
+    padding-right: 2vw;
+    
+}
+
+.profile_img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.ban_button {
+    padding: 10px 25px;
+    border-radius: 10px;
+    background-color: #600D2D;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+.ban_button:hover {
+    background-color: #600d2dd2;
+}
+
+.row-break{
+    margin: 0;
+    margin: 1vw 0 ;
+    width: 100%;
+    height: 1px;
+    background-color: #0E2E61;
+    border: none;
+}
+
+.stat_card {
+    width: 30%;
+    background-color: #0E2E61;
+    border-radius: 20px;
+    text-align: center;
+    padding: 2vw 10px; 
+    margin: 1vw;
+    color: #ffffff;
+}
+
+.card_row {
+    display: flex;
+}
