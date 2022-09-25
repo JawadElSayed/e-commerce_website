@@ -65,6 +65,7 @@ if(isset($_POST['email'])){
                     $delete_code->bind_param("s",$id);
                     if($delete_code->execute()){
                         $response['status']="change passowrd";
+                        $response['id']=$id;
                     }else{
                         $response['status']='error';
                     }
