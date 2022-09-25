@@ -1,3 +1,6 @@
+// The problem I am facing is that when I click the home page, I get duplicates of the items. I am not able to erase the content using innerHTML
+// When I navigate to other pages, the pop up functionality stops
+
 window.onload = () => {
   const home = document.querySelector("#Home-txt");
   const favorites = document.querySelector("#Favorites-txt");
@@ -29,7 +32,7 @@ window.onload = () => {
 
   inbox.addEventListener("click", Inbox);
   cart.addEventListener("click", Cart);
-  // Home(callAxios(client_ID), client_ID);
+  Home(callAxios(client_ID), client_ID);
 };
 
 function Home(data) {
