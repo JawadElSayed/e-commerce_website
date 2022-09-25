@@ -7,26 +7,25 @@ window.onload = () => {
   const client_ID = localStorage.getItem("id")
     ? JSON.parse(localStorage.getItem("id"))
     : "";
-
   home.addEventListener("click", function () {
-    Home();
+    Home(callAxios(client_ID), client_ID);
   });
   favoriteS.addEventListener("click", Favorites);
   wishlist.addEventListener("click", Wishlist);
   inbox.addEventListener("click", Inbox);
   cart.addEventListener("click", Cart);
-  Home(callAxios(client_ID));
+  Home(callAxios(client_ID), client_ID);
 };
 
-function Home(data) {
+function Home(data, client_ID) {
   ad_list = "";
   dot_list = "";
   const DOTS = document.querySelector(".align-dots");
   const ADS = document.querySelector(".ads");
   brk = `<br />`;
-  for (let i = 0; i < 3; i++) {
-    ad_img_url = "/Assets/Clients/Client-1.jpg";
-
+  console.log(data);
+  for (let i = 0; i < data.ads.length; i++) {
+    ad_img_url = data.ads[i].image;
     ad = `<div class="mySlides fade">
     <img
       src="${ad_img_url}"
@@ -63,19 +62,19 @@ function Home(data) {
     setTimeout(showSlides, 4000); // Change image every 3 seconds
   }
 
-  //   product = `<div class="products-header">
-  //   <h1>Products</h1>
-  // </div>
-  // <div class="products">
-  //   <div class="product grow">
-  //     <div class="prod-ims">
-  //       <img class="prod-img" src="${prod_img}" />
-  //       <img class="prod-heart" src="/Assets/icons/emptyHeart.svg" />
-  //     </div>
-  //     <p id="prod-name">${prod_name}</p>
-  //     <p id="prod-price">${prod_price}</p>
-  //   </div>
-  // </div>`;
+  product = `<div class="products-header">
+    <h1>Products</h1>
+  </div>
+  <div class="products">
+    <div class="product grow">
+      <div class="prod-ims">
+        <img class="prod-img" src="${prod_img}" />
+        <img class="prod-heart" src="/Assets/icons/emptyHeart.svg" />
+      </div>
+      <p id="prod-name">${prod_name}</p>
+      <p id="prod-price">${prod_price}</p>
+    </div>
+  </div>`;
 }
 
 function Favorites() {}
@@ -83,14 +82,32 @@ function Wishlist() {}
 function Inbox() {}
 function Cart() {}
 
-function callAxios(client_ID) {
+let callAxios = (client_ID) => {
   let params = new URLSearchParams();
   params.append("client_id", client_ID);
-  const allapi = "http://localhost/Backend/E_commerce_BurnStore/client_spa.php";
+  const url = "http://localhost/Backend/E_commerce_BurnStore/client_spa.php";
   axios({
     method: "post",
-    url: allapi,
+    url: url,
     data: params,
-  }).then((object) => {});
-  
-}
+  }).then((object) => {
+    localStorage.setItem("site_info", JSON.stringify(object.data));
+  });
+  data = JSON.parse(localStorage.getItem("site_info"));
+  return data;
+};
+
+// function callAxios(client_ID) {
+//   let params = new URLSearchParams();
+//   params.append("client_id", client_ID);
+//   const allapi = "http://localhost/Backend/E_commerce_BurnStore/client_spa.php";
+//   axios({
+//     method: "post",
+//     url: allapi,
+//     data: params,
+//   }).then((object) => {
+//     localStorage.setItem("site_info", JSON.stringify(object.data));
+//   });
+//   data = JSON.parse(localStorage.getItem("site_info"));
+//   return data;
+// }
