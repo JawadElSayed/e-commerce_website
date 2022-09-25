@@ -18,12 +18,13 @@ window.onload = () => {
 };
 
 function Home(data, client_ID) {
+  console.log(data);
   ad_list = "";
   dot_list = "";
   const DOTS = document.querySelector(".align-dots");
   const ADS = document.querySelector(".ads");
   brk = `<br />`;
-  console.log(data);
+
   for (let i = 0; i < data.ads.length; i++) {
     ad_img_url = data.ads[i].image;
     ad = `<div class="mySlides fade">
@@ -87,23 +88,33 @@ function Home(data, client_ID) {
   }
 
   total = prod_header + `<div class="products">` + prod_list + `</div`;
-  console.log(total);
   prod_s.innerHTML += total;
 
   // Get the product Modal
   ///////////////////////////////////////////////////////////////////
-  var product_modal = document.querySelector("#myModal-product");
+  const product_modal = document.querySelector("#myModal-product");
 
   // Get the button that opens the modal
-  var product_elements = Array.from(document.getElementsByClassName("product"));
+  const product_elements = Array.from(
+    document.getElementsByClassName("product")
+  );
   // Get the <span> element that closes the modal
-  var product_close = document.querySelector("#product-close");
+  const product_close = document.querySelector("#product-close");
 
-  console.log(product_elements);
-  // When the user clicks the button, open the modal
+  // the left part of the modal
+  const left = document.querySelector(".left");
+  // The right part of the modal
+  const right = document.querySelector(".right");
+
+  // When the user clicks the button, open the modal and the content is generated depending on the product
   product_elements.forEach((element) => {
     element.onclick = function () {
-      
+      clicked_product = findElement(element.id, data);
+      left_content = `<p>${clicked_product.product_name}</p>
+      <img src="${clicked_product.images[0].image}" />`;
+      left.innerHTML = "";
+      left.innerHTML += left_content;
+      right_content = ``;
       product_modal.style.display = "block";
     };
   });
@@ -135,3 +146,12 @@ let callAxios = (client_ID) => {
   data = JSON.parse(localStorage.getItem("site_info"));
   return data;
 };
+
+function findElement(id, data) {
+  for (const x of data.products) {
+    if (id == x.id) {
+      return x;
+    }
+  }
+  return null;
+}
