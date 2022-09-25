@@ -22,6 +22,18 @@ const edit_product_popup_about=document.getElementById("edit_product_popup_about
 const edit_product_popup_upload=document.getElementById("edit_product_popup_upload");
 const edit_product_popup_save=document.getElementById("edit_product_popup_save");
 let image_base64='';
+
+// Elements of add products
+const add_product_close = document.getElementById("add_product_close");
+const add_product_popup=document.getElementById("add_product_popup");
+const add_product_popup_name=document.getElementById("add_product_popup_name");
+const addproduct_popup_price=document.getElementById("addproduct_popup_price");
+const add_product_popup_about=document.getElementById("add_product_popup_about");
+const add_product_popup_upload=document.getElementById("add_product_popup_upload");
+const add_product_popup_save=document.getElementById("add_product_popup_save");
+const add_product_btn=document.getElementById("add_product_btn");
+let image_base64_add='';
+
 localStorage.setItem("id","1");
 window.onload = () => {
  
@@ -175,7 +187,11 @@ product_list='';
     whole_content.style.display="none";
     edit_product_popup.style.display="none";
   })
+  add_product_close.addEventListener("click",function(){
+    whole_content.style.display="none";
+    add_product_popup.style.display="none";
 
+  })
 }
 
   let callAxios=(seller_id)=> {
@@ -187,7 +203,9 @@ product_list='';
       url: url,
       data: params,
     }).then((object) => {
+      localStorage.setItem("site_info", JSON.stringify(object.data));
     });
+    data = JSON.parse(localStorage.getItem("site_info"));
     return data;
   }
   let findElement=(id,view_more_popup_contents) =>{
@@ -209,3 +227,7 @@ product_list='';
 }
 
 edit_product_popup_upload.addEventListener("change",pickUpImage);
+add_product_btn.addEventListener("click",function(){
+  whole_content.style.display="flex";
+  add_product_popup.style.display="flex";
+})

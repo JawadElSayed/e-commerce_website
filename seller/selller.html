@@ -45,7 +45,7 @@
                 <div class="search">
                     <input type="text">
                 </div>
-                <button  class="seller-btn">Add Seller</button> 
+                <button  class="seller-btn" id="add_product_btn">Add Seller</button> 
             </div>
         </div>
         <div class="card-container" id="card_container">
@@ -86,6 +86,18 @@
             <input type="text" class="edit-product-input" placeholder="About" id="edit_product_popup_about"/>
             <label class="file-upload">
             <input  type="file"  accept="image/jpeg, image/png, image/jpg" id="edit_product_popup_upload">
+            Add image
+        </label>
+            <button id="edit_product_popup_save">Save</button>
+        </div>
+
+        <div class="add-product-popup" id="add_product_popup">
+            <span id="add_product_close" class="pointer add-product-close">&times;</span>
+            <input type="text" class="add-product-input" placeholder="Name" id="add_product_popup_name"/>
+            <input type="text" class="add-product-input" placeholder="Price" id="add_product_popup_price"/>
+            <input type="text" class="add-product-input" placeholder="About" id="add_product_popup_about"/>
+            <label class="file-upload">
+            <input  type="file"  accept="image/jpeg, image/png, image/jpg" id="add_product_popup_upload">
             Add image
         </label>
             <button id="edit_product_popup_save">Save</button>

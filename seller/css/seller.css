@@ -368,3 +368,32 @@ edit-product-popup>input{
 .edit-product-close{
     align-self: flex-end;
 }    
+
+.add-product-popup{
+    padding: 1vw;
+    display: none;
+    height: 30%;
+    width: 30%;
+    background-color: white;
+    border-width: 1px;
+    border-style: solid;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.add-product-popup>button{
+    margin-top: 2vw;
+    color: white;
+    background-color: #600D2D;
+    height: 2vw;
+    width: 5vw;
+    cursor: pointer;}
+
+.add-product-close{
+    align-self: flex-end;
+}    
+.add-product-input{
+    height: 2vw;
+    margin-top: 0.5vw;
+}
