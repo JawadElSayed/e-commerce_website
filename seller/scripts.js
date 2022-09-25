@@ -13,13 +13,13 @@ const view_more_pcategory_name= document.getElementById("view_more_pcategory_nam
 const delete_product_popup=document.getElementById("delete_product_popup");
 const delete_product_btn_yes=document.getElementById("delete_product_btn_yes");
 const delete_product_btn_no=document.getElementById("delete_product_btn_no");
-
-
+// Elements of edit products
+const edit_product_close = document.getElementById("edit_product_close");
+const edit_product_popup=document.getElementById("edit_product_popup");
 window.onload = () => {
-  localStorage.setItem("id","2");
+  localStorage.setItem("id","3");
   let data=callAxios(localStorage.getItem("id"));
   profile_image.src=`../${data.profile.image}`;
-  console.log(data.profile.image+"saddasads");
   seller_name.innerText=data.profile.name;
   let array_products=data.products;
     header=`<div class="row">
@@ -31,27 +31,23 @@ window.onload = () => {
 </div>
 <hr class="row-break">`;
 product_list='';
-    let counter=0;
-    let counter1=0;
     for(i of array_products){
       let all_first_images=i.images[0];
       let first_image=all_first_images.image;
       div = `<div class="row-product">
-      <div><img src=../${first_image}  id="${counter}" class="img-view-more"></div>
+      <div><img src=../${first_image}  id="${i.id}" class="img-view-more"></div>
       <div><p>${i.product_name}</p></div>
       <div ><p>${i.price}</p></div>
       <div><p>${i.category_name}</p></div>
       <div>
-          <button class="row-product-btn">Edit</button>
-          <button id="${counter1}" class="delete-product row-product-btn">Delete</button>
+          <button id="${i.id}"  class="edit-product row-product-btn">Edit</button>
+          <button id="${i.id}" class="delete-product row-product-btn">Delete</button>
           </div>
       </div>
       <hr class="row-break">
       `;
     
       product_list+=div;
-      counter++;
-      counter1++;
     }
     total=header+product_list
     card_container.innerHTML=total;
@@ -103,6 +99,20 @@ product_list='';
     
 
 
+    const edit_product_popup_contents = Array.from(document.getElementsByClassName("edit-product"));
+    edit_product_popup_contents.forEach(element => {
+      element.addEventListener("click",function(){
+          let clicked_picture=findElement(element.id,edit_product_popup_contents);
+          console.log(element.id);
+          clicked_picture.addEventListener("click",function(){
+            whole_content.style.display="flex";
+            edit_product_popup.style.display="flex";
+          })
+        })  
+    });
+
+
+
     view_more_close.addEventListener("click",function(){
        whole_content.style.display="none";
        view_more_popup.style.display="none";
@@ -113,11 +123,16 @@ product_list='';
       whole_content.style.display="none";
       delete_product_popup.style.display="none";
   })
+  edit_product_close.addEventListener("click",function(){
+    whole_content.style.display="none";
+    edit_product_popup.style.display="none";
+  })
+
 }
 
   let callAxios=(seller_id)=> {
     let params = new URLSearchParams();
-    params.append("id", seller_id);
+    params.append("id", 5);
     const url = "http://localhost/e-commerce_website/apis/spaseller.php";
     axios({
       method: "post",
