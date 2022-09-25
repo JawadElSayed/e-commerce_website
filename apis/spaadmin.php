@@ -64,10 +64,10 @@ function getBestSeller(){
     $array_best_seller_week=$best_seller_week->get_result()->fetch_assoc();
     // In case the return was null, so, we have to return no one yet
     if($array_best_seller_week['name']!=NULL){
-        $response_get_best_sellers['weekly']=$array_best_seller_week['name'];
+        $response_get_best_sellers['week']=$array_best_seller_week['name'];
     }
     else{
-        $response_get_best_sellers['weekly']="No one yet";
+        $response_get_best_sellers['week']="No one yet";
     }    
     // Getting the best seller for the same month.
     $best_seller_month=$mysqli->prepare("SELECT SUM(checkouts.quantity) as total,users.name
@@ -80,10 +80,10 @@ function getBestSeller(){
     $array_best_seller_month=$best_seller_month->get_result()->fetch_assoc();
 
     if($array_best_seller_month['name']!=NULL){
-        $response_get_best_sellers['monthly']=$array_best_seller_month['name']; 
+        $response_get_best_sellers['month']=$array_best_seller_month['name']; 
     }
     else{
-        $response_get_best_sellers['monthly']="No one yet";
+        $response_get_best_sellers['month']="No one yet";
     }   
     // Getting the best seller for the same year.
     $best_seller_year=$mysqli->prepare("SELECT SUM(checkouts.quantity) as total,users.name
@@ -96,10 +96,10 @@ function getBestSeller(){
     $array_best_seller_year=$best_seller_year->get_result()->fetch_assoc();
 
     if($array_best_seller_year['name']!=NULL){
-        $response_get_best_sellers['yearly']=$array_best_seller_year['name']; 
+        $response_get_best_sellers['year']=$array_best_seller_year['name']; 
     }
     else{
-        $response_get_best_sellers['yearly']="No one yet";
+        $response_get_best_sellers['year']="No one yet";
     }   
     return $response_get_best_sellers;
 }
@@ -118,10 +118,10 @@ function getBestClient(){
     $array_best_client_week=$best_client_week->get_result()->fetch_assoc();
     // In case the return was null, so, we have to return no one yet
     if($array_best_client_week['name']!=NULL){
-        $response_get_best_clients['weekly']=$array_best_client_week['name'];
+        $response_get_best_clients['week']=$array_best_client_week['name'];
     }
     else{
-        $response_get_best_clients['weekly']="No one yet";
+        $response_get_best_clients['week']="No one yet";
     }    
     // Getting the best client for the same month.
     $best_client_month=$mysqli->prepare("SELECT COUNT(checkouts.client_id) as total,users.name
@@ -133,10 +133,10 @@ function getBestClient(){
     $array_best_client_month=$best_client_month->get_result()->fetch_assoc();
     // In case the return was null, so, we have to return no one yet
     if($array_best_client_month['name']!=NULL){
-        $response_get_best_clients['monthly']=$array_best_client_month['name']; 
+        $response_get_best_clients['month']=$array_best_client_month['name']; 
     }
     else{
-        $response_get_best_clients['monthly']="No one yet";
+        $response_get_best_clients['month']="No one yet";
     }   
     // Getting the best client for the same year.
     $best_client_year=$mysqli->prepare("SELECT COUNT(checkouts.client_id) as total,users.name
@@ -148,10 +148,10 @@ function getBestClient(){
     $array_best_client_year=$best_client_year->get_result()->fetch_assoc();
     // In case the return was null, so, we have to return no one yet
     if($array_best_client_year['name']!=NULL){
-        $response_get_best_clients['yearly']=$array_best_client_year['name']; 
+        $response_get_best_clients['year']=$array_best_client_year['name']; 
     }
     else{
-        $response_get_best_clients['yearly']="No one yet";
+        $response_get_best_clients['year']="No one yet";
     }   
     
     return $response_get_best_clients;

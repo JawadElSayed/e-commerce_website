@@ -110,7 +110,7 @@ body{
     display: flex;
     align-items: center;
     width: 20%;
-    bottom: 10px;
+    bottom: 25px;
     position: fixed;
     color: #ffffff;
 }
@@ -179,3 +179,16 @@ body{
     border: none;
 }
 
+.stat_card {
+    width: 30%;
+    background-color: #0E2E61;
+    border-radius: 20px;
+    text-align: center;
+    padding: 2vw 10px; 
+    margin: 1vw;
+    color: #ffffff;
+}
+
+.card_row {
+    display: flex;
+}
