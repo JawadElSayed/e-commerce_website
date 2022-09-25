@@ -55,6 +55,7 @@ if(mysqli_num_rows($check_ban)) {
 // logging in
 $response["status"] = "correct";
 
+
 $get_user_id_sql = "SELECT id, user_type FROM users WHERE username =? ";
 $select = $mysqli->prepare($get_user_id_sql);
 $select->bind_param("s", $username);
@@ -68,6 +69,7 @@ while ($a = $array->fetch_assoc()){
 
 $response["user_id"] = $id;
 $response["user_type"] = $user_type;
+
 echo json_encode($response);
 
 ?>

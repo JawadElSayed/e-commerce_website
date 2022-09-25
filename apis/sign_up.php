@@ -10,6 +10,7 @@ $profile = "images/profile/default.png";
 $user_type = $_POST["user_type"];
 $response = [];
 
+
 // checking username if used
 $check_username_sql = "SELECT username FROM users WHERE username =? ";
 $select = $mysqli->prepare($check_username_sql);
