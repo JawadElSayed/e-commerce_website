@@ -237,7 +237,6 @@ h1{
     display: none;
     align-items: center;
     align-content: center;
-    /* display: flex; */
     flex-direction: column;
     height: 100vh;
     width: 100vw;
@@ -252,7 +251,6 @@ h1{
     background-color: white;
     border-width: 1px;
     border-style: solid;
-    /* display: flex; */
     flex-direction: row;
  }
  .view-more-image{
@@ -297,7 +295,6 @@ h1{
     background-color: white;
     border-width: 1px;
     border-style: solid;
-    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -352,7 +349,6 @@ edit-product-popup>input{
     background-color: white;
     border-width: 1px;
     border-style: solid;
-    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -377,7 +373,6 @@ edit-product-popup>input{
     background-color: white;
     border-width: 1px;
     border-style: solid;
-    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;

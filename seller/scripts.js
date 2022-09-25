@@ -35,7 +35,6 @@ const add_product_popup_save=document.getElementById("add_product_popup_save");
 const add_product_btn=document.getElementById("add_product_btn");
 let image_base64_add='';
 
-localStorage.setItem("id","1");
 window.onload = () => {
  
   let data=callAxios(localStorage.getItem("id"));
@@ -55,7 +54,6 @@ product_list='';
     let counter1=0;
     let counter2=0;
     for(i of array_products){
-      console.log(i);
       let all_first_images=i.images[0];
       let first_image=all_first_images.image;
       div = `<div class="row-product">
@@ -123,12 +121,9 @@ product_list='';
         })  
     });
     
-
-
     const edit_product_popup_contents = Array.from(document.getElementsByClassName("edit-product"));
     edit_product_popup_contents.forEach(element => {
       element.addEventListener("click",function(){
-        console.log(array_products[element.id].product_name);
           let clicked_button=findElement(element.id,edit_product_popup_contents);
           clicked_button.addEventListener("click",function(){
             whole_content.style.display="flex";
