@@ -1,21 +1,63 @@
-<!--index.html-->
-
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <title>admin</title>
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" /> -->
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header_content">
+                <h1>clients</h1>
+                <div class="header_row">
+                    <div class="search">
+                        <img id="search-icon" src="Assets/icons/search.svg" />
+                        <input type="text" class="search-bar" />
+                    </div>
+                    <div>
+                        <button class="add_button">add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="header_break">
+        <div class="sidenav">
+            <div class="logo">
+                <img src="Assets/Logo-variants/Logo - switched.svg" class="logo">
+            </div>
+            <div class = "pages">
+                <div>
+                <button class="">clients</button></div>
+                <button class="">Sellers</button>
+                <button class="">statistics</button>
+                <div class="admin_profile">
+                    <img id = "profile_img" src="">
+                    <p id = "profile_name"></p>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <!-- You can also require other files to run in this process -->
-    <!-- <script src=".js"></script> -->
+    <section class="container">
+        <div class="body_content">
+            <div class="titles"></div>
+            <hr class="row-break">
+            <div id = "row_container">
+                <!-- <div class="row">
+                    <img src="images/profile/default.png" class="profile_img">
+                    <p>name</p>
+                    <p>email</p>
+                    <p>username</p>
+                    <button class="ban_button">Ban</button>
+                </div>
+                <hr class="row-break"> -->
+            </div>
+        </div>
+    </section>
     
-  </body>
+    <script src="admin.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
 </html>
