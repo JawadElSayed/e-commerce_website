@@ -14,10 +14,12 @@ const delete_product_popup=document.getElementById("delete_product_popup");
 const delete_product_btn_yes=document.getElementById("delete_product_btn_yes");
 const delete_product_btn_no=document.getElementById("delete_product_btn_no");
 
+
 window.onload = () => {
   localStorage.setItem("id","2");
-  let data=callAxios(localStorage.getItem("id" ));
+  let data=callAxios(localStorage.getItem("id"));
   profile_image.src=`../${data.profile.image}`;
+  console.log(data.profile.image+"saddasads");
   seller_name.innerText=data.profile.name;
   let array_products=data.products;
     header=`<div class="row">
@@ -91,9 +93,8 @@ product_list='';
               }).then((object) => {
                 whole_content.style.display="none";
                 delete_product_popup.style.display="none";
+                location.reload();
               });
-
-
             })
 
           })
