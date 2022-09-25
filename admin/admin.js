@@ -29,7 +29,7 @@ const result_name = document.querySelectorAll(".result_name");
 
 // get profile
 const profile= (data) => {
-    profile_img.src = data["profile"]["image"];
+    profile_img.src = `../${data["profile"]["image"]}`;
     profile_name.innerHTML = data["profile"]["name"];
 }
 
@@ -60,7 +60,7 @@ const clients = (data) => {
         let email = i["email"];
         let username = i["username"];
         let row = `<div id = "${id}" class="row">
-                        <img src="${profile}" class="profile_img">
+                        <img src="../${profile}" class="profile_img">
                         <p>${name}</p>
                         <p>${email}</p>
                         <p>${username}</p>
@@ -100,7 +100,7 @@ const sellers = (data) => {
         let email = i["email"];
         let username = i["username"];
         let row = `<div id = "${id}" class="row">
-                        <img src="${profile}" class="profile_img">
+                        <img src="../${profile}" class="profile_img">
                         <p>${name}</p>
                         <p>${email}</p>
                         <p>${username}</p>
