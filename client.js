@@ -27,7 +27,7 @@ window.onload = () => {
 
   inbox.addEventListener("click", Inbox);
   cart.addEventListener("click", Cart);
-  Home(callAxios(client_ID), client_ID);
+  // Home(callAxios(client_ID), client_ID);
 };
 
 function Home(data) {
@@ -192,7 +192,6 @@ function Favorites(data) {
 </div>`;
   for (let i = 0; i < data.favorite.length; i++) {
     x = findElement(data.favorite[i].id);
-    console.log(x);
     prod_img = x.images[0].image;
     prod_name = x.product_name;
     prod_price = x.price;
@@ -215,34 +214,14 @@ function Favorites(data) {
   prod_s.innerHTML = "";
   prod_s.innerHTML += total;
 }
-function Wishlist(data, client_ID) {}
-function Inbox() {}
-function Cart() {}
-
-let callAxios = (client_ID) => {
-  let params = new URLSearchParams();
-  params.append("client_id", client_ID);
-  const url = "http://localhost/Backend/E_commerce_BurnStore/client_spa.php";
-  axios({
-    method: "post",
-    url: url,
-    data: params,
-  }).then((object) => {
-    localStorage.setItem("site_info", JSON.stringify(object.data));
-  });
-  data = JSON.parse(localStorage.getItem("site_info"));
-  return data;
-};
-
 function Wishlist(data) {
   let prod_list = "";
   const prod_s = document.querySelector(".products-content");
   prod_header = `<div class="products-header">
-<h1>Items You Liked:</h1>
+<h1>Your Wishlist:</h1>
 </div>`;
-  for (let i = 0; i < data.favorite.length; i++) {
-    x = findElement(data.favorite[i].id);
-    console.log(x);
+  for (let i = 0; i < data.wishlist.length; i++) {
+    x = findElement(data.wishlist[i].id);
     prod_img = x.images[0].image;
     prod_name = x.product_name;
     prod_price = x.price;
@@ -267,6 +246,22 @@ function Wishlist(data) {
 }
 function Inbox() {}
 function Cart() {}
+
+// Needed functions
+let callAxios = (client_ID) => {
+  let params = new URLSearchParams();
+  params.append("client_id", client_ID);
+  const url = "http://localhost/Backend/E_commerce_BurnStore/client_spa.php";
+  axios({
+    method: "post",
+    url: url,
+    data: params,
+  }).then((object) => {
+    localStorage.setItem("site_info", JSON.stringify(object.data));
+  });
+  data = JSON.parse(localStorage.getItem("site_info"));
+  return data;
+};
 
 function findElement(id) {
   for (const x of data.products) {
