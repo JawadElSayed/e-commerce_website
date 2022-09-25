@@ -405,6 +405,11 @@ body {
 
 .right-about>h2{
 
+  margin-bottom: 2vh;
+}
+.right-about>p{
+margin-top: 2vh;
+  margin-bottom: 2vh;
 }
 .right-seller {
   display: flex;

@@ -137,7 +137,7 @@ function Home(data, client_ID) {
     <hr />
     <div class="right-actions">
       <div class="first-line">
-        <p>${clicked_product.price}</p>
+        <p>${clicked_product.price}$</p>
         <div class="wishlist-sec">
           <p>Add to wishlist</p>
           <img src="/Assets/icons/wishlist.svg" />
