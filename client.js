@@ -62,6 +62,22 @@ function Home(data, client_ID) {
     setTimeout(showSlides, 4000); // Change image every 3 seconds
   }
 
+  prod_list = "";
+  const products = document.querySelector(".products-content");
+  for (let i = 0; i < data.ads.length; i++) {
+    ad_img_url = data.ads[i].image;
+    ad = `<div class="mySlides fade">
+    <img
+      src="${ad_img_url}"
+      class="ad-image"
+    />
+    </div>`;
+    ad_list += ad;
+
+    dot_list += `<span class="dot"></span>`;
+  }
+  total = ad_list + brk + dot_list;
+  DOTS.innerHTML += total;
   product = `<div class="products-header">
     <h1>Products</h1>
   </div>
