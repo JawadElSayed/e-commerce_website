@@ -130,7 +130,7 @@ function getViews($id){
 function getRevenue($id){
     include("connection.php");
     $response_revenue=[];
-    // The below function will return the  revenue of last week of a seller, wich is about the quantity
+    // The below function will return the  revenue of last week of a seller, which is about the quantity
     // of each product sold out multuplied by the price and added to the total price.
     $get_weekly_revenue=$mysqli->prepare("SELECT SUM(total_price) as weekly_revernue
     FROM checkouts,products 
