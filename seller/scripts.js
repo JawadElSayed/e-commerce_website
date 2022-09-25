@@ -36,7 +36,6 @@ const add_product_btn=document.getElementById("add_product_btn");
 let image_base64_add='';
 
 window.onload = () => {
- 
   let data=callAxios(localStorage.getItem("id"));
   profile_image.src=`../${data.profile.image}`;
   seller_name.innerText=data.profile.name;
@@ -77,7 +76,6 @@ product_list='';
     total=header+product_list
     card_container.innerHTML=total;
   
-    
     const view_more_popup_contents = Array.from(document.getElementsByClassName("img-view-more"));
     view_more_popup_contents.forEach(element => {
       element.addEventListener("click",function(){
@@ -94,8 +92,7 @@ product_list='';
     });
 
     const delete_product_popup_contnents = Array.from(document.getElementsByClassName("delete-product"));
-    delete_product_popup_contnents.forEach(element => {
-      
+    delete_product_popup_contnents.forEach(element => {    
       element.addEventListener("click",function(){
           let clicked_button=findElement(element.id,delete_product_popup_contnents);
           clicked_button.addEventListener("click",function(){
@@ -120,7 +117,7 @@ product_list='';
           })
         })  
     });
-    
+
     const edit_product_popup_contents = Array.from(document.getElementsByClassName("edit-product"));
     edit_product_popup_contents.forEach(element => {
       element.addEventListener("click",function(){
@@ -161,10 +158,6 @@ product_list='';
           })
         })  
     });
-
-
-
-            
 
     view_more_close.addEventListener("click",function(){
        whole_content.style.display="none";
