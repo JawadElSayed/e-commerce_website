@@ -266,3 +266,22 @@ body {
   left: 17vw;
   top: 90%;
 }
+
+.prod-init-description {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vh;
+  padding: 0 2vh;
+}
+
+#prod-name {
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 2vh;
+}
+
+#prod-price {
+  font-size: x-large;
+  font-weight: bold;
+}

@@ -32,8 +32,8 @@ function Home(data, client_ID) {
       class="ad-image"
     />
     </div>`;
-    ad_list += ad;
-
+    ad_list +=ad;
+ 
     dot_list += `<span class="dot"></span>`;
   }
   total = ad_list + brk + dot_list;
@@ -63,34 +63,33 @@ function Home(data, client_ID) {
   }
 
   prod_list = "";
-  const products = document.querySelector(".products-content");
-  for (let i = 0; i < data.ads.length; i++) {
-    ad_img_url = data.ads[i].image;
-    ad = `<div class="mySlides fade">
-    <img
-      src="${ad_img_url}"
-      class="ad-image"
-    />
-    </div>`;
-    ad_list += ad;
-
-    dot_list += `<span class="dot"></span>`;
-  }
-  total = ad_list + brk + dot_list;
-  DOTS.innerHTML += total;
-  product = `<div class="products-header">
-    <h1>Products</h1>
-  </div>
-  <div class="products">
+  const prod_s = document.querySelector(".products-content");
+  prod_header = `<div class="products-header">
+  <h1>Products</h1>
+  </div>`;
+  for (let i = 0; i < data.products.length; i++) {
+    console.log(data.products[i].images[0].image);
+    prod_img = data.products[i].images[0].image;
+    prod_name = data.products[i].product_name;
+    prod_price = data.products[i].price;
+    product = `
     <div class="product grow">
       <div class="prod-ims">
         <img class="prod-img" src="${prod_img}" />
         <img class="prod-heart" src="/Assets/icons/emptyHeart.svg" />
-      </div>
+      </div >
+      <div class="prod-init-description">
       <p id="prod-name">${prod_name}</p>
-      <p id="prod-price">${prod_price}</p>
+      <p id="prod-price">${prod_price}$</p>
+      </div>
     </div>
-  </div>`;
+  `;
+    prod_list += product;
+  }
+
+  total = prod_header + `<div class="products">` + prod_list + `</div`;
+  console.log(total);
+  prod_s.innerHTML += total;
 }
 
 function Favorites() {}
