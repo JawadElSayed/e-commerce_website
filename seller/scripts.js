@@ -16,6 +16,11 @@ const delete_product_btn_no=document.getElementById("delete_product_btn_no");
 // Elements of edit products
 const edit_product_close = document.getElementById("edit_product_close");
 const edit_product_popup=document.getElementById("edit_product_popup");
+const edit_product_popup_name=document.getElementById("edit_product_popup_name");
+const edit_product_popup_price=document.getElementById("edit_product_popup_price");
+const edit_product_popup_about=document.getElementById("edit_product_popup_about");
+const edit_product_popup_upload=document.getElementById("edit_product_popup_upload");
+
 window.onload = () => {
   localStorage.setItem("id","3");
   let data=callAxios(localStorage.getItem("id"));
@@ -31,23 +36,30 @@ window.onload = () => {
 </div>
 <hr class="row-break">`;
 product_list='';
+    let counter=0;
+    let counter1=0;
+    let counter2=0;
     for(i of array_products){
+      console.log("dsds");
       let all_first_images=i.images[0];
       let first_image=all_first_images.image;
       div = `<div class="row-product">
-      <div><img src=../${first_image}  id="${i.id}" class="img-view-more"></div>
+      <div><img src=../${first_image}  id="${counter}" class="img-view-more"></div>
       <div><p>${i.product_name}</p></div>
       <div ><p>${i.price}</p></div>
       <div><p>${i.category_name}</p></div>
       <div>
-          <button id="${i.id}"  class="edit-product row-product-btn">Edit</button>
-          <button id="${i.id}" class="delete-product row-product-btn">Delete</button>
+          <button id="${counter1}"  class="edit-product row-product-btn">Edit</button>
+          <button id="${counter2}" class="delete-product row-product-btn">Delete</button>
           </div>
       </div>
       <hr class="row-break">
       `;
     
       product_list+=div;
+      counter++;
+      counter1++;
+      counter2++;
     }
     total=header+product_list
     card_container.innerHTML=total;
@@ -71,16 +83,16 @@ product_list='';
 
     const delete_product_popup_contnents = Array.from(document.getElementsByClassName("delete-product"));
     delete_product_popup_contnents.forEach(element => {
+      
       element.addEventListener("click",function(){
           let clicked_button=findElement(element.id,delete_product_popup_contnents);
-          console.log(element.id);
           clicked_button.addEventListener("click",function(){
             whole_content.style.display="flex";
             delete_product_popup.style.display="flex";
             delete_product_btn_yes.addEventListener("click",function(){
               
               let params = new URLSearchParams();
-              params.append("id", element.id);
+              params.append("id", array_products[element.id].id);
               const url = "http://localhost/e-commerce_website/apis/deleteproduct.php";
               axios({
                 method: "post",
@@ -102,11 +114,14 @@ product_list='';
     const edit_product_popup_contents = Array.from(document.getElementsByClassName("edit-product"));
     edit_product_popup_contents.forEach(element => {
       element.addEventListener("click",function(){
-          let clicked_picture=findElement(element.id,edit_product_popup_contents);
-          console.log(element.id);
-          clicked_picture.addEventListener("click",function(){
+        console.log(array_products[element.id].product_name);
+          let clicked_button=findElement(element.id,edit_product_popup_contents);
+          clicked_button.addEventListener("click",function(){
             whole_content.style.display="flex";
             edit_product_popup.style.display="flex";
+            edit_product_popup_name.value = array_products[element.id].product_name;
+            edit_product_popup_about.value = array_products[element.id].about;
+            edit_product_popup_price.value=array_products[element.id].price;
           })
         })  
     });
@@ -132,7 +147,7 @@ product_list='';
 
   let callAxios=(seller_id)=> {
     let params = new URLSearchParams();
-    params.append("id", 5);
+    params.append("id", seller_id);
     const url = "http://localhost/e-commerce_website/apis/spaseller.php";
     axios({
       method: "post",
