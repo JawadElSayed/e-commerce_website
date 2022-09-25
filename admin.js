@@ -2,7 +2,7 @@ window.onload = () =>{
 
 const data = callAxios(seller_id);
 profile(data);
-clients(data);
+// clients(data);
 
 console.log(data);
 
@@ -13,6 +13,17 @@ console.log(data);
 // get elements
 localStorage.setItem("id", 58);
 const seller_id = localStorage.getItem("id");
+const profile_img = document.getElementById("profile_img");
+const profile_name = document.getElementById("profile_name");
+
+
+const profile= (data) => {
+    profile_img.src = data["profile"]["image"];
+    profile_name.innerHTML = data["profile"]["name"];
+}
+
+
+
 
 let callAxios = (id) => {
   let params = new URLSearchParams();
