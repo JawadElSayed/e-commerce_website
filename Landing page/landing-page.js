@@ -1,4 +1,3 @@
-
 // Get the Sign-up Modal
 ///////////////////////////////////////////////////////////////////
 var signup_modal = document.querySelector("#myModal-signup");
@@ -146,7 +145,7 @@ logIn.addEventListener("click", () => {
       //-------------------------- EDITS-----------------------------
       // According to the id you go to the page
       localStorage.setItem("id", object.data.user_id);
-      window.location.href = "/client.html";
+      window.location.href = "/Client pages/client.html";
     }
   });
 });
