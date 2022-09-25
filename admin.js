@@ -16,7 +16,6 @@ statistics_btn.addEventListener("click", function(){
 
 
 // get elements
-localStorage.setItem("id", 58);
 const seller_id = localStorage.getItem("id");
 const profile_img = document.getElementById("profile_img");
 const profile_name = document.getElementById("profile_name");
