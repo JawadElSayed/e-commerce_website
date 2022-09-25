@@ -109,12 +109,57 @@ function Home(data, client_ID) {
   // When the user clicks the button, open the modal and the content is generated depending on the product
   product_elements.forEach((element) => {
     element.onclick = function () {
-      clicked_product = findElement(element.id, data);
+      clicked_product = findElement(element.id);
       left_content = `<p>${clicked_product.product_name}</p>
       <img src="${clicked_product.images[0].image}" />`;
       left.innerHTML = "";
       left.innerHTML += left_content;
-      right_content = ``;
+      right_content = `<div class="right-about">
+      <h2>About</h2>
+      <hr />
+      <p>
+        ${clicked_product.about}
+      </p>
+    </div>
+    <div class="right-seller">
+      <h2>Seller</h2>
+      <hr />
+      <div class="seller-part">
+        <div class="seller-right">
+          <p>${clicked_product.name}</p>
+          <p>${clicked_product.email}</p>
+        </div>
+        <div class="seller-left">
+          <button>Message</button>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="right-actions">
+      <div class="first-line">
+        <p>${clicked_product.price}</p>
+        <div class="wishlist-sec">
+          <p>Add to wishlist</p>
+          <img src="/Assets/icons/wishlist.svg" />
+        </div>
+      </div>
+      <div class="second-line">
+        <p>Quantity:</p>
+        <div class="counter">
+          <img src="/Assets/icons/minus_btn.svg" />
+          <p>5</p>
+          <img src="/Assets/icons/plus_btn.svg" />
+        </div>
+        <div class="like-container">
+          <img src="/Assets/icons/emptyHeart.svg" />
+        </div>
+      </div>
+      <div class="third-line">
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </div>`;
+      right.innerHTML = "";
+      right.innerHTML += right_content;
       product_modal.style.display = "block";
     };
   });
@@ -147,7 +192,7 @@ let callAxios = (client_ID) => {
   return data;
 };
 
-function findElement(id, data) {
+function findElement(id) {
   for (const x of data.products) {
     if (id == x.id) {
       return x;
