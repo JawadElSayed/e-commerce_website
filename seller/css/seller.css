@@ -16,21 +16,23 @@ header{
     background-color: #0E2E61;
     position:fixed;
 }
-
 html {
-   
     font-family:  'Poppins', sans-serif;
 }
 .seller-profile{
     margin :50px 100px 20px 70px;
     text-align: center;
 }
+.logo-image{
+    text-align: center;
+    height: 100px;
+    width:100px;
+}
 .profile-img{
     text-align: center;
     height: 100px;
     width:100px;
-    border-radius:50%;
-    
+    border-radius: 50%;
 }
 .user-type{
     display:flex;
@@ -172,6 +174,7 @@ h1{
     height: 3vw;
     width: 3vw;
     border-radius: 50%;
+    cursor: pointer;
 }
 .row-product p{
     color: #600D2D;
@@ -229,4 +232,60 @@ h1{
     padding-bottom:2vh;
 
  }
-  /* D9D9D9 */
+ .whole-content{
+    display: none;
+    align-items: center;
+    align-content: center;
+    /* display: flex; */
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    position: relative;
+ }
+ .view-more{
+    display: none;
+    padding: 20px;
+    height: 50%;
+    width: 50%;
+    background-color: white;
+    border-width: 1px;
+    border-style: solid;
+    /* display: flex; */
+    flex-direction: row;
+ }
+ .view-more-image{
+    display: flex;
+    flex-direction: column;
+    width:60%;
+ }
+ .view-more-image>p{
+    font-weight: bolder;
+ }
+ .view-more-image>img{
+    height: 15vw;
+    width: 15vw;
+    align-self: flex-start;
+    margin-top: 1vw;
+ }
+ .view-more-about{
+    width: 40%;
+ }
+ .view-more-about>h3{
+    margin-left: 1vw;
+ }
+ .view-more-about>h5{
+    font-weight: normal;
+ }
+.mt-4{
+    margin-top: 4vw;
+    margin-bottom: 1vw;
+}
+ .view-more-price{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+.pointer{
+    cursor: pointer;
+}

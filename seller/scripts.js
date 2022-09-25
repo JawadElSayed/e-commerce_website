@@ -1,17 +1,76 @@
-console.log("hello");
-localStorage.setItem("id","2");
-
-
+const profile_image=document.getElementById("profile_image");
+const seller_name=document.getElementById("seller_name");
+const card_container=document.getElementById("card_container");
+const whole_content=document.getElementById("whole_content");
+const view_more_popup=document.getElementById("view_more_popup");
+const view_more_close=document.getElementById("view_more_close");
+const view_more_image=document.getElementById("view_more_image");
+const view_more_about=document.getElementById("view_more_about");
+const view_more_price=document.getElementById("view_more_price");
+const view_more_pcategory_name= document.getElementById("view_more_pcategory_name");
 
 window.onload = () => {
+  localStorage.setItem("id","2");
+  let data=callAxios(localStorage.getItem("id" ));
+  profile_image.src=`../${data.profile.image}`;
+  seller_name.innerText=data.profile.name;
+  let array_products=data.products;
+    header=`<div class="row">
+    <div><p>Picture</p></div>
+    <div><p>Name</p></div>
+    <div><p>Price</p></div>
+    <div><p>Category</p></div>
+    <div><p>Actions</p></div>
+</div>
+<hr class="row-break">`;
+product_list='';
+    let counter=0;
+    for(i of array_products){
+      let all_first_images=i.images[0];
+      let first_image=all_first_images.image;
+      div = `<div class="row-product">
+      <div><img src=../${first_image}  id="${counter}" class="img-view-more"></div>
+      <div><p>${i.product_name}</p></div>
+      <div ><p>${i.price}</p></div>
+      <div><p>${i.category_name}</p></div>
+      <div>
+          <button class="row-product-btn">Edit</button>
+          <button class="row-product-btn">Delete</button>
+          </div>
+      </div>
+      <hr class="row-break">
+      `;
     
-  let  data=callAxios(localStorage.getItem("id" ));
+      product_list+=div;
+      counter++;
+    }
+    total=header+product_list
+    card_container.innerHTML=total;
   
+    
+    const view_more_popup_contetns = Array.from(document.getElementsByClassName("img-view-more"));
+    console.log(view_more_popup_contetns);
+    view_more_popup_contetns.forEach(element => {
+      element.addEventListener("click",function(){
+          let clicked_picture=findElement(element.id,view_more_popup_contetns);
+          console.log(element.id);
+          clicked_picture.addEventListener("click",function(){
+            whole_content.style.display="flex";
+            view_more_popup.style.display="flex";
+            view_more_image.src= `../${array_products[clicked_picture.id].images[0].image}`;
+            view_more_about.innerText = `${array_products[clicked_picture.id].about}`;
+            view_more_price.innerText = `price :${array_products[clicked_picture.id].price}`;
+            view_more_pcategory_name.innerText = `category_name :${array_products[clicked_picture.id].category_name}`;
+          })
+        })  
+    });
 
+    view_more_close.addEventListener("click",function(){
+       whole_content.style.display="none";
+       view_more_popup.style.display="none";
+    })
   }
 
-
-    
   let callAxios=(seller_id)=> {
     let params = new URLSearchParams();
     params.append("id", seller_id);
@@ -25,4 +84,12 @@ window.onload = () => {
     });
     data = JSON.parse(localStorage.getItem("site_info"));
     return data;
+  }
+  let findElement=(id,view_more_popup_contetns) =>{
+    for (const x of view_more_popup_contetns) {
+      if (id == x.id) {
+        return x;
+      }
+    }
+    return null;
   }
