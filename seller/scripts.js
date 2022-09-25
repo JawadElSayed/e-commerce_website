@@ -20,9 +20,11 @@ const edit_product_popup_name=document.getElementById("edit_product_popup_name")
 const edit_product_popup_price=document.getElementById("edit_product_popup_price");
 const edit_product_popup_about=document.getElementById("edit_product_popup_about");
 const edit_product_popup_upload=document.getElementById("edit_product_popup_upload");
-
+const edit_product_popup_save=document.getElementById("edit_product_popup_save");
+let image_base64='';
+localStorage.setItem("id","1");
 window.onload = () => {
-  localStorage.setItem("id","3");
+ 
   let data=callAxios(localStorage.getItem("id"));
   profile_image.src=`../${data.profile.image}`;
   seller_name.innerText=data.profile.name;
@@ -40,7 +42,7 @@ product_list='';
     let counter1=0;
     let counter2=0;
     for(i of array_products){
-      console.log("dsds");
+      console.log(i);
       let all_first_images=i.images[0];
       let first_image=all_first_images.image;
       div = `<div class="row-product">
@@ -69,7 +71,6 @@ product_list='';
     view_more_popup_contents.forEach(element => {
       element.addEventListener("click",function(){
           let clicked_picture=findElement(element.id,view_more_popup_contents);
-          console.log(element.id);
           clicked_picture.addEventListener("click",function(){
             whole_content.style.display="flex";
             view_more_popup.style.display="flex";
@@ -122,6 +123,38 @@ product_list='';
             edit_product_popup_name.value = array_products[element.id].product_name;
             edit_product_popup_about.value = array_products[element.id].about;
             edit_product_popup_price.value=array_products[element.id].price;
+
+            edit_product_popup_save.addEventListener("click",function(){
+              let image_sent="";
+              if(image_base64!=''){
+                image_sent=`["${image_base64}"]`;
+              }else{
+                image_sent=`[]`;
+              }
+              
+
+                let params = new URLSearchParams();
+                params.append("id", array_products[element.id].id);
+                params.append("product_name", edit_product_popup_name.value);
+                params.append("about", edit_product_popup_about.value);
+                params.append("price", edit_product_popup_price.value);
+                params.append("category_id","1");
+                params.append("array",image_sent);
+                params.append("delete",`[]`);
+                const url = "http://localhost/e-commerce_website/apis/spaseller.php";
+                axios({
+                  method: "post",
+                  url: url,
+                  data: params,
+                }).then((object) => {
+                  localStorage.setItem("site_info", JSON.stringify(object.data));
+                });
+                data = JSON.parse(localStorage.getItem("site_info"));
+                return data;
+              
+
+            })
+
           })
         })  
     });
@@ -154,9 +187,7 @@ product_list='';
       url: url,
       data: params,
     }).then((object) => {
-      localStorage.setItem("site_info", JSON.stringify(object.data));
     });
-    data = JSON.parse(localStorage.getItem("site_info"));
     return data;
   }
   let findElement=(id,view_more_popup_contents) =>{
@@ -167,3 +198,14 @@ product_list='';
     }
     return null;
   }
+  let pickUpImage =()=>{
+    let file = edit_product_popup_upload['files'][0];
+    let reader = new FileReader();
+    reader.onload = function () {
+      image_base64=reader.result;
+    }
+    reader.readAsDataURL(file);
+    return image_base64;
+}
+
+edit_product_popup_upload.addEventListener("change",pickUpImage);
