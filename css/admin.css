@@ -88,10 +88,11 @@ body{
     border-radius: 25px;
     padding: 7px 15px;
     margin-bottom: 2vw;
+    cursor: pointer;
 }
 
 .sidenav button:hover {
-    background-color: #ffffff21;
+    background-color: rgba(18, 60, 128, 0.494)
 }
 .logo {
     width: 6vw;
@@ -160,6 +161,10 @@ body{
     background-color: #600D2D;
     color: #ffffff;
     border: none;
+    cursor: pointer;
+}
+.ban_button:hover {
+    background-color: #600d2dd2;
 }
 
 .row-break{

@@ -3,6 +3,7 @@ window.onload = () =>{
 const data = callAxios(seller_id);
 profile(data);
 clients(data);
+// sellers(data);
 
 console.log(data);
 
@@ -17,6 +18,9 @@ const profile_img = document.getElementById("profile_img");
 const profile_name = document.getElementById("profile_name");
 const titles = document.querySelector(".titles");
 const row_container = document.getElementById("row_container");
+const clients_btn = document.getElementById("clients_btn");
+const sellers_btn = document.getElementById("sellers_btn");
+const statistics_btn = document.getElementById("statistics_btn");
 
 // get profile
 const profile= (data) => {
@@ -70,4 +74,29 @@ let callAxios = (id) => {
   });
   data = JSON.parse(localStorage.getItem("site_info"));
   return data;
+}
+
+// get sellers
+const sellers = (data) => {
+    titles_row();
+    let rows = "";
+    for(let i of data["sellers"]){
+        let profile = i["profile"];
+        let name = i["name"];
+        let email = i["email"];
+        let username = i["username"];
+        let row = `<div class="row">
+                        <img src="${profile}" class="profile_img">
+                        <p>${name}</p>
+                        <p>${email}</p>
+                        <p>${username}</p>
+                        <div>
+                            <button class="ban_button">Edit</button>
+                            <button class="ban_button">Delete</button>
+                        </div>    
+                    </div>
+                    <hr class="row-break">`;
+        rows += row;
+    }
+    row_container.innerHTML = rows;
 }
