@@ -35,7 +35,6 @@ if(mysqli_num_rows($email_check)) {
     exit($json = json_encode($response));
 }
 
-
 // password according to user type
 if ($user_type == 3){
     $password = $_POST["password"];
