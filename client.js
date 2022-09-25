@@ -172,8 +172,8 @@ function Home(data, client_ID) {
   ////////////////////////////////////////////////////////////////////
 }
 
-function Favorites() {}
-function Wishlist() {}
+function Favorites(data,client_ID) {}
+function Wishlist(data,client_ID) {}
 function Inbox() {}
 function Cart() {}
 
