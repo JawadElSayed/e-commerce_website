@@ -24,6 +24,7 @@ const edit_product_popup_save=document.getElementById("edit_product_popup_save")
 let image_base64='';
 
 // Elements of add products
+const add_product_popup_add=document.getElementById("add_product_popup_add");
 const add_product_close = document.getElementById("add_product_close");
 const add_product_popup=document.getElementById("add_product_popup");
 const add_product_popup_name=document.getElementById("add_product_popup_name");
@@ -159,12 +160,7 @@ product_list='';
                   url: url,
                   data: params,
                 }).then((object) => {
-                  localStorage.setItem("site_info", JSON.stringify(object.data));
                 });
-                data = JSON.parse(localStorage.getItem("site_info"));
-                return data;
-              
-
             })
 
           })
@@ -172,6 +168,8 @@ product_list='';
     });
 
 
+
+            
 
     view_more_close.addEventListener("click",function(){
        whole_content.style.display="none";
@@ -226,8 +224,44 @@ product_list='';
     return image_base64;
 }
 
+let pickUpImageProduct =()=>{
+  let file = add_product_popup_upload['files'][0];
+  let reader = new FileReader();
+  reader.onload = function () {
+    image_base64_add=reader.result;
+  }
+  reader.readAsDataURL(file);
+  return image_base64_add;
+}
+
 edit_product_popup_upload.addEventListener("change",pickUpImage);
+add_product_popup_upload.addEventListener("change",pickUpImageProduct);
 add_product_btn.addEventListener("click",function(){
   whole_content.style.display="flex";
   add_product_popup.style.display="flex";
+  
+})
+
+add_product_popup_add.addEventListener("click",function(){
+  if(image_base64_add=''){
+    image_add_sent=`[]`;
+  }else{
+    image_add_sent=`["${image_base64_add}"]`
+  }
+
+  let params = new URLSearchParams();
+  params.append("id", localStorage.getItem("id"));
+  params.append("product_name", add_product_popup_name.value);
+  params.append("about", add_product_popup_about.value);
+  params.append("price", addproduct_popup_price.value);
+  params.append("category_id","1");
+  params.append("array",image_base64_add);
+  const url = "http://localhost/e-commerce_website/apis/addproduct.php";
+  axios({
+    method: "post",
+    url: url,
+    data: params,
+  }).then((object) => {
+    location.reload();  
+  });
 })

@@ -397,3 +397,6 @@ edit-product-popup>input{
     height: 2vw;
     margin-top: 0.5vw;
 }
+.seller-btn{
+    cursor: pointer;
+}
