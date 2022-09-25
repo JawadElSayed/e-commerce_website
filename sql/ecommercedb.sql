@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2022 at 09:03 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Generation Time: Sep 25, 2022 at 10:03 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -54,6 +53,14 @@ CREATE TABLE `ban` (
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `ban`
+--
+
+INSERT INTO `ban` (`admin_id`, `client_id`) VALUES
+(1, 2),
+(1, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -84,7 +91,7 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`) VALUES
-(14, 'c1'),
+(1, 'c1'),
 (15, 'c2'),
 (16, 'c3'),
 (17, 'c4');
@@ -99,7 +106,7 @@ CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
   `sender` int(11) NOT NULL,
   `receiver` int(11) NOT NULL,
-  `massage` text,
+  `massage` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -201,32 +208,7 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `image`, `product_id`) VALUES
-(5, 'images/products_images/632c3d440b5a5.jpeg', 3),
-(6, 'images/products_images/632c3d440bf6d.jpeg', 3),
-(7, 'images/products_images/632c3d4499ca9.jpeg', 4),
-(8, 'images/products_images/632c3d449a796.jpeg', 4),
-(9, 'images/products_images/632d4deedd453.png', 1),
-(10, 'images/products_images/632d4deeddc61.png', 1),
-(13, 'images/products_images/632d505e99dc5.png', 2),
-(14, 'images/products_images/632d505e9a635.png', 2),
-(15, 'images/products_images/632d507365e65.png', 2),
-(16, 'images/products_images/632d50736688b.png', 2),
-(19, 'images/products_images/632d50a96dac1.png', 2),
-(20, 'images/products_images/632d50a96e33d.png', 2),
-(23, 'images/products_images/632d51e6d41bc.png', 2),
-(24, 'images/products_images/632d51e6d5365.png', 2),
-(27, 'images/products_images/632d525ab35d9.png', 2),
-(28, 'images/products_images/632d525ab434b.png', 2),
-(29, 'images/products_images/632d52b294f3e.png', 2),
-(30, 'images/products_images/632d52b295c13.png', 2),
-(31, 'images/products_images/632d52dd7b669.png', 2),
-(32, 'images/products_images/632d52dd7c6f8.png', 2),
-(33, 'images/products_images/632d52fb04475.png', 2),
-(34, 'images/products_images/632d52fb05555.png', 2),
-(35, 'images/products_images/632d52ff503ca.png', 2),
-(36, 'images/products_images/632d52ff51019.png', 2),
-(39, 'images/products_images/632d54cf2290a.png', 2),
-(40, 'images/products_images/632d54cf23637.png', 2);
+(44, 'images/products_images/632d54cf23632.png', 1);
 
 -- --------------------------------------------------------
 
@@ -252,7 +234,7 @@ CREATE TABLE `lottery` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `product_name` varchar(45) DEFAULT NULL,
-  `about` text,
+  `about` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
   `category_id` int(11) NOT NULL,
@@ -264,13 +246,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_name`, `about`, `created_at`, `price`, `category_id`, `seller_id`) VALUES
-(1, 'ep1', 'ea1', '2022-09-22 09:09:13', 911, 15, 2),
+(1, 'ep1', 'ea1', '2022-09-22 09:09:13', 911, 1, 1),
 (2, 'ep22', 'ea22', '2022-09-22 09:09:31', 9222, 17, 2),
 (3, 'p3', 'a3', '2022-09-22 09:09:32', 123, 2, 2),
 (4, 'p4', 'a4', '2022-09-22 09:09:32', 123, 17, 5),
-(5, 'p5', 'a5', '2022-09-07 21:00:00', 5, 1, 6),
 (6, 'p6', 'a6', '2022-09-01 21:00:00', 6, 2, 5),
-(7, 'p7', 'a7', '2022-09-01 21:00:00', 7, 1, 6),
 (8, 'p8', 'a8', '2022-09-13 21:00:00', 8, 1, 7),
 (9, 'p9', 'a9', '2022-09-05 21:00:00', 9, 1, 8),
 (10, 'p9', 'a9', '2022-09-23 21:00:00', 10, 1, 9),
@@ -331,12 +311,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `name`, `username`, `user_type`, `profile`) VALUES
-(1, 'housseinalialdroubi@gmail.com', '123321', 'houssein', 'houssein123', 1, 'images/profile/632c3d4332e00.jpeg'),
+(1, 'housseinalialdroubi@gmail.com', '123321', 'houssein12', 'houssein123', 1, 'images/profile/632f7b0a174af.png'),
 (2, 'houssam@gmail.com', '123321', 'houssam', 'houssam', 2, 'images/profile/default.png'),
 (3, 'houssein@gmail.com', '123321', 'houssein1', 'houssein', 3, 'images/profile/default.png'),
 (4, 'alone@gmail.com', '123321', 'alone', 'alone', 1, 'images/profile/632c3d4332e00.jpeg'),
 (5, 'jawad@gmail.com', '123321', 'jawad', 'jawad', 2, 'images/profile/632c3d4332e00.jpeg\r\n'),
-(6, 'mohamad@gmail.com', '123321', 'mohamad', 'mohamad', 2, 'images/profile/632c3d4332e00.jpeg\r\n'),
 (7, 'mahdi@gmail.com', '123321', 'mahdi', 'mahdi', 2, 'images/profile/632c3d4332e00.jpeg\r\n'),
 (8, 'abbass@gmail.com', '123321', 'abbass', 'abbass', 2, 'images/profile/632c3d4332e00.jpeg\r\n'),
 (9, 'ali@gmail.com', '123321', 'ali', 'ali', 2, 'Iimages/profile/632c3d4332e00.jpeg'),
@@ -619,7 +598,7 @@ ALTER TABLE `discount_codes`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `products`
