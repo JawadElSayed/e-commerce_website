@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel="stylesheet" href="/Client pages/client.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Client</title>
+  </head>
+  <body>
+    <div class="nav-container">
+      <div class="main-menu">
+        <img src="/Assets/Logo-variants/Logo.svg" />
+        <p id="Home-txt">Home</p>
+        <p id="Favorites-txt">Favorites</p>
+        <p id="Wishlist-txt">Wishlist</p>
+        <div class="dropdown">
+          <button class="dropbtn">Categories</button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+        <p id="Inbox-txt">Inbox</p>
+        <img id="cart-im" src="/Assets/icons/cart.svg" />
+      </div>
+
+      <div class="search-profile">
+        <div class="search">
+          <img id="search-icon" src="/Assets/icons/search.svg" />
+          <input type="text" class="search-bar" />
+        </div>
+        <div class="profile">
+          <img id="profile-img" src="/images/Clients/Client-1.jpg" />
+          <p>Housam</p>
+        </div>
+      </div>
+    </div>
+    <div class="main-content">
+      <!-- Home page -->
+      <div class="ads">
+        <div class="align-dots"></div>
+      </div>
+
+      <div class="products-content">
+        <!-- Modal -->
+
+        <!-- Product modal section -->
+
+        <div id="myModal-product" class="cont-modal-product">
+          <!--Product Modal content -->
+          <div class="modal-content-product">
+            <div class="header">
+              <span id="product-close" class="close">&times;</span>
+            </div>
+            <div class="modal-body-product">
+              <div class="left"></div>
+              <div class="right"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- End of Product modal section -->
+        <div class="cart-elements">
+          <!-- I wanted to construct the cart elements here -->
+        </div>
+        <!-- Modal End -->
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-text">© All rights reserved</div>
+    </div>
+    <script src="/Client pages/client.js"></script>
+  </body>
+</html>

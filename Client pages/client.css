@@ -1,0 +1,531 @@
+/* CSS Reset */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eaeded;
+}
+/* Navigation bar  */
+
+.nav-container {
+  display: flex;
+  padding: 3vh 10vh;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.main-menu {
+  display: flex;
+  width: 40%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-menu > img {
+  height: 5vh;
+  width: 5vh;
+}
+
+.main-menu > img:hover {
+  cursor: pointer;
+}
+.main-menu > p {
+  color: #0e2e61;
+  font-size: 1rem;
+}
+
+.main-menu > p:hover {
+  color: #600d2d;
+  cursor: pointer;
+}
+.search-profile {
+  display: flex;
+  width: 35%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* main-menu */
+
+/* drop down menu */
+.dropbtn {
+  background-color: white;
+  color: #0e2e61;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.dropbtn:hover {
+  color: #600d2d;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  /* text-align: center; */
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+}
+
+/* Search bar */
+#profile-img {
+  height: 5vh;
+  width: 5vh;
+  border-radius: 30px;
+}
+
+.search {
+  background-color: #0e2e61;
+  display: flex;
+  border-radius: 20px;
+  height: 5vh;
+  margin-right: 4vh;
+  align-items: center;
+  width: 70%;
+}
+
+#search-icon {
+  height: 3vh;
+  width: 3vh;
+  margin-right: 2vh;
+  margin-left: 2vh;
+}
+
+.search > input {
+  background-color: #0e2e61;
+  width: 100%;
+  border: none;
+  border-radius: 0px 20px 20px 0px;
+  height: 5vh;
+  color: white;
+}
+
+.search > input:focus,
+.search > input:valid {
+  outline: none;
+}
+
+/* profile */
+.profile {
+  display: flex;
+  width: auto;
+  align-items: center;
+  margin-right: 1vh;
+}
+
+.profile > p {
+  margin-left: 1vh;
+}
+
+/* Main content */
+.main-content {
+  margin-bottom: 10vh;
+}
+/* footer */
+.footer {
+  background-color: #0e2e61;
+  height: 5vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ad-image {
+  width: 100%;
+  height: 70vh;
+}
+/* Ads */
+
+.mySlides {
+  display: none;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.ads {
+  text-align: center;
+}
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* products */
+
+.products-content {
+  width: 100%;
+  padding: 2vh 0vh;
+  /* background-color: #0e2e61; */
+}
+
+.products-header {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2vh 2vh;
+  justify-content: center;
+}
+
+.product {
+  border-color: #f5f5f5;
+  background-color: white;
+  width: 20%;
+  height: 65vh;
+  cursor: pointer;
+  border: solid;
+  border-color: #f5f5f5;
+  margin-top: 3vh;
+  border-radius: 20px;
+  margin: 1vh 1vh;
+}
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.05);
+}
+
+.prod-ims {
+  position: relative;
+}
+
+.prod-img {
+  height: 48vh;
+  width: 100%;
+  position: relative;
+  border-radius: 20px;
+}
+
+.prod-heart {
+  position: absolute;
+  left: 17vw;
+  top: 90%;
+}
+
+.prod-init-description {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vh;
+  padding: 0 2vh;
+}
+
+#prod-name {
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 2vh;
+}
+
+#prod-price {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+/* Product Modal */
+
+.cont-modal-product {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 10vh; /*Location of the box*/
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  backdrop-filter: blur(6px);
+}
+
+.modal-content-product {
+  position: relative;
+  background-color: white;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  width: 60%;
+  height: 80vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.header {
+  display: flex;
+  width: 53%;
+  justify-content: space-between;
+}
+
+/* The Close Button */
+.close {
+  color: #600d2d;
+  float: left;
+  font-size: 28px;
+  font-weight: lighter;
+}
+
+.close:hover,
+.close:focus {
+  color: #0e2e61;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* end close button */
+
+.modal-body-product {
+  display: flex;
+  justify-content: space-around;
+}
+.left {
+  height: 65vh;
+  width: 40%;
+  margin-left: 7vh;
+}
+
+.left > img {
+  height: 50vh;
+  width: 80%;
+}
+
+.left > p {
+  font-size: xx-large;
+  font-weight: bold;
+  margin-bottom: 2vh;
+}
+
+.left hr,
+.right hr {
+  border-width: 0.8px;
+  background-color: black;
+}
+
+.right {
+  font-size: 0.9rem;
+  width: 30%;
+}
+
+.right-about {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3vh;
+}
+
+.right-about > h2 {
+  margin-bottom: 2vh;
+}
+.right-about > p {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+.right-seller {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 18vh;
+  margin-bottom: 4vh;
+}
+.seller-part {
+  display: flex;
+  width: 100%;
+}
+
+.seller-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.seller-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.seller-left > button {
+  height: 7vh;
+  width: 12vh;
+  background-color: #0e2e61;
+  color: white;
+  border-radius: 7px;
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+  border: none;
+}
+
+.seller-left > button:hover {
+  background-color: #1c50a2;
+}
+
+.right img {
+  cursor: pointer;
+}
+.right-actions {
+  margin-top: 2vh;
+}
+.first-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.first-line > p {
+  font-size: x-large;
+  font-weight: bold;
+}
+.wishlist-sec {
+  display: flex;
+  width: 17vh;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 0.3vh;
+}
+
+.wishlist-sec p {
+  font-weight: bold;
+}
+
+.second-line {
+  margin-top: 2vh;
+  display: flex;
+  align-items: center;
+}
+
+.second-line > p {
+  flex-basis: 25%;
+}
+.counter {
+  display: flex;
+  flex-basis: 30%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.counter > p {
+  font-size: large;
+}
+.like-container {
+  display: flex;
+  flex-basis: 45%;
+  justify-content: end;
+}
+
+.like-container img {
+  height: 3vh;
+}
+
+.add-to-cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #0e2e61;
+  width: 38vh;
+  height: 7vh;
+  border-radius: 6px;
+  font-size: larger;
+  font-weight: bold;
+  margin-top: 4vh;
+  border: none;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #1c50a2;
+}
+
+/* cart elements */
+
