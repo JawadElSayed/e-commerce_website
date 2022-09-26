@@ -17,7 +17,7 @@
         <div class="flex-grow">
           <hr />
           <div class="moto">
-            <h1>Where products are burnt to memory</h1>
+            <p>Where products are burnt to memory</p>
           </div>
           <hr />
 
@@ -25,9 +25,6 @@
             <div class="log-in">
               <p>Already a member?</p>
               <button id="outer-login" class="outer-button">Sign In</button>
-              <div>
-              <text id="forgot-pass">Forgot Password?</text>
-              </div>
           </div>
             
             <!-- Modal -->
@@ -40,7 +37,10 @@
               <div class="modal-content">
                 <div class="header">
                   <span id="signin-close" class="close">&times;</span>
-                  <img class="img" src="/Assets/Logo-variants/Logo.svg" />
+                  <div class="sign-in-text">
+                    <p>Sign In</p>
+                  </div>
+                  
                 </div>
 
                 <div class="modal-main-content">
@@ -58,11 +58,15 @@
                       placeholder="Password"
                     />
                   </div>
+    
                 </div>
 
                 <div class="cont-sign">
                   <button id="log-in">Log In</button>
                 </div>
+                <div class="f-pass">
+                  <text id="forgot-pass">Forgot Password?</text>
+                  </div>
               </div>
               
             </div>
@@ -85,11 +89,11 @@
           <div class="modal-content">
             <div class="header">
               <span id="signup-close" class="close">&times;</span>
-              <img class="img" src="/Assets/Logo-variants/Logo.svg" />
+              <div class="signup-header-text">
+                <p>Create an Account</p>
+              </div>
             </div>
-
             <div class="modal-main-content">
-              <p>Create an Account</p>
               <div>
                 <input type="text" id="p2-name" placeholder="Full Name" />
               </div>
@@ -135,7 +139,7 @@
               <div class="modal-content">
                 <div class="header">
                   <span id="pass-close" class="close">&times;</span>
-                  <img class="img" src="/Assets/Logo-variants/Logo.svg" />
+                  <div class="forget-pass-text"><p>Forgot Password</p></div>
                 </div>
 
                 <div class="modal-main-content-pass">

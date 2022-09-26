@@ -7,10 +7,11 @@
 }
 
 body {
-  background-image: url(/images/Landing-page/items-background.jpg);
+  background-image: url(/Assets/Landing-page/items-background-blue.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: "Baloo Chettan2";
 }
 
 .site-logo {
@@ -29,25 +30,26 @@ body {
 .moto {
   display: flex;
   justify-content: center;
-  font-family: "Baloo Chettan";
-  color: #600d2d;
-  font-size: x-small;
+  font-weight: 800;
+  font-size: large;
   text-align: center;
   word-spacing: 0.5em;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
+
 .buttons-container {
   display: flex;
   padding: 0 2vh 0 2vh;
   flex-direction: column;
-  margin-top: 4vh;
+  margin-top: 6vh;
 }
 
 .buttons-container p {
-  font-family: "Baloo Chettan";
-  color: #600d2d;
   font-size: 1.2rem;
-  margin-bottom: 2vh;
+  margin-bottom: 3vh;
   margin-left: 1vh;
+  font-weight: 900;
 }
 
 .log-in {
@@ -64,19 +66,23 @@ body {
   font-weight: bold;
 }
 
-.log-in div text:hover {
+#forgot-pass {
   text-decoration: underline;
   cursor: pointer;
+}
+.f-pass {
+  padding: 0 9vh;
+  display: flex;
+  justify-content: end;
 }
 .outer-button {
   width: 100%;
   color: white;
   height: 7vh;
   font-size: x-large;
-  font-family: "Baloo Chettan";
-  border-radius: 20px;
   border-color: #0e2e61;
   background-color: #0e2e61;
+  border-radius: 10px;
   margin-top: -1.5vh;
 }
 
@@ -90,7 +96,10 @@ body {
   font-family: "Baloo Chettan";
   src: url(/Assets/Fonts/BalooChettan-Regular.ttf);
 }
-
+@font-face {
+  font-family: "Baloo Chettan2";
+  src: url(/Assets/Fonts/BalooChettan2-Regular.ttf);
+}
 .main-container {
   height: 100vh;
   display: flex;
@@ -114,7 +123,7 @@ body {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 10px; /*Location of the box*/
+  padding-top: 10vh; /*Location of the box*/
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -140,12 +149,29 @@ body {
   animation-duration: 0.4s;
   font-family: "Baloo Chettan";
 }
-
+.forget-pass-text {
+  width: 100%;
+}
 .header {
   display: flex;
-  width: 53%;
-  justify-content: space-between;
-  margin-bottom: 5vh;
+  width: 100%;
+}
+.sign-in-text {
+  width: 100%;
+}
+.header p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 4vh;
+  color: #600d2d;
+  text-align: center;
+}
+.signup-header-text {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 /* The Close Button */
@@ -170,8 +196,6 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0 7vh;
-  margin-bottom: 27vh;
-  margin-bottom: 3vh;
 }
 
 .modal-main-content div {
@@ -189,20 +213,20 @@ body {
 .modal-main-content input {
   display: block;
   width: 100%;
-  background-color: #0e2e61;
+  background-color: white;
   border-style: solid;
   border-width: 1px;
   height: 8vh;
   border-radius: 5px;
   padding-left: 1.4vh;
-  color: white;
+  color: black;
 }
 .modal-main-content input::placeholder {
-  color: white;
+  color: black;
 }
 
 .modal-main-content input:hover {
-  background-color: #600d2d;
+  background-color: rgb(238, 234, 234);
 }
 
 .cont-modal-signin {
@@ -222,13 +246,12 @@ body {
 
 .cont-sign {
   padding: 0 7vh;
-  margin-bottom: 3vh;
   display: flex;
   flex-direction: column;
 }
 
 .cont-sign button {
-  margin-bottom: 3vh;
+  margin: 1vh;
   border-radius: 30px;
   height: 8vh;
   background-color: #0e2e61;

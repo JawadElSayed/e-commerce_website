@@ -55,11 +55,13 @@ const pass_close = document.querySelector("#pass-close");
 // When the user clicks the button, open the modal
 change_pass.onclick = function () {
   pass_modal.style.display = "block";
+  signin_modal.style.display = "none";
 };
 
 // When the user clicks on <span> (x), close the modal
 pass_close.onclick = function () {
   pass_modal.style.display = "none";
+  signin_modal.style.display = "block";
 };
 
 ////////////////////////////////////////////////////////////////////
