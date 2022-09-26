@@ -253,7 +253,8 @@ function Cart() {}
 let callAxios = (client_ID) => {
   let params = new URLSearchParams();
   params.append("client_id", client_ID);
-  const url = "http://localhost/Backend/E_commerce_BurnStore/client_spa.php";
+  const url = "http://localhost/e-commerce_website/apis/client_spa.php";
+
   axios({
     method: "post",
     url: url,
