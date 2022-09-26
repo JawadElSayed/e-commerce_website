@@ -1,21 +1,6 @@
-window.onload = () =>{
-
-const data = callAxios(seller_id);
-profile(data);
-clients(data);
-clients_btn.addEventListener("click", function(){
-    clients(data);
-});
-sellers_btn.addEventListener("click", function(){
-    sellers(data);
-});
-statistics_btn.addEventListener("click", function(){
-    stat(data);
-});
-}
-
 
 // get elements
+localStorage.setItem("id", 58)
 const seller_id = localStorage.getItem("id");
 const profile_img = document.getElementById("profile_img");
 const profile_name = document.getElementById("profile_name");
@@ -50,6 +35,9 @@ const titles_row = (page) => {
 
 // get clients
 const clients = (data) => {
+    if (data == "") {
+        return
+    }
     titles_row("clients");
     page_title.innerHTML = "Clients"
     let rows = "";
@@ -84,12 +72,15 @@ let callAxios = (id) => {
   }).then((object) => {
     localStorage.setItem("site_info", JSON.stringify(object.data));
   });
-  data = JSON.parse(localStorage.getItem("site_info"));
+  let data = JSON.parse(localStorage.getItem("site_info"));
   return data;
 }
 
 // get sellers
 const sellers = (data) => {
+    if (data == "") {
+        return row_container.innerHTML = "";
+    }
     page_title.innerHTML = "Sellers"
     titles_row("sellers");
     let rows = "";
@@ -116,9 +107,12 @@ const sellers = (data) => {
 }
 
 // statistics
-
 const stat = (data) => {
-    let all_cards = document.getElementById("all_cards")
+    let all = document.getElementById("all_cards");
+    let all_cards = `<div>`;
+    if (data == ""){
+        return all.innerHTML = "";
+    }
     page_title.innerHTML = "Statistics"
     let card = `<div class="stat_card">
                     <h3>Best seller of the week</h3>
@@ -134,7 +128,7 @@ const stat = (data) => {
         rows += card
     }
     rows += `</div>`
-    all_cards.innerHTML += rows;
+    all_cards += rows;
     // best client
     rows = `<div class="card_row">`;
     for(let i in data["best_client"]){
@@ -145,7 +139,7 @@ const stat = (data) => {
     rows += card
     }
     rows += `</div>`
-    all_cards.innerHTML += rows;
+    all_cards += rows;
     // best numbers
     rows = `<div class="card_row">`;
     for(let i in data["numbers"]){
@@ -156,5 +150,29 @@ const stat = (data) => {
         rows += card
         }
         rows += `</div>`
-        all_cards.innerHTML += rows;
+        all_cards += rows + `</div>`;
+        all.innerHTML = all_cards;
 }
+
+
+const data = callAxios(seller_id);
+console.log(data);
+profile(data);
+clients(data);
+
+clients_btn.addEventListener("click", function(){
+    stat("");
+    clients(data);
+});
+
+sellers_btn.addEventListener("click", function(){
+    stat("");
+    sellers(data);
+});
+
+statistics_btn.addEventListener("click", function(){
+    sellers("");
+    clients("")
+    titles.innerHTML = "";
+    stat(data);
+});
