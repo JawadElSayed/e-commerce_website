@@ -57,6 +57,13 @@ html {
 .user-type div span {
     padding-right:10px;
 }
+.user-type a{
+    color: white;
+    text-decoration: none;
+}
+.underline{
+    text-decoration: underline;
+}
 hr{
     margin:0  20px;
     height:2px;  
@@ -91,12 +98,14 @@ h1{
 }
 .seller-header{
     width:100%;
-   
     position:fixed;
     top:0;
     z-index:2;
     height:22vh;
     background-color: #BDBDBD;
+}
+.seller-header>h1{
+    font-weight: 400;
 }
 .seller{
     width:70%;
@@ -125,8 +134,12 @@ h1{
 	font-size: 18px;
 	padding-left: 10px;
     width: 400px;
-    background-color: #600D2D;
+    background-color: white;
     border-radius: 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #600D2D;
+    color: #600D2D;
 }
 
 
@@ -153,7 +166,7 @@ h1{
   }
 .row{
     margin-top: 2vw;
-    width: 100%;
+    width: 60vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -191,8 +204,8 @@ h1{
 }
 .row-break{
     margin-top: 1vw;
-    width: 100%;
-    height: 1px;
+    width: 60vw;
+    height: 2px;
     background-color: #0E2E61;
     border: none;
 }

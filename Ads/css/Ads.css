@@ -46,9 +46,6 @@ hr{
     align-items: center;
     padding-top:15vh;
 }
-
-
-
 .user-type div{
     display:flex;
     justify-content:space-between;
@@ -60,7 +57,13 @@ hr{
 .user-type div span {
     padding-right:10px;
 }
-
+.user-type a{
+    color: white;
+    text-decoration: none;
+}
+.underline{
+    text-decoration: underline;
+}
 .seller-bottom-profile{
     margin-top:10vh;
 
@@ -95,12 +98,14 @@ h1{
 }
 .seller-header{
     width:100%;
-   
     position:fixed;
     top:0;
     z-index:2;
     height:22vh;
     background-color: #BDBDBD;
+}
+.seller-header>h1{
+    font-weight: 400;
 }
 .seller{
     width:70%;
@@ -114,7 +119,6 @@ h1{
 	padding: 20px;
 
 }
-
 .search > span {
 	font-size: 20px;
 	color: white;
@@ -129,8 +133,12 @@ h1{
 	font-size: 18px;
 	padding-left: 10px;
     width: 400px;
-	background-color:#0E2E61;
+	background-color:white;
 	border-radius: 30px;
+    color: #600D2D;
+    border-color: #600D2D;
+    border-style: solid;
+    border-width: 2px;
 }
 .seller button{
     padding: 14px 10px;
@@ -178,4 +186,7 @@ h1{
     font-size: 19px;
     color:balck;
     font-weight: 700;
+  }
+  .seller-btn{
+    background-color: white;
   }
