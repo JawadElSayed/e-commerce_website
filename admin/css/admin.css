@@ -1,5 +1,12 @@
+/* Utilities */
+@font-face {
+    font-family: "Baloo Chettan";
+    src: url(/Assets/Fonts/BalooChettan-Regular.ttf);
+  }
+
 body{
     margin: 0;
+    font-family: Ballo Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .header {

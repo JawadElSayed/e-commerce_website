@@ -1,19 +1,3 @@
-window.onload = () =>{
-
-const data = callAxios(seller_id);
-profile(data);
-clients(data);
-clients_btn.addEventListener("click", function(){
-    clients(data);
-});
-sellers_btn.addEventListener("click", function(){
-    sellers(data);
-});
-statistics_btn.addEventListener("click", function(){
-    stat(data);
-});
-}
-
 
 // get elements
 const seller_id = localStorage.getItem("id");
@@ -84,7 +68,7 @@ let callAxios = (id) => {
   }).then((object) => {
     localStorage.setItem("site_info", JSON.stringify(object.data));
   });
-  data = JSON.parse(localStorage.getItem("site_info"));
+  let data = JSON.parse(localStorage.getItem("site_info"));
   return data;
 }
 
@@ -116,7 +100,6 @@ const sellers = (data) => {
 }
 
 // statistics
-
 const stat = (data) => {
     let all_cards = document.getElementById("all_cards")
     page_title.innerHTML = "Statistics"
@@ -158,3 +141,20 @@ const stat = (data) => {
         rows += `</div>`
         all_cards.innerHTML += rows;
 }
+
+
+const data = callAxios(seller_id);
+profile(data);
+clients(data);
+
+clients_btn.addEventListener("click", function(){
+    clients(data);
+});
+
+sellers_btn.addEventListener("click", function(){
+    sellers(data);
+});
+
+statistics_btn.addEventListener("click", function(){
+    stat(data);
+});
