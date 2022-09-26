@@ -11,6 +11,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: "Baloo Chettan2";
 }
 
 .site-logo {
@@ -29,12 +30,13 @@ body {
 .moto {
   display: flex;
   justify-content: center;
-  font-family: "Baloo Chettan";
   color: #600d2d;
-  font-size: x-small;
+  font-weight: 800;
+  font-size: large;
   text-align: center;
   word-spacing: 0.5em;
 }
+
 .buttons-container {
   display: flex;
   padding: 0 2vh 0 2vh;
@@ -43,11 +45,11 @@ body {
 }
 
 .buttons-container p {
-  font-family: "Baloo Chettan";
   color: #600d2d;
   font-size: 1.2rem;
-  margin-bottom: 2vh;
+  margin-bottom: 3vh;
   margin-left: 1vh;
+  font-weight: 900;
 }
 
 .log-in {
@@ -73,10 +75,9 @@ body {
   color: white;
   height: 7vh;
   font-size: x-large;
-  font-family: "Baloo Chettan";
-  border-radius: 20px;
   border-color: #0e2e61;
   background-color: #0e2e61;
+  border-radius: 10px;
   margin-top: -1.5vh;
 }
 
@@ -90,7 +91,10 @@ body {
   font-family: "Baloo Chettan";
   src: url(/Assets/Fonts/BalooChettan-Regular.ttf);
 }
-
+@font-face {
+  font-family: "Baloo Chettan2";
+  src: url(/Assets/Fonts/BalooChettan2-Regular.ttf);
+}
 .main-container {
   height: 100vh;
   display: flex;
