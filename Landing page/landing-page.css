@@ -149,12 +149,14 @@ body {
   animation-duration: 0.4s;
   font-family: "Baloo Chettan";
 }
-
+.forget-pass-text {
+  width: 100%;
+}
 .header {
   display: flex;
   width: 100%;
 }
-.sign-in-text{
+.sign-in-text {
   width: 100%;
 }
 .header p {
