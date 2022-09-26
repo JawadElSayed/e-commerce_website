@@ -123,7 +123,7 @@ body {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 10px; /*Location of the box*/
+  padding-top: 10vh; /*Location of the box*/
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -152,9 +152,24 @@ body {
 
 .header {
   display: flex;
-  width: 53%;
-  justify-content: space-between;
-  margin-bottom: 5vh;
+  width: 100%;
+}
+.sign-in-text{
+  width: 100%;
+}
+.header p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 4vh;
+  color: #600d2d;
+  text-align: center;
+}
+.signup-header-text {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 /* The Close Button */
@@ -179,8 +194,6 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0 7vh;
-  margin-bottom: 27vh;
-  margin-bottom: 3vh;
 }
 
 .modal-main-content div {
