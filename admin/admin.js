@@ -35,6 +35,9 @@ const titles_row = (page) => {
 
 // get clients
 const clients = (data) => {
+    if (data == "") {
+        return
+    }
     titles_row("clients");
     page_title.innerHTML = "Clients"
     let rows = "";
@@ -75,6 +78,9 @@ let callAxios = (id) => {
 
 // get sellers
 const sellers = (data) => {
+    if (data == "") {
+        return row_container.innerHTML = "";
+    }
     page_title.innerHTML = "Sellers"
     titles_row("sellers");
     let rows = "";
@@ -158,5 +164,8 @@ sellers_btn.addEventListener("click", function(){
 });
 
 statistics_btn.addEventListener("click", function(){
+    sellers("");
+    clients("")
+    titles.innerHTML = "";
     stat(data);
 });
