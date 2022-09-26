@@ -198,20 +198,20 @@ body {
 .modal-main-content input {
   display: block;
   width: 100%;
-  background-color: #0e2e61;
+  background-color: white;
   border-style: solid;
   border-width: 1px;
   height: 8vh;
   border-radius: 5px;
   padding-left: 1.4vh;
-  color: white;
+  color: black;
 }
 .modal-main-content input::placeholder {
-  color: white;
+  color: black;
 }
 
 .modal-main-content input:hover {
-  background-color: #600d2d;
+  background-color: rgb(238, 234, 234);
 }
 
 .cont-modal-signin {
