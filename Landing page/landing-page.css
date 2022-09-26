@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: url(/images/Landing-page/items-background.jpg);
+  background-image: url(/Assets/Landing-page/items-background-blue.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,22 +30,22 @@ body {
 .moto {
   display: flex;
   justify-content: center;
-  color: #600d2d;
   font-weight: 800;
   font-size: large;
   text-align: center;
   word-spacing: 0.5em;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .buttons-container {
   display: flex;
   padding: 0 2vh 0 2vh;
   flex-direction: column;
-  margin-top: 4vh;
+  margin-top: 6vh;
 }
 
 .buttons-container p {
-  color: #600d2d;
   font-size: 1.2rem;
   margin-bottom: 3vh;
   margin-left: 1vh;
