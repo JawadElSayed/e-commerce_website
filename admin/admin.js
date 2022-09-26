@@ -1,5 +1,6 @@
 
 // get elements
+localStorage.setItem("id", 58)
 const seller_id = localStorage.getItem("id");
 const profile_img = document.getElementById("profile_img");
 const profile_name = document.getElementById("profile_name");
@@ -144,6 +145,7 @@ const stat = (data) => {
 
 
 const data = callAxios(seller_id);
+console.log(data);
 profile(data);
 clients(data);
 
