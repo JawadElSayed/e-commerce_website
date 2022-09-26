@@ -147,7 +147,16 @@ logIn.addEventListener("click", () => {
       //-------------------------- EDITS-----------------------------
       // According to the id you go to the page
       localStorage.setItem("id", object.data.user_id);
-      window.location.href = "/Client pages/client.html";
+      if (object.data.user_type == 3) {
+        window.location.href = "/Client pages/client.html";
+      }
+      if (object.data.user_type == 2) {
+        window.location.href = "/seller/selller.html";
+      }
+
+      if (object.data.user_type == 1) {
+        window.location.href = "/admin/admin.html";
+      }
     }
   });
 });
