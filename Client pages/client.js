@@ -1,39 +1,14 @@
 // The problem I am facing is that when I click the home page, I get duplicates of the items. I am not able to erase the content using innerHTML
 // When I navigate to other pages, the pop up functionality stops
 
-window.onload = () => {
-  const home = document.querySelector("#Home-txt");
-  const favorites = document.querySelector("#Favorites-txt");
-  const wishlist = document.querySelector("#Wishlist-txt");
-  const inbox = document.querySelector("#Inbox-txt");
-  const cart = document.querySelector("#cart-im");
-  const client_ID = localStorage.getItem("id")
-    ? JSON.parse(localStorage.getItem("id"))
-    : "";
-  data = callAxios(client_ID);
-  ADS = document.querySelector(".ads");
-  prod_s = document.querySelector(".products-content");
-  home.addEventListener("click", function () {
-    Home(data, client_ID);
-  });
-
-  favorites.addEventListener("click", function () {
-    ADS.innerHTML = "";
-    Favorites(data, client_ID);
-  });
-
-  wishlist.addEventListener("click", function () {
-    ADS.innerHTML = "";
-    Wishlist(data, client_ID);
-  });
-
-  inbox.addEventListener("click", Inbox);
-  cart.addEventListener("click", Cart);
-  Home(callAxios(client_ID), client_ID);
-};
+const home = document.querySelector("#Home-txt");
+const favorites = document.querySelector("#Favorites-txt");
+const wishlist = document.querySelector("#Wishlist-txt");
+const inbox = document.querySelector("#Inbox-txt");
+const cart = document.querySelector("#cart-im");
+const client_ID = localStorage.getItem("id");
 
 function Home(data) {
-  console.log(data);
   ad_list = "";
   dot_list = "";
   brk = `<br />`;
@@ -274,3 +249,27 @@ function findElement(id) {
   }
   return null;
 }
+
+data = callAxios(client_ID);
+ADS = document.querySelector(".ads");
+prod_s = document.querySelector(".products-content");
+home.addEventListener("click", function () {
+  prod_s.innerHTML = "";
+  Home(data, client_ID);
+});
+
+favorites.addEventListener("click", function () {
+  ADS.innerHTML = "";
+  Favorites(data, client_ID);
+});
+
+wishlist.addEventListener("click", function () {
+  ADS.innerHTML = "";
+  Wishlist(data, client_ID);
+});
+
+// Call the home upon refresh
+Home(data, client_ID);
+
+inbox.addEventListener("click", Inbox);
+cart.addEventListener("click", Cart);
