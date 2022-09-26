@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Products</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="./css/seller.css">
@@ -17,21 +17,17 @@
        <hr>
         <div class="user-type">
             <div>
-                <p>Products</p>
+                <p class="underline">Products</p>
             </div>
             <div>
-                <p>Analytics</p>
+                <p><a href="../Seller_Analytics/analytics.html">Analytics</a></p>
             </div>
             <div>
-                <p>Ads</p>
+                <p><a href="../Ads/Ads.html">Ads</a></p>
             </div>
             <div>
-                <p>Discounts</p>
+                <p><a href="../Discount/discount.html">Discounts</a></p>
             </div>
-            <div>
-                <p>Inbox</p>
-            </div>
-            
         </div>
         <div class="seller-bottom-profile">
             <div><img src="../assests/images/default.png"  class="profile-img"  id="profile_image"></div>
@@ -40,12 +36,12 @@
     </header>
     <main>
         <div class="seller-header">
-            <h1>Seller</h1>
+            <h1 >Products</h1>
             <div class="seller">
                 <div class="search">
-                    <input type="text">
+                    <input type="text" placeholder="Search...">
                 </div>
-                <button  class="seller-btn" id="add_product_btn">Add Seller</button> 
+                <button  class="seller-btn" id="add_product_btn">Add product</button> 
             </div>
         </div>
         <div class="card-container" id="card_container">
@@ -55,8 +51,8 @@
     <div class="whole-content" id="whole_content">
         <div class="view-more" id="view_more_popup">
            <div class="view-more-image">
-            <p>Gaming Chair</p>
-            <img src="../images/profile/default.png" alt="" id="view_more_image">
+                <p>Gaming Chair</p>
+                <img src="../images/profile/default.png" alt="" id="view_more_image">
            </div>
            <div class="view-more-about">
                 <h3 >About</h3>
@@ -85,9 +81,9 @@
             <input type="text" class="edit-product-input" placeholder="Price" id="edit_product_popup_price"/>
             <input type="text" class="edit-product-input" placeholder="About" id="edit_product_popup_about"/>
             <label class="file-upload">
-            <input  type="file"  accept="image/jpeg, image/png, image/jpg" id="edit_product_popup_upload">
-            Add image
-        </label>
+                <input  type="file"  accept="image/jpeg, image/png, image/jpg" id="edit_product_popup_upload">
+                Add image
+                </label>
             <button id="edit_product_popup_save">Save</button>
         </div>
 
@@ -97,12 +93,11 @@
             <input type="text" class="add-product-input" placeholder="Price" id="add_product_popup_price"/>
             <input type="text" class="add-product-input" placeholder="About" id="add_product_popup_about"/>
             <label class="file-upload">
-            <input  type="file"  accept="image/jpeg, image/png, image/jpg" id="add_product_popup_upload">
-            Add image
-        </label>
+                <input  type="file"  accept="image/jpeg, image/png, image/jpg" id="add_product_popup_upload">
+                Add image
+            </label>
             <button id="add_product_popup_add">Add</button>
         </div>
-
     </div>
    
     <script src="scripts.js" type="text/javascript"></script>

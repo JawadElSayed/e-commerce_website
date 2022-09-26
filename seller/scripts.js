@@ -58,7 +58,7 @@ product_list='';
       div = `<div class="row-product">
       <div><img src=../${first_image}  id="${counter}" class="img-view-more"></div>
       <div><p>${i.product_name}</p></div>
-      <div ><p>${i.price}</p></div>
+      <div><p>${i.price}</p></div>
       <div><p>${i.category_name}</p></div>
       <div>
           <button id="${counter1}"  class="edit-product row-product-btn">Edit</button>
