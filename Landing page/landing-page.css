@@ -66,9 +66,14 @@ body {
   font-weight: bold;
 }
 
-.log-in div text:hover {
+#forgot-pass {
   text-decoration: underline;
   cursor: pointer;
+}
+.f-pass {
+  padding: 0 9vh;
+  display: flex;
+  justify-content: end;
 }
 .outer-button {
   width: 100%;
@@ -226,13 +231,12 @@ body {
 
 .cont-sign {
   padding: 0 7vh;
-  margin-bottom: 3vh;
   display: flex;
   flex-direction: column;
 }
 
 .cont-sign button {
-  margin-bottom: 3vh;
+  margin: 1vh;
   border-radius: 30px;
   height: 8vh;
   background-color: #0e2e61;
