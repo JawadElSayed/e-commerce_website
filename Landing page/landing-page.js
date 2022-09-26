@@ -82,7 +82,7 @@ window.onclick = function (event) {
 
 //  Copied this from my previous twitter project
 // sign up getting data from server
-php_signup = "http://localhost/Backend/E_commerce_BurnStore/sign_up.php";
+php_signup = "http://localhost/e-commerce_website/apis/sign_up.php";
 label = document.createElement("label");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const signup_name = document.querySelector("#p2-name");
@@ -117,7 +117,7 @@ sign_up_btn.addEventListener("click", () => {
 });
 
 // This is the logIn section, checking if the data is in the server
-php_signin = "http://localhost/Backend/E_commerce_BurnStore/login.php";
+php_signin = "http://localhost/e-commerce_website/apis/login.php";
 const logIn = document.querySelector("#log-in");
 const user = document.querySelector("#p1-username");
 const password = document.querySelector("#p1-password");
